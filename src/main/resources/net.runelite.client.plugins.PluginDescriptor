@@ -1,0 +1,4 @@
+displayName=Demonic Pacts Task Highlighter
+description=Highlights NPCs, items, and ground objects related to Demonic Pacts League tasks. Shows tooltips with task details, requirements, points, and area info. Color-coded by difficulty.
+tags=league,demonic,pacts,tasks,highlight,overlay
+plugins=com.demonicpacts.DemonicPactsPlugin

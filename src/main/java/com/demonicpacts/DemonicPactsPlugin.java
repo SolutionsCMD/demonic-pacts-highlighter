@@ -1,0 +1,407 @@
+package com.demonicpacts;
+
+import com.google.inject.Provides;
+import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
+import net.runelite.api.Client;
+import net.runelite.api.ChatMessageType;
+import net.runelite.api.GameState;
+import net.runelite.api.MenuAction;
+import net.runelite.api.MenuEntry;
+import net.runelite.api.NPC;
+import net.runelite.api.events.ChatMessage;
+import net.runelite.api.events.GameStateChanged;
+import net.runelite.api.events.MenuEntryAdded;
+import net.runelite.client.callback.ClientThread;
+import net.runelite.client.chat.ChatMessageBuilder;
+import net.runelite.client.config.ConfigManager;
+import net.runelite.client.eventbus.EventBus;
+import net.runelite.client.eventbus.Subscribe;
+import net.runelite.client.events.ConfigChanged;
+import net.runelite.client.game.ItemManager;
+import net.runelite.client.plugins.Plugin;
+import net.runelite.client.plugins.PluginDescriptor;
+import net.runelite.client.ui.overlay.OverlayManager;
+import net.runelite.client.util.Text;
+
+import javax.inject.Inject;
+import java.awt.Color;
+import java.util.HashSet;
+import java.util.Set;
+
+@Slf4j
+@PluginDescriptor(
+    name = "Demonic Pacts Task Highlighter",
+    description = "Highlights NPCs, items, and objects related to Demonic Pacts League tasks with tooltips showing task details",
+    tags = {"league", "demonic", "pacts", "tasks", "highlight", "overlay"}
+)
+public class DemonicPactsPlugin extends Plugin
+{
+    @Inject
+    private Client client;
+
+    @Inject
+    private DemonicPactsConfig config;
+
+    @Inject
+    private OverlayManager overlayManager;
+
+    @Inject
+    private DemonicPactsNpcOverlay npcOverlay;
+
+    @Inject
+    private DemonicPactsItemOverlay itemOverlay;
+
+    @Inject
+    private DemonicPactsGroundOverlay groundOverlay;
+
+    @Inject
+    private DemonicPactsTooltipOverlay tooltipOverlay;
+
+    @Inject
+    private DemonicPactsObjectOverlay objectOverlay;
+
+    @Inject
+    private ItemManager itemManager;
+
+    @Inject
+    private ClientThread clientThread;
+
+    @Inject
+    private EventBus eventBus;
+
+    @Inject
+    private ConfigManager configManager;
+
+    @Getter
+    @Inject
+    private CompletedTaskManager completedTaskManager;
+
+    @Getter
+    @Inject
+    private HiddenTaskManager hiddenTaskManager;
+
+    @Getter
+    @Inject
+    private RenderedHighlights renderedHighlights;
+
+    @Inject
+    private LeagueTaskCompletionTracker taskTracker;
+
+    // Tracks whether we've shown the autocomplete hint this session
+    private boolean shownLoginHint = false;
+
+    @Override
+    protected void startUp() throws Exception
+    {
+        log.debug("Demonic Pacts Task Highlighter started - loaded {} tasks", TaskDatabase.getAllTasks().size());
+        overlayManager.add(npcOverlay);
+        overlayManager.add(itemOverlay);
+        overlayManager.add(groundOverlay);
+        overlayManager.add(tooltipOverlay);
+        overlayManager.add(objectOverlay);
+
+        // Register the widget-based tracker to receive WidgetLoaded events
+        eventBus.register(taskTracker);
+
+        if (client.getGameState() == GameState.LOGGED_IN)
+        {
+            completedTaskManager.loadForCurrentProfile();
+            hiddenTaskManager.loadForCurrentProfile();
+            // If the plugin was enabled while already logged in, hint now (next tick)
+            clientThread.invokeLater(this::showLoginHintIfNeeded);
+        }
+    }
+
+    @Override
+    protected void shutDown() throws Exception
+    {
+        overlayManager.remove(npcOverlay);
+        overlayManager.remove(itemOverlay);
+        overlayManager.remove(groundOverlay);
+        overlayManager.remove(tooltipOverlay);
+        overlayManager.remove(objectOverlay);
+        eventBus.unregister(taskTracker);
+        taskTracker.clear();
+        completedTaskManager.onLogout();
+        hiddenTaskManager.onLogout();
+        shownLoginHint = false;
+        log.debug("Demonic Pacts Task Highlighter stopped");
+    }
+
+    @Provides
+    DemonicPactsConfig provideConfig(ConfigManager configManager)
+    {
+        return configManager.getConfig(DemonicPactsConfig.class);
+    }
+
+    @Subscribe
+    public void onGameStateChanged(GameStateChanged event)
+    {
+        if (event.getGameState() == GameState.LOGGED_IN)
+        {
+            completedTaskManager.loadForCurrentProfile();
+            hiddenTaskManager.loadForCurrentProfile();
+            clientThread.invokeLater(this::showLoginHintIfNeeded);
+        }
+        else if (event.getGameState() == GameState.LOGIN_SCREEN)
+        {
+            taskTracker.clear();
+            completedTaskManager.onLogout();
+            hiddenTaskManager.onLogout();
+            shownLoginHint = false;
+        }
+    }
+
+    /**
+     * Shows a chat message once per session reminding the player to open the
+     * Leagues task log so the plugin can sync completed tasks via widget 657.
+     */
+    private void showLoginHintIfNeeded()
+    {
+        if (shownLoginHint || !config.showLoginHint() || client.getGameState() != GameState.LOGGED_IN)
+        {
+            return;
+        }
+        shownLoginHint = true;
+
+        String message = new ChatMessageBuilder()
+            .append(Color.MAGENTA, "[Demonic Pacts] ")
+            .append(Color.WHITE, "Open the Leagues task menu so completed tasks sync automatically.")
+            .build();
+
+        client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", message, null);
+    }
+
+    /**
+     * Every game tick, sync widget tracker completions into CompletedTaskManager.
+     */
+    @Subscribe
+    public void onGameTick(net.runelite.api.events.GameTick event)
+    {
+        if (!config.autoDetectCompletion() || client.getGameState() != GameState.LOGGED_IN)
+        {
+            return;
+        }
+
+        // Sync any completions found by the widget tracker into our persistence layer.
+        // Uses the tracker's fuzzy matcher so minor wording drift (trailing periods,
+        // case, or name-vs-status-column quirks) still registers.
+        for (DemonicPactsTask task : TaskDatabase.getAllTasks())
+        {
+            if (!completedTaskManager.isCompleted(task) && taskTracker.isComplete(task.getName()))
+            {
+                completedTaskManager.markCompleted(task.getName());
+            }
+        }
+    }
+
+    /**
+     * Auto-detect task completion from league chat messages.
+     * Game format: "Congratulations, you've completed an easy task: TASK NAME"
+     */
+    @Subscribe
+    public void onChatMessage(ChatMessage event)
+    {
+        if (!config.autoDetectCompletion())
+        {
+            return;
+        }
+
+        if (event.getType() != ChatMessageType.GAMEMESSAGE && event.getType() != ChatMessageType.SPAM)
+        {
+            return;
+        }
+
+        String message = Text.removeTags(event.getMessage());
+
+        if ((message.contains("you've completed") || message.contains("you have completed")) && message.contains("task"))
+        {
+            int colonIdx = message.lastIndexOf(':');
+            if (colonIdx >= 0 && colonIdx < message.length() - 1)
+            {
+                String taskName = message.substring(colonIdx + 1).trim();
+                if (taskName.endsWith("."))
+                {
+                    taskName = taskName.substring(0, taskName.length() - 1).trim();
+                }
+
+                // Try exact match
+                for (DemonicPactsTask task : TaskDatabase.getAllTasks())
+                {
+                    if (task.getName().equalsIgnoreCase(taskName))
+                    {
+                        completedTaskManager.markCompleted(task.getName());
+                        taskTracker.addCompleted(task.getName());
+                        log.debug("Chat-detected task completion: {}", task.getName());
+                        return;
+                    }
+                }
+
+                // Fuzzy match
+                for (DemonicPactsTask task : TaskDatabase.getAllTasks())
+                {
+                    if (message.toLowerCase().contains(task.getName().toLowerCase()))
+                    {
+                        completedTaskManager.markCompleted(task.getName());
+                        taskTracker.addCompleted(task.getName());
+                        log.debug("Chat-detected task completion (fuzzy): {}", task.getName());
+                        return;
+                    }
+                }
+            }
+        }
+    }
+
+    // =========================================================================
+    // Hide Task menu
+    // =========================================================================
+
+    private static final String HIDE_MENU_TEXT = "Hide task";
+
+    /**
+     * Inject a red "Hide task: <Name>" menu entry for each task matching the
+     * hovered NPC, item (inventory/bank/equipment/ground), or game object.
+     * Hidden tasks still appear in this menu with prefix "Unhide task" so the
+     * player can reverse the action from the same context.
+     */
+    @Subscribe
+    public void onMenuEntryAdded(MenuEntryAdded event)
+    {
+        if (!config.enableHideTaskMenu())
+        {
+            return;
+        }
+
+        MenuEntry entry = event.getMenuEntry();
+        MenuAction type = entry.getType();
+        String cleanTarget = Text.removeTags(entry.getTarget()).trim();
+
+        // Inject on Examine entries for NPCs, world objects, and ground items.
+        // For inventory/bank/equipment, the Examine action type is different
+        // (CC_OP_LOW_PRIORITY with "Examine" as the option text) so we match
+        // by option text as well.
+        boolean isExamine = type == MenuAction.EXAMINE_NPC
+            || type == MenuAction.EXAMINE_OBJECT
+            || type == MenuAction.EXAMINE_ITEM_GROUND
+            || type == MenuAction.EXAMINE_ITEM
+            || (type == MenuAction.CC_OP_LOW_PRIORITY
+                && "Examine".equalsIgnoreCase(Text.removeTags(entry.getOption())));
+        if (!isExamine)
+        {
+            return;
+        }
+
+        Set<DemonicPactsTask> matches = new HashSet<>();
+
+        // NPC tasks
+        NPC npc = entry.getNpc();
+        if (npc != null && npc.getName() != null)
+        {
+            matches.addAll(TaskDatabase.findNpcTasks(npc.getName()));
+        }
+
+        // Inventory / bank / equipment: resolve by item ID when available
+        int itemId = entry.getItemId();
+        if (itemId >= 0)
+        {
+            try
+            {
+                String resolvedName = itemManager.getItemComposition(itemId).getName();
+                if (resolvedName != null && !resolvedName.isEmpty() && !"null".equals(resolvedName))
+                {
+                    matches.addAll(TaskDatabase.findItemTasks(resolvedName));
+                }
+            }
+            catch (Exception ignored) {}
+        }
+
+        // Item tasks (ground examine gives item name via target)
+        if (!cleanTarget.isEmpty())
+        {
+            matches.addAll(TaskDatabase.findItemTasks(cleanTarget));
+            matches.addAll(TaskDatabase.findObjectTasks(cleanTarget));
+            // Also try NPC lookup by target text as a fallback
+            if (npc == null)
+            {
+                matches.addAll(TaskDatabase.findNpcTasks(cleanTarget));
+            }
+        }
+
+        if (matches.isEmpty())
+        {
+            return;
+        }
+
+        // Check existing menu entries to avoid injecting duplicate "Hide task" lines
+        // when the game fires onMenuEntryAdded multiple times (e.g. stacks of ground items).
+        MenuEntry[] existing = client.getMenuEntries();
+
+        for (DemonicPactsTask task : matches)
+        {
+            // Skip already-hidden tasks so players can't unhide from the right-click menu.
+            // They must use the "Unhide All Tasks" config toggle instead.
+            if (hiddenTaskManager.isHidden(task))
+            {
+                continue;
+            }
+
+            // Skip completed tasks — no point offering to hide something already done.
+            if (completedTaskManager.isCompleted(task))
+            {
+                continue;
+            }
+
+            // Dedup: don't add the same Hide task entry twice in the same menu cycle
+            boolean alreadyThere = false;
+            String wantTarget = "<col=ffaa00>" + task.getName() + "</col>";
+            for (MenuEntry me : existing)
+            {
+                if (me.getType() == MenuAction.RUNELITE
+                    && wantTarget.equals(me.getTarget())
+                    && me.getOption() != null
+                    && me.getOption().contains(HIDE_MENU_TEXT))
+                {
+                    alreadyThere = true;
+                    break;
+                }
+            }
+            if (alreadyThere)
+            {
+                continue;
+            }
+
+            client.createMenuEntry(-1)
+                .setOption("<col=ff0000>" + HIDE_MENU_TEXT + "</col>")
+                .setTarget(wantTarget)
+                .setType(MenuAction.RUNELITE)
+                .onClick(e -> hiddenTaskManager.hide(task.getName()));
+        }
+    }
+
+    /**
+     * When the player ticks the "Unhide All Tasks" config box, clear the
+     * hidden-task set for this account and reset the toggle so it can be used
+     * again later.
+     */
+    @Subscribe
+    public void onConfigChanged(ConfigChanged event)
+    {
+        if (!"demonicpactstaskhighlighter".equals(event.getGroup()))
+        {
+            return;
+        }
+        if ("unhideAllTasks".equals(event.getKey()) && "true".equals(event.getNewValue()))
+        {
+            int count = hiddenTaskManager.getHiddenCount();
+            hiddenTaskManager.clearAll();
+            configManager.setConfiguration("demonicpactstaskhighlighter", "unhideAllTasks", false);
+
+            String msg = new ChatMessageBuilder()
+                .append(Color.MAGENTA, "[Demonic Pacts] ")
+                .append(Color.WHITE, "Unhid " + count + " task" + (count == 1 ? "" : "s") + ".")
+                .build();
+            client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", msg, null);
+        }
+    }
+}
