@@ -13,6 +13,21 @@ public class TaskDatabase
     private static final Map<String, List<DemonicPactsTask>> OBJECT_TASKS = new HashMap<>();
 
     /**
+     * Tools that appear as ingredients for many different tasks but aren't the
+     * actual subject of any of them. Highlighting them creates visual noise
+     * since a chisel, knife, or mould is used across dozens of craft tasks.
+     * Items in this list will not produce highlights or tooltips.
+     */
+    private static final Set<String> ITEM_BLOCKLIST = new HashSet<>(Arrays.asList(
+        "chisel",
+        "knife",
+        "ammo mould",
+        "ring mould",
+        "amulet mould",
+        "vial of water"
+    ));
+
+    /**
      * Maps world object names (rocks, trees, fishing spots, patches) to their
      * corresponding item-based task keywords so we can highlight the source objects.
      */
@@ -50,20 +65,26 @@ public class TaskDatabase
         OBJECT_TO_TASK_KEYWORDS.put("sulliusceps", new String[]{"mushroom"});
         OBJECT_TO_TASK_KEYWORDS.put("mushroom", new String[]{"mushroom"});
 
-        // Fishing spots -> raw fish item keywords
+        // Fishing spots -> raw fish item keywords. Each sub-type is narrow;
+        // the plain "fishing spot" entry covers only the net/bait category
+        // (what you get with "Small Net" / "Bait" actions) since that's what
+        // non-type-prefixed Fishing spot NPCs in OSRS typically use.
         OBJECT_TO_TASK_KEYWORDS.put("fishing spot", new String[]{
-            "raw shrimp", "raw anchovies", "raw herring", "raw trout", "raw salmon",
-            "raw pike", "raw tuna", "raw lobster", "raw swordfish", "raw monkfish",
-            "raw shark", "raw karambwan", "raw karambwanji", "raw cod", "raw mackerel",
-            "raw sardine", "raw sea turtle", "raw manta ray", "minnow"});
+            "raw shrimps", "raw anchovies", "raw sardine", "raw herring"});
         OBJECT_TO_TASK_KEYWORDS.put("rod fishing spot", new String[]{
             "raw herring", "raw trout", "raw salmon", "raw pike", "raw sardine"});
         OBJECT_TO_TASK_KEYWORDS.put("net fishing spot", new String[]{
-            "raw shrimp", "raw anchovies", "raw sardine", "raw herring", "minnow"});
+            "raw shrimps", "raw anchovies", "raw sardine", "raw herring", "minnow"});
+        OBJECT_TO_TASK_KEYWORDS.put("small net fishing spot", new String[]{
+            "raw shrimps", "raw anchovies", "raw sardine", "raw herring"});
+        OBJECT_TO_TASK_KEYWORDS.put("bait fishing spot", new String[]{
+            "raw sardine", "raw herring", "raw pike"});
         OBJECT_TO_TASK_KEYWORDS.put("harpoon fishing spot", new String[]{
             "raw tuna", "raw swordfish", "raw shark"});
         OBJECT_TO_TASK_KEYWORDS.put("cage fishing spot", new String[]{"raw lobster"});
         OBJECT_TO_TASK_KEYWORDS.put("karambwan fishing spot", new String[]{"raw karambwan"});
+        OBJECT_TO_TASK_KEYWORDS.put("lure fishing spot", new String[]{
+            "raw trout", "raw salmon"});
 
         // Farming patches
         OBJECT_TO_TASK_KEYWORDS.put("allotment", new String[]{"allotment"});
@@ -1614,7 +1635,10 @@ public class TaskDatabase
             }
         }
 
-        // Build OBJECT_TASKS by mapping world object names to their corresponding tasks
+        // Build OBJECT_TASKS by mapping world object names to their corresponding tasks.
+        // We include COOK/SMELT/etc. tasks here because the player may need to gather
+        // the raw material from this object even if the only task referencing it is
+        // a downstream one (e.g. "Cook 100 Sharks" implies "fish sharks here first").
         for (Map.Entry<String, String[]> entry : OBJECT_TO_TASK_KEYWORDS.entrySet())
         {
             String objectName = entry.getKey();
@@ -1654,6 +1678,7 @@ public class TaskDatabase
     public static List<DemonicPactsTask> findItemTasks(String itemName)
     {
         if (itemName == null) return Collections.emptyList();
+        if (ITEM_BLOCKLIST.contains(itemName.toLowerCase())) return Collections.emptyList();
         List<DemonicPactsTask> tasks = ITEM_TASKS.get(itemName.toLowerCase());
         return tasks != null ? tasks : Collections.emptyList();
     }

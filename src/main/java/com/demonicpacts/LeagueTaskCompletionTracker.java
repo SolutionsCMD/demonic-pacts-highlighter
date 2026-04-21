@@ -15,7 +15,13 @@ import java.util.Set;
 /**
  * Reads task completion status from the League Tasks panel (widget 657).
  * Child 18 = task name text column, Child 19 = status column (coloured per row).
- * Text color 0xF47113 (orange) on the status widget = complete, grey = incomplete.
+ * Text color 0xF47113 (orange) on the status widget = complete, 0x9F9F9F (grey) = incomplete.
+ *
+ * Note: widget 657 only contains a small subset of tasks (typically the ones
+ * you've completed in the current session or those shown in the summary
+ * view), not your full lifetime completion history. For full coverage we
+ * rely on the chat-message handler in DemonicPactsPlugin.onChatMessage,
+ * which catches every "you've completed a task" announcement in real time.
  */
 @Slf4j
 @Singleton
@@ -65,14 +71,11 @@ public class LeagueTaskCompletionTracker
         int newlyFound = 0;
         for (int i = 0; i < count; i++)
         {
-            // The status widget carries the row colour; orange = complete.
             if (statuses[i].getTextColor() != COLOR_COMPLETE)
             {
                 continue;
             }
 
-            // Prefer the NAME column for the actual task name. Fall back to the
-            // status column if the name column is blank for some reason.
             String cleaned = cleanTaskName(names[i].getText());
             if (cleaned.isEmpty())
             {
@@ -84,8 +87,11 @@ public class LeagueTaskCompletionTracker
             }
         }
 
-        log.debug("Task log synced. Total complete: {} (new this pass: {})",
-            completedTaskNames.size(), newlyFound);
+        if (newlyFound > 0)
+        {
+            log.debug("Task log sync: +{} newly completed (total {})",
+                newlyFound, completedTaskNames.size());
+        }
     }
 
     /**

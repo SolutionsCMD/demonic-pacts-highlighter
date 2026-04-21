@@ -30,16 +30,24 @@ public interface DemonicPactsConfig extends Config
     String displaySection = "display";
 
     @ConfigSection(
+        name = "Regions",
+        description = "Toggle which league regions you've unlocked. Tasks in disabled regions won't highlight or show tooltips.",
+        position = 2,
+        closedByDefault = true
+    )
+    String regionsSection = "regions";
+
+    @ConfigSection(
         name = "Tooltips",
         description = "What shows up in the hover tooltip",
-        position = 2
+        position = 3
     )
     String tooltipSection = "tooltips";
 
     @ConfigSection(
         name = "Task Tracking",
         description = "Completion detection and hidden-task management",
-        position = 3
+        position = 4
     )
     String trackingSection = "tracking";
 
@@ -370,5 +378,129 @@ public interface DemonicPactsConfig extends Config
     default boolean unhideAllTasks()
     {
         return false;
+    }
+
+    // =========================================================================
+    // Regions — toggle which league regions you've unlocked
+    // =========================================================================
+
+    @ConfigItem(
+        keyName = "regionAsgarnia",
+        name = "Asgarnia",
+        description = "Highlight tasks located in Asgarnia",
+        section = regionsSection,
+        position = 0
+    )
+    default boolean regionAsgarnia()
+    {
+        return true;
+    }
+
+    @ConfigItem(
+        keyName = "regionDesert",
+        name = "Desert",
+        description = "Highlight tasks located in the Desert",
+        section = regionsSection,
+        position = 1
+    )
+    default boolean regionDesert()
+    {
+        return true;
+    }
+
+    @ConfigItem(
+        keyName = "regionFremennik",
+        name = "Fremennik",
+        description = "Highlight tasks located in Fremennik",
+        section = regionsSection,
+        position = 2
+    )
+    default boolean regionFremennik()
+    {
+        return true;
+    }
+
+    @ConfigItem(
+        keyName = "regionKandarin",
+        name = "Kandarin",
+        description = "Highlight tasks located in Kandarin",
+        section = regionsSection,
+        position = 3
+    )
+    default boolean regionKandarin()
+    {
+        return true;
+    }
+
+    @ConfigItem(
+        keyName = "regionKaramja",
+        name = "Karamja",
+        description = "Highlight tasks located in Karamja",
+        section = regionsSection,
+        position = 4
+    )
+    default boolean regionKaramja()
+    {
+        return true;
+    }
+
+    @ConfigItem(
+        keyName = "regionKourend",
+        name = "Kourend",
+        description = "Highlight tasks located in Kourend",
+        section = regionsSection,
+        position = 5
+    )
+    default boolean regionKourend()
+    {
+        return true;
+    }
+
+    @ConfigItem(
+        keyName = "regionMorytania",
+        name = "Morytania",
+        description = "Highlight tasks located in Morytania",
+        section = regionsSection,
+        position = 6
+    )
+    default boolean regionMorytania()
+    {
+        return true;
+    }
+
+    @ConfigItem(
+        keyName = "regionTirannwn",
+        name = "Tirannwn",
+        description = "Highlight tasks located in Tirannwn",
+        section = regionsSection,
+        position = 7
+    )
+    default boolean regionTirannwn()
+    {
+        return true;
+    }
+
+    @ConfigItem(
+        keyName = "regionVarlamore",
+        name = "Varlamore",
+        description = "Highlight tasks located in Varlamore (starter region)",
+        section = regionsSection,
+        position = 8
+    )
+    default boolean regionVarlamore()
+    {
+        return true;
+    }
+
+    @ConfigItem(
+        keyName = "regionWilderness",
+        name = "Wilderness",
+        description = "Highlight tasks located in the Wilderness",
+        section = regionsSection,
+        position = 9
+    )
+    default boolean regionWilderness()
+    {
+        return true;
     }
 }

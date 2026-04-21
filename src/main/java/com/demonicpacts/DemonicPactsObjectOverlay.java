@@ -123,6 +123,13 @@ public class DemonicPactsObjectOverlay extends Overlay
                         continue;
                     }
 
+                    // Filter by enabled regions
+                    tasks = plugin.filterByEnabledRegions(tasks);
+                    if (tasks.isEmpty())
+                    {
+                        continue;
+                    }
+
                     if (config.hideCompleted())
                     {
                         tasks = plugin.getCompletedTaskManager().filterIncomplete(tasks);

@@ -60,6 +60,12 @@ public class DemonicPactsTooltipOverlay extends Overlay
         if (npc != null && npc.getName() != null)
         {
             List<DemonicPactsTask> tasks = TaskDatabase.findNpcTasks(npc.getName());
+            if (tasks.isEmpty())
+            {
+                // Fishing spots and similar are NPCs but tasks are keyed to object
+                // names via OBJECT_TO_TASK_KEYWORDS. Try the object lookup too.
+                tasks = TaskDatabase.findObjectTasks(npc.getName());
+            }
             if (!tasks.isEmpty() && isNpcVisible(npc))
             {
                 String text = buildTooltipText(tasks, npc.getName());
@@ -129,6 +135,14 @@ public class DemonicPactsTooltipOverlay extends Overlay
     {
         RenderedHighlights rh = plugin.getRenderedHighlights();
         MenuAction type = entry.getType();
+
+        // Skip all player-targeting menu actions — players wearing gear or having
+        // certain names can accidentally match item/NPC databases, and there are
+        // no tasks where the subject is "that other player".
+        if (isPlayerAction(type))
+        {
+            return null;
+        }
 
         // Try item ID first (for inventory/bank items)
         if (type == MenuAction.CC_OP || type == MenuAction.CC_OP_LOW_PRIORITY)
@@ -234,8 +248,9 @@ public class DemonicPactsTooltipOverlay extends Overlay
         {
             return false;
         }
-        // 1-tile tolerance to handle any coord-rounding between menu entry and overlay mark
-        return plugin.getRenderedHighlights().isGroundRenderedNear(wp.getX(), wp.getY(), itemName, 1);
+        // 2-tile tolerance same as objects — handles stacked piles that spread
+        // across adjacent tiles plus coord-rounding between menu entry and mark.
+        return plugin.getRenderedHighlights().isGroundRenderedNear(wp.getX(), wp.getY(), itemName, 2);
     }
 
     /**
@@ -263,8 +278,10 @@ public class DemonicPactsTooltipOverlay extends Overlay
         {
             return false;
         }
-        // 1-tile tolerance to handle any coord-rounding between menu entry and overlay mark
-        return plugin.getRenderedHighlights().isObjectRenderedNear(wp.getX(), wp.getY(), objectName, 1);
+        // 2-tile tolerance handles multi-tile scenery (trees occupy 2x2 areas,
+        // big rocks can span 2+ tiles) and small coord-rounding between the
+        // menu entry and the overlay's marked tile.
+        return plugin.getRenderedHighlights().isObjectRenderedNear(wp.getX(), wp.getY(), objectName, 2);
     }
 
     /**
@@ -335,6 +352,18 @@ public class DemonicPactsTooltipOverlay extends Overlay
             || type == MenuAction.EXAMINE_ITEM_GROUND;
     }
 
+    private boolean isPlayerAction(MenuAction type)
+    {
+        return type == MenuAction.PLAYER_FIRST_OPTION
+            || type == MenuAction.PLAYER_SECOND_OPTION
+            || type == MenuAction.PLAYER_THIRD_OPTION
+            || type == MenuAction.PLAYER_FOURTH_OPTION
+            || type == MenuAction.PLAYER_FIFTH_OPTION
+            || type == MenuAction.PLAYER_SIXTH_OPTION
+            || type == MenuAction.PLAYER_SEVENTH_OPTION
+            || type == MenuAction.PLAYER_EIGHTH_OPTION;
+    }
+
     private String buildTooltipText(List<DemonicPactsTask> tasks, String entityName)
     {
         CompletedTaskManager ctm = plugin.getCompletedTaskManager();
@@ -357,6 +386,12 @@ public class DemonicPactsTooltipOverlay extends Overlay
 
             // Skip completed tasks unless configured to show them
             if (completed && config.hideCompleted() && !config.showCompletedInTooltip())
+            {
+                continue;
+            }
+
+            // Skip tasks in disabled regions — tooltip stays in sync with the overlay
+            if (!plugin.isTaskRegionEnabled(task))
             {
                 continue;
             }

@@ -72,14 +72,40 @@ public class DemonicPactsNpcOverlay extends Overlay
                 continue;
             }
 
+            // Skip pets and summoning-style followers — they aren't task NPCs
+            // but can match item/task names (e.g. a Kalphite pet matching "Kalphite Queen").
+            try
+            {
+                net.runelite.api.NPCComposition comp = npc.getTransformedComposition();
+                if (comp != null && comp.isFollower())
+                {
+                    continue;
+                }
+            }
+            catch (Exception ignored) {}
+
             List<DemonicPactsTask> tasks = TaskDatabase.findNpcTasks(npc.getName());
+            if (tasks.isEmpty())
+            {
+                // NPCs named like "Fishing spot", "Rod Fishing spot", "Small Net Fishing spot"
+                // are technically NPCs but behave like interactable objects. Try the
+                // object lookup so fishing spots still get highlighted for Catch tasks.
+                tasks = TaskDatabase.findObjectTasks(npc.getName());
+                if (tasks.isEmpty())
+                {
+                    continue;
+                }
+            }
+
+            // Filter out hidden tasks
+            tasks = plugin.getHiddenTaskManager().filterVisible(tasks);
             if (tasks.isEmpty())
             {
                 continue;
             }
 
-            // Filter out hidden tasks
-            tasks = plugin.getHiddenTaskManager().filterVisible(tasks);
+            // Filter by enabled regions
+            tasks = plugin.filterByEnabledRegions(tasks);
             if (tasks.isEmpty())
             {
                 continue;

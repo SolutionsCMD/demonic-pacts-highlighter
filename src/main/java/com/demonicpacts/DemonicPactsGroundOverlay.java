@@ -120,6 +120,12 @@ public class DemonicPactsGroundOverlay extends Overlay
                         continue;
                     }
 
+                    tasks = plugin.filterByEnabledRegions(tasks);
+                    if (tasks.isEmpty())
+                    {
+                        continue;
+                    }
+
                     if (config.hideCompleted())
                     {
                         tasks = plugin.getCompletedTaskManager().filterIncomplete(tasks);

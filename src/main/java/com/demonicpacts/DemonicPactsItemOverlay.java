@@ -50,6 +50,12 @@ public class DemonicPactsItemOverlay extends WidgetItemOverlay
             return;
         }
 
+        tasks = plugin.filterByEnabledRegions(tasks);
+        if (tasks.isEmpty())
+        {
+            return;
+        }
+
         if (config.hideCompleted())
         {
             tasks = plugin.getCompletedTaskManager().filterIncomplete(tasks);

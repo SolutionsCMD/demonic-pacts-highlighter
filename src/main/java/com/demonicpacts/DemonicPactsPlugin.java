@@ -299,6 +299,8 @@ public class DemonicPactsPlugin extends Plugin
         if (npc != null && npc.getName() != null)
         {
             matches.addAll(TaskDatabase.findNpcTasks(npc.getName()));
+            // Fishing spots are NPCs but tasks are mapped via object keywords
+            matches.addAll(TaskDatabase.findObjectTasks(npc.getName()));
         }
 
         // Inventory / bank / equipment: resolve by item ID when available
@@ -348,6 +350,13 @@ public class DemonicPactsPlugin extends Plugin
 
             // Skip completed tasks — no point offering to hide something already done.
             if (completedTaskManager.isCompleted(task))
+            {
+                continue;
+            }
+
+            // Skip tasks whose region the user has disabled — they wouldn't see
+            // the highlight anyway, so offering to hide is just noise.
+            if (!isTaskRegionEnabled(task))
             {
                 continue;
             }
@@ -403,5 +412,58 @@ public class DemonicPactsPlugin extends Plugin
                 .build();
             client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", msg, null);
         }
+    }
+
+    // =========================================================================
+    // Region filtering
+    // =========================================================================
+
+    /**
+     * Returns true if the given task's area is currently enabled in the
+     * Regions config section. "General" tasks are always shown since they
+     * aren't tied to any unlock.
+     */
+    public boolean isTaskRegionEnabled(DemonicPactsTask task)
+    {
+        if (task == null)
+        {
+            return true;
+        }
+        String area = task.getArea();
+        if (area == null || area.isEmpty() || "General".equalsIgnoreCase(area))
+        {
+            return true;
+        }
+        switch (area.toLowerCase())
+        {
+            case "asgarnia":   return config.regionAsgarnia();
+            case "desert":     return config.regionDesert();
+            case "fremennik":  return config.regionFremennik();
+            case "kandarin":   return config.regionKandarin();
+            case "karamja":    return config.regionKaramja();
+            case "kourend":    return config.regionKourend();
+            case "morytania":  return config.regionMorytania();
+            case "tirannwn":   return config.regionTirannwn();
+            case "varlamore":  return config.regionVarlamore();
+            case "wilderness": return config.regionWilderness();
+            default:           return true; // Unknown area — show by default
+        }
+    }
+
+    /**
+     * Convenience: filter a list of tasks down to those in enabled regions.
+     * Returns a new list — the input is not modified.
+     */
+    public java.util.List<DemonicPactsTask> filterByEnabledRegions(java.util.List<DemonicPactsTask> tasks)
+    {
+        java.util.List<DemonicPactsTask> result = new java.util.ArrayList<>();
+        for (DemonicPactsTask task : tasks)
+        {
+            if (isTaskRegionEnabled(task))
+            {
+                result.add(task);
+            }
+        }
+        return result;
     }
 }
