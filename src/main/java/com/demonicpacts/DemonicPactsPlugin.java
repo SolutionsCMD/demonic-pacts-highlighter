@@ -258,6 +258,7 @@ public class DemonicPactsPlugin extends Plugin
     // =========================================================================
 
     private static final String HIDE_MENU_TEXT = "Hide task";
+    private static final String COMPLETE_MENU_TEXT = "Mark complete";
 
     /**
      * Inject a red "Hide task: <Name>" menu entry for each task matching the

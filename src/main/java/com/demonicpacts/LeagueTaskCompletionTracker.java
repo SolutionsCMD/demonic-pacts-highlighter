@@ -51,8 +51,70 @@ public class LeagueTaskCompletionTracker
         clientThread.invokeLater(this::syncFromTaskLog);
     }
 
+    /**
+     * Re-sync on every game tick while the task log is open. The widget's
+     * dynamic children change when the player switches area tabs, scrolls, or
+     * changes filters — each of those surfaces different tasks, and we want
+     * to capture completion state from every view the player passes through.
+     */
+    @Subscribe
+    public void onGameTick(net.runelite.api.events.GameTick event)
+    {
+        Widget root = client.getWidget(TASK_LOG_GROUP_ID, 0);
+        if (root == null || root.isHidden())
+        {
+            return;
+        }
+        syncFromTaskLog();
+    }
+
+    /**
+     * Read task completion state from the Leagues task panel.
+     *
+     * The correct widget path (discovered empirically via the in-game widget
+     * inspector on 2026-04-21) is:
+     *   group 657 -> child 16 -> static children -> index 2 -> dynamic children
+     *
+     * Child 2 is the "name" column. Each dynamic child is one task row with
+     * text like "Fletch 1000 arrow shafts" and a text color of 0xF47113
+     * (orange) when completed, something else (grey-ish) when incomplete.
+     *
+     * The column inflates from a short preload (~300 rows) to the full 1592
+     * a fraction of a second after the panel opens. The per-tick re-sync in
+     * onGameTick makes sure we eventually catch the full list even if the
+     * first read came in early.
+     *
+     * The legacy top-level children (NAME_COLUMN_CHILD, STATUS_COLUMN_CHILD)
+     * remain constants but are only used as fallbacks if the nested path
+     * unexpectedly fails.
+     */
     private void syncFromTaskLog()
     {
+        Widget container = client.getWidget(TASK_LOG_GROUP_ID, 16);
+        if (container != null)
+        {
+            Widget[] pages = container.getStaticChildren();
+            if (pages != null && pages.length > 2)
+            {
+                Widget namePage = pages[2];
+                Widget[] rows = namePage.getDynamicChildren();
+                if (rows != null)
+                {
+                    for (Widget row : rows)
+                    {
+                        if (row == null) continue;
+                        String raw = row.getText();
+                        if (raw == null || raw.isEmpty()) continue;
+                        if (row.getTextColor() != COLOR_COMPLETE) continue;
+                        String clean = cleanTaskName(raw);
+                        if (clean.isEmpty()) continue;
+                        completedTaskNames.add(clean);
+                    }
+                }
+            }
+        }
+
+        // Legacy fallback path, kept in case nested structure goes missing
         Widget nameCol = client.getWidget(TASK_LOG_GROUP_ID, NAME_COLUMN_CHILD);
         Widget statusCol = client.getWidget(TASK_LOG_GROUP_ID, STATUS_COLUMN_CHILD);
         if (nameCol == null || statusCol == null)
