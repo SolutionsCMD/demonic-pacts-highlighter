@@ -475,7 +475,6 @@ public class TaskDatabase
         addTask("Make 30 Prayer Potions", "Make 30 Prayer Potions.", "General", TaskDifficulty.MEDIUM, TaskType.CRAFT_ITEM, "Herblore 38", 30, "Ranarr potion (unf)", "Snape grass");
         addTask("Make 20 Stamina Potions", "Make 20 Stamina Potions.", "General", TaskDifficulty.MEDIUM, TaskType.CRAFT_ITEM, "Herblore 77", 20, "Super energy(3)", "Amylase crystal");
         addTask("Make a 4 dose potion", "Make any 4 dose potion using an Amulet of Chemistry.", "General", TaskDifficulty.MEDIUM, TaskType.CRAFT_ITEM, "Crafting 34, Magic 27", 1, "Amulet of chemistry");
-        addTask("Make a Combat Potion", "Make a Combat Potion.", "General", TaskDifficulty.MEDIUM, TaskType.CRAFT_ITEM, "Herblore 36", 1, "Harralander potion (unf)", "Goat horn dust");
         addTask("Trade a herb with Jekyll", "Trade a herb with Jekyll for a potion.", "General", TaskDifficulty.MEDIUM, TaskType.MISC, "", 1);
         addTask("Upset the Sandwich lady", "Make the Sandwich lady quite cross with you.", "General", TaskDifficulty.MEDIUM, TaskType.MISC, "", 1, "Sandwich lady");
 
@@ -614,6 +613,7 @@ public class TaskDatabase
         addTask("Giants' Foundry 50 quality sword", "Hand in a sword with at least 50 quality in Giants' Foundry.", "Desert", TaskDifficulty.MEDIUM, TaskType.MISC, "Sleeping Giants", 1);
         addTask("Guardians of the Rift 1 Rift closed", "Close the Rift in the Temple of the Eye.", "Desert", TaskDifficulty.MEDIUM, TaskType.MISC, "Runecraft 27", 1);
         addTask("Guardians of the Rift 10 Rifts closed", "Close the Rift in the Temple of the Eye 10 times.", "Desert", TaskDifficulty.MEDIUM, TaskType.MISC, "Runecraft 27", 10);
+        addTask("Make a Combat Potion", "Make a Combat Potion.", "Desert", TaskDifficulty.MEDIUM, TaskType.CRAFT_ITEM, "Herblore 36", 1, "Harralander potion (unf)", "Goat horn dust");
         addTask("Mine 15 Granite in the Necropolis", "Mine 15 Granite in the Necropolis.", "Desert", TaskDifficulty.MEDIUM, TaskType.MINE_ITEM, "Mining 45 + Beneath Cursed Sands", 15, "Granite (500g)", "Granite (2kg)", "Granite (5kg)");
         mineItem("Mine 30 Chunks of Granite", "Mine 30 chunks of Granite at the Kharidian Desert Quarry.", "Desert", TaskDifficulty.MEDIUM, "Mining 45", 30, "Granite (500g)", "Granite (2kg)", "Granite (5kg)");
         addTask("Obtain the Big Harpoonfish", "Obtain the Big Harpoonfish from Tempoross.", "Desert", TaskDifficulty.MEDIUM, TaskType.MISC, "Fishing 35", 1, "Big harpoonfish");
