@@ -4,6 +4,7 @@ import net.runelite.api.Client;
 import net.runelite.api.MenuAction;
 import net.runelite.api.MenuEntry;
 import net.runelite.api.NPC;
+import net.runelite.api.Skill;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.client.game.ItemManager;
 import net.runelite.client.ui.overlay.Overlay;
@@ -15,9 +16,14 @@ import net.runelite.client.ui.overlay.tooltip.TooltipManager;
 import javax.inject.Inject;
 import java.awt.*;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class DemonicPactsTooltipOverlay extends Overlay
 {
+    private static final Pattern SKILL_REQ_PATTERN = Pattern.compile(
+        "\\b(Attack|Defence|Strength|Hitpoints|Ranged|Prayer|Magic|Runecraft|Construction|Agility|Herblore|Thieving|Crafting|Fletching|Slayer|Hunter|Mining|Smithing|Fishing|Cooking|Firemaking|Woodcutting|Farming)\\s+(\\d+)\\+?");
+
     private final Client client;
     private final DemonicPactsConfig config;
     private final TooltipManager tooltipManager;
@@ -443,8 +449,8 @@ public class DemonicPactsTooltipOverlay extends Overlay
 
             if (config.showRequirements() && task.getRequirements() != null && !task.getRequirements().isEmpty())
             {
-                sb.append("<br><col=ffffff>Requires: </col><col=ff6666>")
-                    .append(task.getRequirements()).append("</col>");
+                sb.append("<br><col=ffffff>Requires: </col>")
+                    .append(formatRequirements(task.getRequirements()));
             }
 
             if (task.getQuantity() > 1)
@@ -460,5 +466,28 @@ public class DemonicPactsTooltipOverlay extends Overlay
         }
 
         return sb.toString();
+    }
+
+    /**
+     * Wrap each skill-level token (e.g. "Defence 60", "Hunter 29+") in a green
+     * or red color tag based on the player's real level vs the required level.
+     * Non-skill text (quest names, connectors) is left uncolored.
+     */
+    private String formatRequirements(String requirements)
+    {
+        Matcher m = SKILL_REQ_PATTERN.matcher(requirements);
+        StringBuilder out = new StringBuilder();
+        int last = 0;
+        while (m.find())
+        {
+            out.append(requirements, last, m.start());
+            int reqLevel = Integer.parseInt(m.group(2));
+            int playerLevel = client.getRealSkillLevel(Skill.valueOf(m.group(1).toUpperCase()));
+            String color = playerLevel >= reqLevel ? "00ff00" : "ff6666";
+            out.append("<col=").append(color).append(">").append(m.group()).append("</col>");
+            last = m.end();
+        }
+        out.append(requirements.substring(last));
+        return out.toString();
     }
 }
