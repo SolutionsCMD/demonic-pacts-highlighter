@@ -9,30 +9,33 @@ import net.runelite.client.eventbus.Subscribe;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Reads task completion status from the League Tasks panel (widget 657).
- * Child 18 = task name text column, Child 19 = status column (coloured per row).
- * Text color 0xF47113 (orange) on the status widget = complete, 0x9F9F9F (grey) = incomplete.
+ * Reads task completion status from the League Tasks panel (widget group 657).
  *
- * Note: widget 657 only contains a small subset of tasks (typically the ones
- * you've completed in the current session or those shown in the summary
- * view), not your full lifetime completion history. For full coverage we
- * rely on the chat-message handler in DemonicPactsPlugin.onChatMessage,
- * which catches every "you've completed a task" announcement in real time.
+ * Strategy: walk the entire widget tree under group 657 recursively and collect
+ * every widget whose text color matches the "completed" orange (0xF47113). This
+ * is resilient to Jagex reshuffling child indexes between client updates — we
+ * don't care where in the tree the row lives as long as the color is right and
+ * the cleaned text matches a known task name in TaskDatabase.
+ *
+ * The panel inflates its rows asynchronously after opening, so we also re-sync
+ * on every GameTick while the panel is visible to catch rows that weren't
+ * present when the first WidgetLoaded fired.
  */
 @Slf4j
 @Singleton
 public class LeagueTaskCompletionTracker
 {
     private static final int TASK_LOG_GROUP_ID = 657;
-    private static final int NAME_COLUMN_CHILD = 18;
-    private static final int STATUS_COLUMN_CHILD = 19;
     private static final int COLOR_COMPLETE = 0xF47113;
 
     private final Set<String> completedTaskNames = new HashSet<>();
+    private final Set<String> newlySyncedSinceLastDrain = new HashSet<>();
 
     @Inject
     private Client client;
@@ -69,91 +72,121 @@ public class LeagueTaskCompletionTracker
     }
 
     /**
-     * Read task completion state from the Leagues task panel.
-     *
-     * The correct widget path (discovered empirically via the in-game widget
-     * inspector on 2026-04-21) is:
-     *   group 657 -> child 16 -> static children -> index 2 -> dynamic children
-     *
-     * Child 2 is the "name" column. Each dynamic child is one task row with
-     * text like "Fletch 1000 arrow shafts" and a text color of 0xF47113
-     * (orange) when completed, something else (grey-ish) when incomplete.
-     *
-     * The column inflates from a short preload (~300 rows) to the full 1592
-     * a fraction of a second after the panel opens. The per-tick re-sync in
-     * onGameTick makes sure we eventually catch the full list even if the
-     * first read came in early.
-     *
-     * The legacy top-level children (NAME_COLUMN_CHILD, STATUS_COLUMN_CHILD)
-     * remain constants but are only used as fallbacks if the nested path
-     * unexpectedly fails.
+     * Walk the entire widget 657 tree and collect every widget whose text color
+     * is the completed orange (0xF47113). Match the cleaned text against known
+     * tasks; the widget text may be either the task name or its description
+     * depending on which column we hit, so we try both lookup directions.
      */
     private void syncFromTaskLog()
     {
-        Widget container = client.getWidget(TASK_LOG_GROUP_ID, 16);
-        if (container != null)
-        {
-            Widget[] pages = container.getStaticChildren();
-            if (pages != null && pages.length > 2)
-            {
-                Widget namePage = pages[2];
-                Widget[] rows = namePage.getDynamicChildren();
-                if (rows != null)
-                {
-                    for (Widget row : rows)
-                    {
-                        if (row == null) continue;
-                        String raw = row.getText();
-                        if (raw == null || raw.isEmpty()) continue;
-                        if (row.getTextColor() != COLOR_COMPLETE) continue;
-                        String clean = cleanTaskName(raw);
-                        if (clean.isEmpty()) continue;
-                        completedTaskNames.add(clean);
-                    }
-                }
-            }
-        }
-
-        // Legacy fallback path, kept in case nested structure goes missing
-        Widget nameCol = client.getWidget(TASK_LOG_GROUP_ID, NAME_COLUMN_CHILD);
-        Widget statusCol = client.getWidget(TASK_LOG_GROUP_ID, STATUS_COLUMN_CHILD);
-        if (nameCol == null || statusCol == null)
+        Widget root = client.getWidget(TASK_LOG_GROUP_ID, 0);
+        if (root == null)
         {
             return;
         }
 
-        Widget[] names = nameCol.getDynamicChildren();
-        Widget[] statuses = statusCol.getDynamicChildren();
-        if (names == null || statuses == null)
-        {
-            return;
-        }
+        int before = completedTaskNames.size();
 
-        int count = Math.min(names.length, statuses.length);
-        int newlyFound = 0;
-        for (int i = 0; i < count; i++)
+        Deque<Widget> stack = new ArrayDeque<>();
+        stack.push(root);
+        while (!stack.isEmpty())
         {
-            if (statuses[i].getTextColor() != COLOR_COMPLETE)
+            Widget w = stack.pop();
+            if (w == null)
             {
                 continue;
             }
 
-            String cleaned = cleanTaskName(names[i].getText());
-            if (cleaned.isEmpty())
+            if (w.getTextColor() == COLOR_COMPLETE)
             {
-                cleaned = cleanTaskName(statuses[i].getText());
+                String cleaned = cleanTaskName(w.getText());
+                if (!cleaned.isEmpty())
+                {
+                    String matched = matchKnownTask(cleaned);
+                    if (matched != null && completedTaskNames.add(matched))
+                    {
+                        newlySyncedSinceLastDrain.add(matched);
+                    }
+                }
             }
-            if (!cleaned.isEmpty() && completedTaskNames.add(cleaned))
+
+            pushChildren(stack, w.getStaticChildren());
+            pushChildren(stack, w.getDynamicChildren());
+            pushChildren(stack, w.getNestedChildren());
+        }
+
+        int added = completedTaskNames.size() - before;
+        if (added > 0)
+        {
+            log.debug("Task log sync: +{} newly completed (total {})", added, completedTaskNames.size());
+        }
+    }
+
+    private static void pushChildren(Deque<Widget> stack, Widget[] children)
+    {
+        if (children == null)
+        {
+            return;
+        }
+        for (Widget child : children)
+        {
+            if (child != null)
             {
-                newlyFound++;
+                stack.push(child);
+            }
+        }
+    }
+
+    /**
+     * Resolve widget text (which may be either a task name or description) to
+     * the canonical task name from TaskDatabase. Returns null if no match.
+     */
+    private static String matchKnownTask(String widgetText)
+    {
+        String target = widgetText.trim();
+        if (target.isEmpty())
+        {
+            return null;
+        }
+        String targetLower = target.toLowerCase();
+
+        // Exact (case-insensitive) name match first
+        for (DemonicPactsTask task : TaskDatabase.getAllTasks())
+        {
+            if (task.getName().equalsIgnoreCase(target))
+            {
+                return task.getName();
             }
         }
 
-        if (newlyFound > 0)
+        // Description match — some widget columns render the task description
+        for (DemonicPactsTask task : TaskDatabase.getAllTasks())
         {
-            log.debug("Task log sync: +{} newly completed (total {})",
-                newlyFound, completedTaskNames.size());
+            String desc = task.getDescription();
+            if (desc != null && desc.equalsIgnoreCase(target))
+            {
+                return task.getName();
+            }
         }
+
+        // Fuzzy contains — lets minor wording drift (trailing period already
+        // stripped in cleanTaskName, "the"/"a" omissions, etc.) still register
+        for (DemonicPactsTask task : TaskDatabase.getAllTasks())
+        {
+            String nameLower = task.getName().toLowerCase();
+            if (nameLower.length() < 4)
+            {
+                continue; // too short — high risk of false positives
+            }
+            if (targetLower.equals(nameLower)
+                || targetLower.contains(nameLower)
+                || nameLower.contains(targetLower))
+            {
+                return task.getName();
+            }
+        }
+
+        return null;
     }
 
     /**
@@ -229,10 +262,27 @@ public class LeagueTaskCompletionTracker
     public void clear()
     {
         completedTaskNames.clear();
+        newlySyncedSinceLastDrain.clear();
     }
 
     public int getCompletedCount()
     {
         return completedTaskNames.size();
+    }
+
+    /**
+     * Returns the set of tasks discovered via widget sync since the last call
+     * and atomically clears the buffer. Used by the plugin to emit a single
+     * "synced N tasks" chat message per batch without double-counting.
+     */
+    public Set<String> drainNewlySynced()
+    {
+        if (newlySyncedSinceLastDrain.isEmpty())
+        {
+            return java.util.Collections.emptySet();
+        }
+        Set<String> copy = new HashSet<>(newlySyncedSinceLastDrain);
+        newlySyncedSinceLastDrain.clear();
+        return copy;
     }
 }

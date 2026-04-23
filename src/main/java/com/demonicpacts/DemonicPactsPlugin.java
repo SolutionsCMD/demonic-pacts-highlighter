@@ -175,6 +175,9 @@ public class DemonicPactsPlugin extends Plugin
 
     /**
      * Every game tick, sync widget tracker completions into CompletedTaskManager.
+     * When the tracker reports newly-synced tasks (i.e. tasks completed before
+     * the plugin was installed that just showed up from the task log widget),
+     * emit a one-shot chat message so the player knows the sync worked.
      */
     @Subscribe
     public void onGameTick(net.runelite.api.events.GameTick event)
@@ -193,6 +196,19 @@ public class DemonicPactsPlugin extends Plugin
             {
                 completedTaskManager.markCompleted(task.getName());
             }
+        }
+
+        // Report how many tasks the widget sync discovered since the last tick.
+        // The tracker's drain clears its buffer atomically so we won't double-report.
+        Set<String> newlySynced = taskTracker.drainNewlySynced();
+        if (!newlySynced.isEmpty())
+        {
+            int count = newlySynced.size();
+            String msg = new ChatMessageBuilder()
+                .append(Color.MAGENTA, "[Demonic Pacts] ")
+                .append(Color.WHITE, "Synced " + count + " completed task" + (count == 1 ? "" : "s") + " from your task log.")
+                .build();
+            client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", msg, null);
         }
     }
 
