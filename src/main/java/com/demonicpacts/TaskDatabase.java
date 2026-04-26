@@ -1252,7 +1252,7 @@ public class TaskDatabase
         equipItem("Equip a Dragon 2-Handed Sword in the Wilderness", "Equip a Dragon 2h Sword in the Wilderness.", "Wilderness", TaskDifficulty.HARD, "Attack 60", "Dragon 2h sword");
         equipItem("Equip a Malediction Ward", "Equip a Malediction Ward.", "Wilderness", TaskDifficulty.HARD, "Defence 60", "Malediction ward");
 
-        craftItem("Assemble a Slayer Helm", "Assemble a Slayer Helm.", "General", TaskDifficulty.HARD, "Slayer 58, Crafting 55 + Malevolent Masquerade",
+        craftItem("Assemble a Slayer Helm", "Assemble a Slayer Helm.", "Morytania", TaskDifficulty.HARD, "Slayer 58, Crafting 55 + Malevolent Masquerade",
             "Black mask", "Spiny helmet", "Nose peg", "Earmuffs", "Facemask", "Enchanted gem");
         craftItem("Create an Amulet of Blood Fury", "Create an Amulet of Blood Fury.", "Morytania", TaskDifficulty.HARD, "Crafting 90, Magic 87 + Sins of the Father",
             "Amulet of fury", "Blood shard");
