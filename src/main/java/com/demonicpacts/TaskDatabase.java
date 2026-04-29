@@ -1015,7 +1015,7 @@ public class TaskDatabase
         addTask("Enter the Farming Guild's High Tier", "Enter the high tier of the Farming Guild.", "Kourend", TaskDifficulty.HARD, TaskType.MISC, "Farming 85", 1);
         equipItem("Equip Boots of Brimstone", "Equip a pair of Boots of brimstone.", "Kourend", TaskDifficulty.HARD, "Slayer 84, Defence 70, Magic 70, Ranged 70", "Boots of brimstone");
         equipItem("Equip Tier 5 Shayzien Armour", "Equip a full set of tier 5 Shayzien armour.", "Kourend", TaskDifficulty.HARD, "Defence 20",
-            "Shayzien helm (5)", "Shayzien platebody (5)", "Shayzien platelegs (5)", "Shayzien boots (5)", "Shayzien gloves (5)");
+            "Shayzien helm (5)", "Shayzien body (5)", "Shayzien greaves (5)", "Shayzien boots (5)", "Shayzien gloves (5)");
         equipItem("Equip the Farmer's Outfit", "Equip a full set of the Farmer's outfit.", "Kourend", TaskDifficulty.HARD, "Farming 34",
             "Farmer's strawhat", "Farmer's jacket", "Farmer's boro trousers", "Farmer's boots");
         equipItem("Equip the Pyromancer's Garb", "Equip a full set of Pyromancer's garb.", "Kourend", TaskDifficulty.HARD, "Firemaking 50",
@@ -1170,16 +1170,22 @@ public class TaskDatabase
             "Guthix coif", "Guthix body", "Guthix chaps",
             "Saradomin coif", "Saradomin body", "Saradomin chaps",
             "Zamorak coif", "Zamorak body", "Zamorak chaps");
-        equipItem("Equip a Full God Rune Set", "Equip a full set of God Rune Armour aligned to the same god.", "General", TaskDifficulty.HARD, "Defence 40",
+        equipItem("Equip a Full God Rune Set", "Equip a full set of God Rune Armour aligned to the same god.", "General", TaskDifficulty.HARD, "Defence 40",,
+            "Ancient platebody", "Ancient plateskirt", "Ancient platelegs", "Ancient full helm",
+        `   "Armadyl platebody", "Armadyl plateskirt", "Armadyl platelegs", "Armadyl full helm",
+        `   "Bandos platebody", "Bandos plateskirt", "Bandos platelegs", "Bandos full helm",
+        `   "Guthix platebody", "Guthix plateskirt", "Guthix platelegs", "Guthix full helm",
             "Saradomin platebody", "Saradomin plateskirt", "Saradomin platelegs", "Saradomin full helm",
-            "Zamorak platebody", "Zamorak plateskirt", "Zamorak platelegs", "Zamorak full helm",
-            "Guthix platebody", "Guthix plateskirt", "Guthix platelegs", "Guthix full helm");
+            "Zamorak platebody", "Zamorak plateskirt", "Zamorak platelegs", "Zamorak full helm");
         equipItem("Equip a Full Rune Set", "Equip Rune Platebody, Full Helm and Platelegs/Plateskirt.", "General", TaskDifficulty.HARD, "Defence 40",
             "Rune platebody", "Rune full helm", "Rune platelegs", "Rune plateskirt");
         equipItem("Equip a Full Vestment Set", "Equip a full set of Vestment robes aligned to the same god.", "General", TaskDifficulty.HARD, "Prayer 60, Magic 40",
-            "Guthix mitre", "Guthix robe top", "Guthix robe legs", "Guthix stole",
-            "Saradomin mitre", "Saradomin robe top", "Saradomin robe legs", "Saradomin stole",
-            "Zamorak mitre", "Zamorak robe top", "Zamorak robe legs", "Zamorak stole");
+            "Ancient mitre", "Ancient robe top", "Ancient robe legs", "Ancient cloak", "Ancient stole", "Ancient crozier",
+            "Armadyl mitre", "Armadyl robe top", "Armadyl robe legs", "Armadyl cloak", "Armadyl stole", "Armadyl crozier",
+            "Bandos mitre", "Bandos robe top", "Bandos robe legs", "Bandos cloak", "Bandos stole", "Bandos crozier",
+            "Guthix mitre", "Guthix robe top", "Guthix robe legs", "Guthix cloak", "Guthix stole", "Guthix crozier",
+            "Saradomin mitre", "Saradomin robe top", "Saradomin robe legs", "Saradomin cloak", "Saradomin stole", "Saradomin crozier",
+            "Zamorak mitre", "Zamorak robe top", "Zamorak robe legs", "Zamorak cloak", "Zamorak stole", "Zamorak crozier");
         equipItem("Equip a Gilded or Trimmed Wizard Item", "Equip a Gilded armour item or trimmed wizard item.", "General", TaskDifficulty.HARD, "",
             "Gilded platebody", "Gilded plateskirt", "Gilded platelegs", "Gilded full helm", "Gilded kiteshield",
             "Wizard robe (t)", "Wizard hat (t)");
