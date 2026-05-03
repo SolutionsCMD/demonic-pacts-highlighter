@@ -1823,6 +1823,288 @@ public class TaskDatabase
         equipItem("Equip a Spectral or Arcane Spirit Shield", "Equip either a Spectral Spirit Shield or an Arcane Spirit Shield.", "Wilderness", TaskDifficulty.MASTER, "", "Spectral Spirit Shield", "Arcane Spirit Shield");
         equipItem("Equip an Elysian Spirit Shield", "Equip an Elysian Spirit Shield.", "Wilderness", TaskDifficulty.MASTER, "", "Elysian Spirit Shield");
 
+        // --- Audit additions: Asgarnia (easy) (10) ---
+        defeatNpc("Defeat a Port Sarim prisoner", "Defeat a port sarim prisoner.", "Asgarnia", TaskDifficulty.EASY, "", "Port Sarim", "Port Sarim Jail");
+        defeatNpc("Defeat a Black Knight in Asgarnia", "Defeat a Black Knight in Asgarnia.", "Asgarnia", TaskDifficulty.EASY, "", "Black Knight");
+        addTask("Complete a Game of Novice Pest Control", "Complete a game of Novice  Pest Control or higher.", "Asgarnia", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Pest Control");
+        addTask("Talk to the Mysterious Old Man in Falador", "Talk to the Mysterious Old Man in Falador.", "Asgarnia", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Mysterious Old Man");
+        addTask("Use the Falador Party room", "Deposit an item into the Falador Party room chest.", "Asgarnia", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Falador Party Room");
+        addTask("Balance 5 barrels on your head", "Balance 5 barrels on your head in the Warriors' Guild.", "Asgarnia", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Five barrels", "Warriors' Guild");
+        addTask("Become a mushroom", "Have Malignius Mortifer turn you into a mushroom.", "Asgarnia", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Malignius Mortifer");
+        addTask("Enter the Taverley Dungeon", "Enter the Taverley Dungeon.", "Asgarnia", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Taverley Dungeon");
+        addTask("Give Thurgo a redberry pie", "Give Thurgo a redberry pie.", "Asgarnia", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Thurgo", "redberry pie");
+        craftItem("Craft an Air Rune", "Craft an Air Rune from Essence at the Air Altar.", "Asgarnia", TaskDifficulty.EASY, "", "Air Rune", "Essence", "Air Altar");
+
+        // --- Audit additions: Asgarnia (elite) (20) ---
+        addTask("The Whisperer Combat Achievements", "Complete all of the Combat Achievements for The Whisperer.", "Asgarnia", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "The Whisperer");
+        addTask("Complete the Elite Falador Diary", "Complete all of the Elite tasks in the  Falador Achievement Diary.", "Asgarnia", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Falador Achievement Diary");
+        defeatNpc("Defeat Any God Wars Dungeon Boss 500 Times", "Defeat any one of the God Wars Dungeon bosses 500 times.", "Asgarnia", TaskDifficulty.ELITE, "", "God Wars Dungeon");
+        defeatNpc("Defeat Cerberus 300 times", "Defeat Cerberus 300 times.", "Asgarnia", TaskDifficulty.ELITE, "", "Cerberus");
+        defeatNpc("Defeat Whisperer 300 times", "Defeat Whisperer 300 times.", "Asgarnia", TaskDifficulty.ELITE, "", "Whisperer");
+        defeatNpc("Defeat Nex 200 Times", "Defeat Nex 200 times.", "Asgarnia", TaskDifficulty.ELITE, "", "Nex");
+        equipItem("Equip a Full Armadyl Armour Set", "Equip a full set of Armadyl Armour.", "Asgarnia", TaskDifficulty.ELITE, "", "Armadyl armour");
+        equipItem("Equip a Full Bandos Armour Set", "Equip a full set of Bandos Armour.", "Asgarnia", TaskDifficulty.ELITE, "", "Bandos chestplate", "Bandos tassets", "Bandos boots");
+        equipItem("Equip a full set of the Carpenters Outfit", "Equip a full set of the Carpenters Outfit.", "Asgarnia", TaskDifficulty.ELITE, "", "Carpenter's outfit");
+        equipItem("Equip a Piece of the Armadyl Armour Set", "Equip any piece of the Armadyl Armour set.", "Asgarnia", TaskDifficulty.ELITE, "", "Armadyl Armour");
+        equipItem("Equip a Piece of the Bandos Armour Set", "Equip any piece of the Bandos Armour set.", "Asgarnia", TaskDifficulty.ELITE, "", "Bandos Armour");
+        equipItem("Equip a Piece of Torva Armour", "Equip either a Torva full helm, a Torva platebody or some Torva platelegs.", "Asgarnia", TaskDifficulty.ELITE, "", "Torva full helm", "Torva platebody", "Torva platelegs");
+        equipItem("Equip a Staff of the Dead", "Equip a Staff of the Dead.", "Asgarnia", TaskDifficulty.ELITE, "", "Staff of the Dead");
+        equipItem("Equip a Zaryte Crossbow", "Equip a Zaryte Crossbow.", "Asgarnia", TaskDifficulty.ELITE, "", "Zaryte Crossbow");
+        equipItem("Equip an Armadyl Crossbow", "Equip an Armadyl Crossbow.", "Asgarnia", TaskDifficulty.ELITE, "", "Armadyl Crossbow");
+        equipItem("Equip Some Primordial, Pegasian or Eternal Boots", "Equip either some Primordial Boots, some Pegasian Boots or some Eternal Boots.", "Asgarnia", TaskDifficulty.ELITE, "", "Primordial Boots", "Pegasian Boots", "Eternal Boots");
+        equipItem("Equip some Zaryte Vambraces", "Equip some Zaryte vambraces.", "Asgarnia", TaskDifficulty.ELITE, "", "Zaryte vambraces");
+        equipItem("Equip a Full Graceful Outfit", "Equip a full set of Graceful gear.", "Asgarnia", TaskDifficulty.ELITE, "", "Graceful gear");
+        equipItem("Equip a Full set of Golden Prospector", "Equip a Golden prospector helmet, a Golden prospector jacket, some Golden prospector legs and Golden prospector boots.", "Asgarnia", TaskDifficulty.ELITE, "", "Golden prospector helmet", "Golden prospector jacket", "Golden prospector legs", "Golden prospector boots");
+        equipItem("Equip a Full Set of Torva Armour", "Equip a Torva full helm, a Torva platebody and some Torva platelegs.", "Asgarnia", TaskDifficulty.ELITE, "", "Torva full helm", "Torva platebody", "Torva platelegs");
+
+        // --- Audit additions: Asgarnia (master) (3) ---
+        addTask("Godwars Dungeon Combat Achievements", "Complete all of the Combat Achievements for Godwars Dungeon bosses, including Nex.", "Asgarnia", TaskDifficulty.MASTER, TaskType.ACTIVITY, "", 1, "Nex", "God Wars Dungeon");
+        equipItem("Equip Every Godsword", "Equip all five Godswords.", "Asgarnia", TaskDifficulty.MASTER, "", "Godsword");
+        equipItem("Equip all of the Cerberus Boots", "Equip some Primordial Boots, some Pegasian Boots and some Eternal Boots, or Avernic treads (max).", "Asgarnia", TaskDifficulty.MASTER, "", "Primordial Boots", "Pegasian Boots", "Eternal Boots", "Avernic treads (max)");
+
+        // --- Audit additions: Desert (easy) (15) ---
+        defeatNpc("Defeat a Billy Goat", "Defeat a Billy Goat.", "Desert", TaskDifficulty.EASY, "", "Billy Goat");
+        defeatNpc("Defeat an Al Kharid Warrior", "Defeat an Al Kharid warrior.", "Desert", TaskDifficulty.EASY, "", "Al Kharid warrior");
+        defeatNpc("Defeat Tempoross 1 time", "Help the Spirit Anglers defeat Tempoross.", "Desert", TaskDifficulty.EASY, "", "Tempoross");
+        addTask("Pick a Winter Sq'irk", "Pick a Winter Sq'irk in the Sorceress's Garden.", "Desert", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Winter Sq'irk", "Sorceress's Garden");
+        addTask("Room 1 of Pyramid Plunder", "Search the Golden Chest in Room 1 of Pyramid Plunder in Sophanem.", "Desert", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Golden Chest", "Pyramid Plunder");
+        addTask("Room 2 of Pyramid Plunder", "Search the Golden Chest in Room 2 of Pyramid Plunder in Sophanem.", "Desert", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Golden Chest", "Pyramid Plunder");
+        addTask("Room 3 of Pyramid Plunder", "Search the Golden Chest in Room 3 of Pyramid Plunder in Sophanem.", "Desert", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Golden Chest", "Pyramid Plunder");
+        addTask("Pick up a cabbage in the Citharede Abbey", "Pick up a Cabbage in the Citharede Abbey.", "Desert", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Cabbage", "Citharede Abbey");
+        addTask("Take a Carpet Ride from Pollnivneach to Sophanem", "Take a carpet ride from Pollnivneach to Sophanem.", "Desert", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Magic Carpet");
+        addTask("Use the Bank in Nardah", "Use the Bank in Nardah.", "Desert", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Bank");
+        addTask("Cut a Cactus in the Kharidian Desert", "Cut a cactus in the Kharidian Desert.", "Desert", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Kharidian cactus");
+        addTask("Drink some of Ali's tea", "Drink a cup of tea in Ali the Tea Seller's house.", "Desert", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Ali the Tea Seller");
+        catchItem("Catch a Salmon", "Catch a Salmon in the Desert.", "Desert", TaskDifficulty.EASY, "", 1, "Raw salmon");
+        addTask("Complete the Al Kharid Agility Course", "Complete a lap of the Al Kharid Rooftop Agility Course.", "Desert", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Al Kharid Rooftop Agility Course");
+        craftItem("Craft a Fire Rune", "Craft a Fire Rune from Essence at the Fire Altar.", "Desert", TaskDifficulty.EASY, "", "Fire Rune", "Essence", "Fire Altar");
+
+        // --- Audit additions: Desert (elite) (15) ---
+        addTask("The Leviathan Combat Achievements", "Complete all of the Combat Achievements for The Leviathan.", "Desert", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "The Leviathan");
+        addTask("Complete the Elite Desert Diary", "Complete all of the Elite tasks in the  Desert Achievement Diary.", "Desert", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Desert Achievement Diary");
+        addTask("Hit 150 with the Keris Partisan", "Hit 150 damage or more with the Keris Partisan.", "Desert", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Keris Partisan");
+        addTask("Complete Tombs of Amascut 50 times", "Complete Tombs of Amascut on normal or Expert 50 times.", "Desert", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Tombs of Amascut");
+        defeatNpc("Defeat Leviathan 300 times", "Defeat Leviathan 300 times.", "Desert", TaskDifficulty.ELITE, "", "Leviathan");
+        equipItem("Equip a Mage's Book", "Equip a mage's book.", "Desert", TaskDifficulty.ELITE, "", "mage's book");
+        equipItem("Equip a Master Wand", "Equip a master wand.", "Desert", TaskDifficulty.ELITE, "", "master wand");
+        equipItem("Equip a Piece of the Infinity Robe Set", "Equip any piece of the Infinity robe set.", "Desert", TaskDifficulty.ELITE, "", "Infinity robes");
+        equipItem("Equip the Osmumten's Fang", "Equip the Osmumten's fang.", "Desert", TaskDifficulty.ELITE, "", "Osmumten's fang");
+        equipItem("Equip the Elidinis Ward", "Equip the Elidinis ward.", "Desert", TaskDifficulty.ELITE, "", "Elidinis ward");
+        equipItem("Equip a full set of Raiment of the eye", "Equip a full set of the Raiment of the Eye outfit, purchased from the Guardians of the Rift minigame.", "Desert", TaskDifficulty.ELITE, "", "Raiment of the Eye", "Guardians of the Rift");
+        addTask("Turn in 50 Summer Sq'irkjuices to Osman", "Turn in 50 Summer Sq'irkjuices to Osman in Al Kharid.", "Desert", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Summer Sq'irkjuice", "Osman", "Al Kharid");
+        craftItem("Smith 1,000 Rune Dart Tips", "Use an Anvil to smith 1,000 Rune Dart Tips.", "Desert", TaskDifficulty.ELITE, "", "Anvil", "Rune Dart Tip");
+        craftItem("Craft a Ghorrock Teleport Tablet", "Craft a Ghorrock Teleport Tablet.", "Desert", TaskDifficulty.ELITE, "", "Ghorrock teleport (tablet)");
+        craftItem("Fletch 200 Dragon Darts", "Fletch 200 Dragon Darts.", "Desert", TaskDifficulty.ELITE, "", "Dragon Dart");
+
+        // --- Audit additions: Desert (master) (3) ---
+        addTask("Tombs of Amascut Combat Achievements", "Complete all of the Combat Achievements for Tombs of Amascut: Entry, Normal and Expert.", "Desert", TaskDifficulty.MASTER, TaskType.ACTIVITY, "", 1, "Tombs of Amascut");
+        equipItem("Equip a Full Infinity Robe Set", "Equip a full set of Infinity robes.", "Desert", TaskDifficulty.MASTER, "", "Infinity robes");
+        equipItem("Equip a full set of Masori", "Equip Masori Mask, Body and chaps.", "Desert", TaskDifficulty.MASTER, "", "Masori mask", "Masori body", "Masori chaps");
+
+        // --- Audit additions: Fremennik (easy) (14) ---
+        defeatNpc("Defeat a Rooster", "Defeat a Rooster in the Fremennik Province.", "Fremennik", TaskDifficulty.EASY, "", "Rooster", "Fremennik Province");
+        defeatNpc("Defeat a Yak", "Defeat a yak.", "Fremennik", TaskDifficulty.EASY, "", "yak");
+        defeatNpc("Defeat a Pyrefiend in the Fremennik Province", "Defeat a Pyrefiend in the Fremennik Province.", "Fremennik", TaskDifficulty.EASY, "", "Pyrefiend", "Fremennik Province");
+        defeatNpc("Defeat a Rock Crab in the Fremennik Province", "Defeat a Rock Crab in the Fremennik Province.", "Fremennik", TaskDifficulty.EASY, "", "Rock Crab", "Fremennik Province");
+        addTask("Pick up Snapegrass", "Pick up Snapegrass from Lunar Isle.", "Fremennik", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Snape grass", "Lunar Isle");
+        addTask("Use the Bank on Jatizso", "Use the Bank on Jatizso.", "Fremennik", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Bank booth");
+        addTask("Use the Bank on Lunar Isle", "Use the Bank on Lunar Isle.", "Fremennik", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Lunar Isle");
+        addTask("Use the Bank on Neitiznot", "Use the Bank on Neitiznot.", "Fremennik", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Bank booth");
+        addTask("Deposit an Item Using Peer the Seer", "Deposit an item into your Bank using Peer the Seer.", "Fremennik", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Bank", "Peer the Seer");
+        addTask("Switch to the Lunar Spellbook", "Switch to the Lunar Spellbook.", "Fremennik", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Astral Altar");
+        catchItem("Catch a Cerulean Twitch", "Catch a Cerulean Twitch.", "Fremennik", TaskDifficulty.EASY, "", 1, "Cerulean Twitch");
+        catchItem("Catch a Polar Kebbit", "Catch a Polar Kebbit.", "Fremennik", TaskDifficulty.EASY, "", 1, "Polar Kebbit");
+        chopItem("Chop down an arctic pine tree", "Chop down an arctic pine tree.", "Fremennik", TaskDifficulty.EASY, "", 1, "arctic pine tree");
+        addTask("Cut the Swaying Tree", "Cut the Swaying Tree.", "Fremennik", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Swaying Tree");
+
+        // --- Audit additions: Fremennik (elite) (20) ---
+        addTask("Phantom Muspah Combat Achievements", "Complete all of the Combat Achievements for Phantom Muspah.", "Fremennik", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Phantom Muspah");
+        addTask("Vorkath Combat Achievements", "Complete all of the Combat Achievements for Vorkath.", "Fremennik", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Vorkath");
+        addTask("Complete the Elite Fremennik Diary", "Complete all of the Elite tasks in the  Fremennik Achievement Diary.", "Fremennik", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Fremennik Achievement Diary");
+        addTask("Dagannoth Kings Combat Achievements", "Complete all of the Combat Achievements for all three Dagannoth Kings.", "Fremennik", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Dagannoth Kings");
+        addTask("Duke Sucellus Combat Achievements", "Complete all of the Combat Achievements for Duke Sucellus.", "Fremennik", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Duke Sucellus");
+        defeatNpc("Defeat Duke Sucellus 300 times", "Defeat Duke Sucellus 300 times.", "Fremennik", TaskDifficulty.ELITE, "", "Duke Sucellus");
+        defeatNpc("Defeat Each Dagannoth King 300 Times", "Defeat all three of the Dagannoth Kings in the Waterbirth Island Dungeon 300 times.", "Fremennik", TaskDifficulty.ELITE, "", "Dagannoth Kings", "Waterbirth Island Dungeon");
+        defeatNpc("Defeat Phantom Muspah 300 times", "Defeat Phantom Muspah 300 times.", "Fremennik", TaskDifficulty.ELITE, "", "Phantom Muspah");
+        defeatNpc("Defeat Vorkath 300 Times", "Defeat Vorkath on Ungael 300 times.", "Fremennik", TaskDifficulty.ELITE, "", "Vorkath");
+        equipItem("Equip a Completed God Book", "Equip a completed God Book.", "Fremennik", TaskDifficulty.ELITE, "", "God Book");
+        defeatNpc("Defeat Vorkath 15 Times Without Leaving", "Defeat Vorkath on Ungael 15 times without leaving his area.", "Fremennik", TaskDifficulty.ELITE, "", "Vorkath");
+        equipItem("Equip a Dragonbone Necklace", "Equip a Dragonbone Necklace.", "Fremennik", TaskDifficulty.ELITE, "", "Dragonbone Necklace");
+        equipItem("Equip a Dragonfire Ward", "Equip a Dragonfire Ward.", "Fremennik", TaskDifficulty.ELITE, "", "Dragonfire Ward");
+        equipItem("Equip a Neitiznot Faceguard", "Equip a Neitiznot Faceguard.", "Fremennik", TaskDifficulty.ELITE, "", "Neitiznot Faceguard");
+        equipItem("Equip Every Dagannoth King Ring", "Equip an Archer's ring, a Berserker ring, a Seer's ring and a Warrior ring.", "Fremennik", TaskDifficulty.ELITE, "", "Archer's ring", "Berserker ring", "Seer's ring", "Warrior ring");
+        equipItem("Equip the Venator Bow", "Equip the Venator Bow.", "Fremennik", TaskDifficulty.ELITE, "", "Venator Bow");
+        equipItem("Equip an Ice Ancient Sceptre", "Equip an Ice ancient sceptre.", "Fremennik", TaskDifficulty.ELITE, "", "Ice ancient sceptre");
+        craftItem("Make 50 Forgotten Brews", "Make 50 Forgotten Brews.", "Fremennik", TaskDifficulty.ELITE, "", "Forgotten Brew");
+        addTask("Blast Furnace 100 Runite Bars", "Smelt 100 Runite bars at the Blast Furnace.", "Fremennik", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Runite bar", "Blast Furnace");
+        mineItem("Mine 1000 Ancient Essence", "Mine 1,000 ancient essence from ancient essence crystals in the Ghorrock Dungeon.", "Fremennik", TaskDifficulty.ELITE, "", 1000, "ancient essence", "ancient essence crystals", "Ghorrock Dungeon");
+
+        // --- Audit additions: Fremennik (master) (2) ---
+        addTask("Create the Saturated Heart", "Create the Saturated Heart.", "Fremennik", TaskDifficulty.MASTER, TaskType.ACTIVITY, "", 1, "Saturated Heart");
+        equipItem("Equip Every Completed God Book", "Equip every completed God book.", "Fremennik", TaskDifficulty.MASTER, "", "God book");
+
+        // --- Audit additions: Kandarin (easy) (13) ---
+        defeatNpc("Defeat Salarin the Twisted", "Defeat Salarin the twisted in Yanille Agility Dungeon.", "Kandarin", TaskDifficulty.EASY, "", "Salarin the twisted", "Yanille Agility Dungeon");
+        defeatNpc("Defeat a Fire Giant in Kandarin", "Defeat a Fire Giant in Kandarin.", "Kandarin", TaskDifficulty.EASY, "", "Fire Giant");
+        addTask("Get Stung By Bees", "Get stung by bees at the Beehives.", "Kandarin", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "bees", "Beehive");
+        addTask("Buy Jack's legendary rod", "Buy Grandpa Jack's competition winning fishing rod.", "Kandarin", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Grandpa Jack", "fishing rod");
+        addTask("Pick Wheat in Catherby", "Pick some wheat in the field by the Catherby Farming patches.", "Kandarin", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Wheat");
+        addTask("Receive a gift from Arnold", "Talk to Arnold Lydspor and receive a gift.", "Kandarin", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Arnold Lydspor");
+        addTask("Visit the Tree Gnome Stronghold", "Visit the Tree Gnome Stronghold.", "Kandarin", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Tree Gnome Stronghold");
+        addTask("Visit the Tree Gnome Village", "Visit the Tree Gnome Village.", "Kandarin", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Tree Gnome Village (location)");
+        addTask("Brimstail Rune Essence Mine teleport", "Have Brimstail teleport you to the Rune Essence Mine.", "Kandarin", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Brimstail", "Rune Essence Mine");
+        addTask("Drink a Poison Chalice", "Drink a Poison Chalice.", "Kandarin", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Poison Chalice");
+        catchItem("Catch a Crimson Swift in the Feldip Hills", "Catch a Crimson Swift in the Feldip Hills.", "Kandarin", TaskDifficulty.EASY, "", 1, "Crimson Swift", "Feldip Hills");
+        catchItem("Catch a wild kebbit", "Catch a wild kebbit.", "Kandarin", TaskDifficulty.EASY, "", 1, "wild kebbit");
+        addTask("Complete the Gnome Stronghold Agility Course", "Complete a lap of the Gnome Stronghold Agility Course.", "Kandarin", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Gnome Stronghold Agility Course");
+
+        // --- Audit additions: Kandarin (elite) (21) ---
+        addTask("Complete the Elite Ardougne Diary", "Complete all of the Elite tasks in the  Ardougne Achievement Diary.", "Kandarin", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Ardougne Achievement Diary");
+        addTask("Complete the Elite Kandarin Diary", "Complete all of the Elite tasks in the  Kandarin Achievement Diary.", "Kandarin", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Kandarin Achievement Diary");
+        addTask("Use the Piety Prayer", "Use the Piety Prayer.", "Kandarin", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Piety");
+        defeatNpc("Defeat 300 Demonic Gorillas", "Defeat 300 Demonic Gorillas in the Crash Site Cavern.", "Kandarin", TaskDifficulty.ELITE, "", "Demonic Gorilla", "Crash Site Cavern");
+        defeatNpc("Defeat 500 Demonic Gorillas", "Defeat 500 Demonic Gorillas in the Crash Site Cavern.", "Kandarin", TaskDifficulty.ELITE, "", "Demonic Gorilla", "Crash Site Cavern");
+        defeatNpc("Defeat the Kraken Boss 300 Times", "Defeat the Kraken boss in Kraken Cove 300 times.", "Kandarin", TaskDifficulty.ELITE, "", "Kraken boss", "Kraken Cove");
+        defeatNpc("Defeat Galvek again", "Defeat Galvek again using the Pool of Dreams in the Myths' Guild.", "Kandarin", TaskDifficulty.ELITE, "", "Galvek", "Pool of Dreams", "Myths' Guild");
+        equipItem("Equip a Dragon Archer Chompy Hat", "Equip a dragon archer chompy hat.", "Kandarin", TaskDifficulty.ELITE, "", "dragon archer chompy hat");
+        equipItem("Equip a Fighter Torso", "Equip a Fighter Torso.", "Kandarin", TaskDifficulty.ELITE, "", "Fighter Torso");
+        equipItem("Equip a Heavy Ballista", "Equip a Heavy Ballista.", "Kandarin", TaskDifficulty.ELITE, "", "Heavy Ballista");
+        equipItem("Equip a Light Ballista", "Equip a Light Ballista.", "Kandarin", TaskDifficulty.ELITE, "", "Light Ballista");
+        equipItem("Equip a Maniacal Monkey Backpack", "Equip a Maniacal Monkey Backpack.", "Kandarin", TaskDifficulty.ELITE, "", "Maniacal Monkey Backpack");
+        addTask("Get 1000 Target points", "Achieve 1000 points in the Target minigame in the Ranging Guild.", "Kandarin", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Target (Ranging Guild)", "Ranging Guild");
+        addTask("Reach Level 5 in Any Barbarian Assault Role", "Reach level 5 in any Barbarian Assault Role.", "Kandarin", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Barbarian Assault");
+        addTask("Travel Between Your Spirit Trees", "Travel between any two Spirit Trees that you've grown.", "Kandarin", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Spirit tree (Farming)");
+        addTask("Barehand catch a Shark", "Barehand catch a Shark.", "Kandarin", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Barbarian Training", "Raw shark");
+        catchItem("Catch 150 Red Chinchompas in Kandarin", "Catch 150 Red Chinchompas in Kandarin.", "Kandarin", TaskDifficulty.ELITE, "", 150, "Red chinchompa (Hunter)");
+        addTask("Check a grown Dragonfruit Tree in Catherby", "Check the health of a Dragonfruit Tree you've grown in Catherby.", "Kandarin", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Dragonfruit Tree");
+        addTask("Complete the Ardougne Agility Course", "Complete a lap of the Ardougne Rooftop Agility Course.", "Kandarin", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Ardougne Rooftop Agility Course");
+        craftItem("Craft a Wrath Rune", "Craft a wrath rune at the Wrath Altar.", "Kandarin", TaskDifficulty.ELITE, "", "wrath rune", "Wrath Altar");
+        craftItem("Make 200 Brutal Rune Arrows", "Make 200 rune brutal arrows.", "Kandarin", TaskDifficulty.ELITE, "", "rune brutal");
+
+        // --- Audit additions: Kandarin (master) (3) ---
+        addTask("Enhance a Trident of the Seas", "Enhance a Trident of the Seas.", "Kandarin", TaskDifficulty.MASTER, TaskType.ACTIVITY, "", 1, "Trident of the Seas");
+        equipItem("Equip a Dragon Full Helm", "Equip a Dragon Full Helm.", "Kandarin", TaskDifficulty.MASTER, "", "Dragon Full Helm");
+        equipItem("Equip All Zenyte Jewelry", "Equip every piece of Zenyte Jewelry.", "Kandarin", TaskDifficulty.MASTER, "", "Zenyte Jewelry");
+
+        // --- Audit additions: Kourend (easy) (14) ---
+        defeatNpc("Defeat a Barbarian in Kourend", "Defeat a Barbarian in Kourend.", "Kourend", TaskDifficulty.EASY, "", "Barbarian (Barbarian Camp)");
+        defeatNpc("Defeat the Wintertodt 1 time", "Help the pyromancers defeat the Wintertodt.", "Kourend", TaskDifficulty.EASY, "", "Wintertodt");
+        equipItem("Equip a Protest Banner", "Equip a Protest Banner.", "Kourend", TaskDifficulty.EASY, "", "Protest Banner");
+        addTask("Travel to Molch Island", "Take one of the boats around Lake Molch to Molch Island.", "Kourend", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Boaty", "Lake Molch", "Molch Island");
+        addTask("Use the Mine cart transportation System", "Use the Mine cart transportation System.", "Kourend", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Lovakengj Minecart Network");
+        addTask("Bank at Land's End", "Open your Bank using the Bank at Land's End.", "Kourend", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Bank", "Land's End");
+        addTask("Bank at Mount Quidamortem", "Open your Bank using the Bank at Mount Quidamortem.", "Kourend", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Mount Quidamortem");
+        addTask("Drink a LizardKicker", "Drink a LizardKicker.", "Kourend", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "LizardKicker");
+        addTask("Enter Level 3 of the Chasm of Fire", "Enter the 3rd level of the Chasm of Fire in Shayzien, finishing the dialogue.", "Kourend", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Chasm of Fire");
+        addTask("Talk to the Voice of Yama", "Talk to the Voice of Yama.", "Kourend", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Voice of Yama");
+        addTask("Repair a Fishing Crane", "Repair a Fishing Crane.", "Kourend", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Fishing Crane");
+        addTask("Turn in 1 Library Book", "Find and turn in a book in the Arceuus Library.", "Kourend", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Arceuus Library");
+        addTask("Complete 1 Farming Contract", "Complete a Farming Contract for Guildmaster Jane in the Farming Guild.", "Kourend", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Farming Contract", "Farming Guild");
+        addTask("Complete the Shayzien Basic Agility Course", "Complete a lap of the Shayzien Basic Agility Course.", "Kourend", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Shayzien Agility Course");
+
+        // --- Audit additions: Kourend (elite) (23) ---
+        addTask("Kourend and Kebos Elite Diary Tasks", "Complete all of the Kourend & Kebos Diary elite tasks.", "Kourend", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Kourend & Kebos Diary");
+        addTask("Alchemical Hydra Combat Achievements", "Complete all of the Combat Achievements for Alchemical Hydra.", "Kourend", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Alchemical Hydra");
+        addTask("Recolour a piece of the Ancestral Robes", "Recolour a piece of the Ancestral robes using a Twisted ancestral colour kit.", "Kourend", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Ancestral robes", "Twisted ancestral colour kit");
+        defeatNpc("Defeat the Alchemical Hydra 300 Times", "Defeat the Alchemical hydra in Mount Karuulm 300 times.", "Kourend", TaskDifficulty.ELITE, "", "Alchemical hydra");
+        defeatNpc("Defeat Yama 150 times", "Defeat Yama 150 times.", "Kourend", TaskDifficulty.ELITE, "", "Yama");
+        equipItem("Equip a Dragon Hunter Crossbow", "Equip a Dragon Hunter Crossbow.", "Kourend", TaskDifficulty.ELITE, "", "Dragon hunter crossbow");
+        equipItem("Equip a Dragon Warhammer", "Equip a Dragon warhammer.", "Kourend", TaskDifficulty.ELITE, "", "Dragon warhammer");
+        equipItem("Equip a Golden Tench", "Equip a Golden tench, caught by aerial fishing on Molch Island.", "Kourend", TaskDifficulty.ELITE, "", "Golden tench", "aerial fishing", "Molch Island");
+        equipItem("Equip a Kodai Wand", "Equip a Kodai wand.", "Kourend", TaskDifficulty.ELITE, "", "Kodai wand");
+        equipItem("Equip a pair of Dragon Claws", "Equip a pair of Dragon Claws.", "Kourend", TaskDifficulty.ELITE, "", "Dragon Claws");
+        equipItem("Equip a Twisted Buckler", "Equip a Twisted Buckler.", "Kourend", TaskDifficulty.ELITE, "", "Twisted Buckler");
+        equipItem("Equip an Elder Maul", "Equip an Elder maul.", "Kourend", TaskDifficulty.ELITE, "", "Elder maul");
+        equipItem("Equip Dinh's Bulwark", "Equip Dinh's bulwark.", "Kourend", TaskDifficulty.ELITE, "", "Dinh's bulwark");
+        equipItem("Equip a Brimstone Ring", "Equip a Brimstone ring.", "Kourend", TaskDifficulty.ELITE, "", "Brimstone ring");
+        equipItem("Equip Ferocious Gloves", "Equip a pair of Ferocious gloves.", "Kourend", TaskDifficulty.ELITE, "", "Ferocious gloves");
+        equipItem("Equip a full set of Ancestral", "Equip an Ancestral Hat, an Ancestral robe top and an Ancestral robe bottom.", "Kourend", TaskDifficulty.ELITE, "", "Ancestral Hat", "Ancestral robe top", "Ancestral robe bottom");
+        equipItem("Equip any Oathplate Piece", "Equip either an Oathplate helm, chest, or legs.", "Kourend", TaskDifficulty.ELITE, "", "Oathplate helm", "Oathplate chest", "Oathplate legs");
+        equipItem("Equip full Oathplate", "Equip an Oathplate helm, chest, and legs.", "Kourend", TaskDifficulty.ELITE, "", "Oathplate helm", "Oathplate chest", "Oathplate legs");
+        catchItem("Catch 150 Anglerfish", "Catch 150 Anglerfish.", "Kourend", TaskDifficulty.ELITE, "", 150, "Raw anglerfish");
+        addTask("Check a grown Redwood Tree", "Check the health of a Redwood Tree after growing one in the Farming Guild.", "Kourend", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Redwood tree (Farming)", "Farming Guild");
+        cookItem("Cook 100 Anglerfish", "Cook 100 Anglerfish.", "Kourend", TaskDifficulty.ELITE, "", 100, "Anglerfish");
+        craftItem("Fletch 250 Redwood logs into arrow shafts", "Fletch 250 Redwood logs into arrow shafts.", "Kourend", TaskDifficulty.ELITE, "", "Redwood logs");
+        craftItem("Craft 100 Aether runes", "Craft 100 Aether runes at the cosmic altar in Zanaris.", "Kourend", TaskDifficulty.ELITE, "", "Aether rune", "cosmic altar", "Zanaris");
+
+        // --- Audit additions: Kourend (master) (1) ---
+        addTask("Chambers of Xeric Combat Achievements", "Complete all of the Combat Achievements for Chambers of Xeric: Normal mode and Challenge mode.", "Kourend", TaskDifficulty.MASTER, TaskType.ACTIVITY, "", 1, "Chambers of Xeric");
+
+        // --- Audit additions: Morytania (easy) (8) ---
+        defeatNpc("Defeat a Snail", "Defeat a snail within Morytania.", "Morytania", TaskDifficulty.EASY, "", "Snail");
+        addTask("Open a Bronze Chest", "Open a Bronze Chest from Shades of Mort'ton.", "Morytania", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Bronze Chest", "Shades of Mort'ton (minigame)");
+        addTask("Complete an Easy Temple Trek", "Complete an Easy Temple Trek.", "Morytania", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Temple Trek");
+        addTask("Visit Harmony Island", "Visit Harmony Island.", "Morytania", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Harmony Island");
+        addTask("Visit Mos Le'Harmless", "Visit Mos Le'Harmless.", "Morytania", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Mos Le'Harmless");
+        addTask("Visit Port Phasmatys", "Visit Port Phasmatys.", "Morytania", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Port Phasmatys");
+        addTask("Enter the Haunted mine", "Enter the haunted mine, if you dare...", "Morytania", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Abandoned Mine");
+        craftItem("Craft a Snelm", "Craft any Snelm.", "Morytania", TaskDifficulty.EASY, "", "Snelm");
+
+        // --- Audit additions: Morytania (medium) (32) ---
+        addTask("Complete the Easy Morytania Diary", "Complete all of the Easy tasks in the  Morytania Achievement Diary.", "Morytania", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Morytania Achievement Diary");
+        addTask("Complete the Medium Morytania Diary", "Complete all of the Medium tasks in the  Morytania Achievement Diary.", "Morytania", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Morytania Achievement Diary");
+        addTask("Loot a Barrows Chest", "Loot a Barrows Chest once.", "Morytania", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Chest (Barrows)");
+        defeatNpc("Defeat a Fiyr Shade", "Defeat a Fiyr Shade.", "Morytania", TaskDifficulty.MEDIUM, "", "Fiyr Shade");
+        defeatNpc("Defeat a Vyrewatch Sentinel", "Defeat a Vyrewatch Sentinel in Darkmeyer.", "Morytania", TaskDifficulty.MEDIUM, "", "Vyrewatch Sentinel", "Darkmeyer");
+        equipItem("Equip a full set of Vyre Noble", "Equip a full set of Vyre Noble.", "Morytania", TaskDifficulty.MEDIUM, "", "Vyre noble clothing");
+        equipItem("Equip a Piece of any Barrows Armour Set", "Equip any piece of any Barrows armour set.", "Morytania", TaskDifficulty.MEDIUM, "", "Barrows armour set");
+        equipItem("Equip a Salve Amulet (e)", "Equip a Salve Amulet (e).", "Morytania", TaskDifficulty.MEDIUM, "", "Salve Amulet (e)");
+        addTask("Open a Black Chest", "Open a Black Chest from Shades of Mort'ton.", "Morytania", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Black Chest", "Shades of Mort'ton (minigame)");
+        addTask("Purchase a Reward From the Hallowed Sepulchre", "Purchase a reward from the Hallowed Sepulchre.", "Morytania", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Mysterious Hallowed Goods", "Hallowed Sepulchre");
+        addTask("Complete a Hard Temple Trek", "Complete a Hard  Temple Trek.", "Morytania", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Temple Trek");
+        addTask("Complete a Medium Temple Trek", "Complete a Medium  Temple Trek.", "Morytania", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Temple Trek");
+        addTask("Floor 1 of the Hallowed Sepulchre", "Complete floor 1 of the Hallowed Sepulchre in Darkmeyer.", "Morytania", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Hallowed Sepulchre", "Darkmeyer");
+        addTask("Floor 2 of the Hallowed Sepulchre", "Complete floor 2 of the Hallowed Sepulchre in Darkmeyer.", "Morytania", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Hallowed Sepulchre");
+        addTask("Floor 3 of the Hallowed Sepulchre", "Complete floor 3 of the Hallowed Sepulchre in Darkmeyer.", "Morytania", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Hallowed Sepulchre", "Darkmeyer");
+        addTask("Have the Taxidermist stuff something for you", "Have the Taxidermist stuff something for you in Canifis.", "Morytania", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Taxidermist");
+        addTask("Pet Frank", "Pet Darkmeyer's goodest boy.", "Morytania", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Darkmeyer", "Frank (Bloodveld)");
+        addTask("Smuggle some Rum", "Use the Ring of Charos to smuggle some Karamja rum through customs.", "Morytania", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Ring of Charos", "Karamjan rum");
+        addTask("Telegrab a Bloody bracer", "Telegrab a Bloody bracer in Slepe.", "Morytania", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Bloody bracer");
+        addTask("Feed a ghast some sweets", "Feed a ghast some sweets.", "Morytania", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "ghast", "Purple sweets");
+        addTask("Wear 3 different Snelms", "Wear 3 different Snelms obtained by crafting snail shells.", "Morytania", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Snelm");
+        addTask("Complete His Faithful Servants", "Complete the miniquest His Faithful Servants. (Note: currently does not complete when picking Desert before Morytania.)", "Morytania", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "His Faithful Servants");
+        addTask("Complete Haunted Mine", "Complete the  Haunted Mine quest.", "Morytania", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Haunted Mine");
+        craftItem("Smelt a Steel Bar in Port Phasmatys", "Smelt a Steel Bar in Port Phasmatys.", "Morytania", TaskDifficulty.MEDIUM, "", "Steel Bar", "Port Phasmatys");
+        addTask("Worship the Ectofuntus", "Worship the Ectofuntus.", "Morytania", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Ectofuntus");
+        burnItem("Burn 20 Pyre Logs", "Burn 20 Pyre Logs.", "Morytania", TaskDifficulty.MEDIUM, "", 20, "Pyre Logs");
+        catchItem("Catch a Swamp Lizard in Morytania", "Catch a Swamp Lizard in Morytania.", "Morytania", TaskDifficulty.MEDIUM, "", 1, "Swamp lizard (Hunter)");
+        chopItem("Chop 100 Blisterwood Logs", "Chop 100 Blisterwood Logs.", "Morytania", TaskDifficulty.MEDIUM, "", 100, "Blisterwood Logs");
+        addTask("Complete the Canifis Agility Course", "Complete a lap of the Canifis Rooftop Agility Course.", "Morytania", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Canifis Rooftop Agility Course");
+        addTask("Complete the Werewolf Agility Course", "Complete a lap of the Werewolf Agility Course.", "Morytania", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Werewolf Agility Course");
+        craftItem("Craft a Rune Using Daeyalt Essence", "Craft any rune using Daeyalt Essence.", "Morytania", TaskDifficulty.MEDIUM, "", "Daeyalt Essence");
+        addTask("Create the long rope shortcut in Darkmeyer", "Create the long rope agility shortcut in Darkmeyer.", "Morytania", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Wall (Darkmeyer)", "Darkmeyer");
+
+        // --- Audit additions: Morytania (elite) (23) ---
+        addTask("Grotesque Guardians Combat Achievements", "Complete all of the Combat Achievements for Grotesque Guardians.", "Morytania", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Combat Achievement", "Grotesque Guardians");
+        addTask("Phosani's Nightmare Combat Achievements", "Complete all of the Combat Achievements for Phosani's Nightmare.", "Morytania", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Combat Achievement", "Phosani's Nightmare");
+        addTask("The Nightmare Combat Achievements", "Complete all of the Combat Achievements for The Nightmare.", "Morytania", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "The Nightmare");
+        addTask("Araxxor Combat Achievements", "Complete all of the Combat Achievements for Araxxor.", "Morytania", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Araxxor");
+        addTask("Complete the Elite Morytania Diary", "Complete all of the Elite tasks in the  Morytania Achievement Diary.", "Morytania", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Morytania Achievement Diary");
+        addTask("Complete the Theatre of Blood 50 Times", "Complete the Theatre of Blood on Normal or Hard Mode 50 times.", "Morytania", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Theatre of Blood");
+        addTask("Attach a Theatre of Blood ornament kit", "Attach a sanguine or holy ornament kit to a weapon.", "Morytania", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "sanguine ornament kit", "holy ornament kit");
+        defeatNpc("Defeat Araxxor 300 Times", "Defeat Araxxor in Morytania Spider cave 300 times.", "Morytania", TaskDifficulty.ELITE, "", "Araxxor");
+        defeatNpc("Defeat The Nightmare 150 times", "Defeat The Nightmare or Phosani's Nightmare 150 times combined.", "Morytania", TaskDifficulty.ELITE, "", "The Nightmare", "Phosani's Nightmare");
+        defeatNpc("Defeat The Nightmare 50 times", "Defeat The Nightmare or Phosani's Nightmare 50 times combined.", "Morytania", TaskDifficulty.ELITE, "", "The Nightmare", "Phosani's Nightmare");
+        equipItem("Equip a Ghrazi Rapier", "Equip a Ghrazi Rapier.", "Morytania", TaskDifficulty.ELITE, "", "Ghrazi Rapier");
+        equipItem("Equip a Piece of the Inquisitor's Set", "Equip any piece of the Inquisitor's Armour set.", "Morytania", TaskDifficulty.ELITE, "", "Inquisitor's Armour");
+        equipItem("Equip a Piece of the Justiciar Set", "Equip any piece of the Justiciar Armour set.", "Morytania", TaskDifficulty.ELITE, "", "Justiciar Armour");
+        equipItem("Equip a Sanguinesti Staff", "Equip a Sanguinesti Staff.", "Morytania", TaskDifficulty.ELITE, "", "Sanguinesti Staff");
+        equipItem("Equip an Inquisitor's Mace", "Equip an Inquisitor's Mace.", "Morytania", TaskDifficulty.ELITE, "", "Inquisitor's Mace");
+        equipItem("Equip Some Guardian Boots", "Equip some Guardian boots.", "Morytania", TaskDifficulty.ELITE, "", "Guardian boots");
+        equipItem("Equip the Amulet of Rancour", "Equip the Amulet of Rancour.", "Morytania", TaskDifficulty.ELITE, "", "Amulet of Rancour");
+        equipItem("Equip the Noxious Halberd", "Equip the Noxious Halberd.", "Morytania", TaskDifficulty.ELITE, "", "Noxious Halberd");
+        equipItem("Equip a Ring of Endurance", "Equip a Ring of Endurance.", "Morytania", TaskDifficulty.ELITE, "", "Ring of Endurance");
+        equipItem("Equip an Avernic Defender", "Equip an Avernic Defender.", "Morytania", TaskDifficulty.ELITE, "", "Avernic Defender");
+        equipItem("Equip a Nightmare Staff With an Orb", "Equip either an Eldritch Nightmare Staff, a Harmonised Nightmare Staff or a Volatile Nightmare Staff.", "Morytania", TaskDifficulty.ELITE, "", "Eldritch Nightmare Staff", "Harmonised Nightmare Staff", "Volatile Nightmare Staff");
+        addTask("Floor 5 of the Hallowed Sepulchre", "Complete floor 5 of the Hallowed Sepulchre in Darkmeyer.", "Morytania", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Hallowed Sepulchre", "Darkmeyer");
+        addTask("Complete the Hallowed Sepulchre in 6:30", "Complete the Hallowed Sepulchre in Darkmeyer in 6:30 or less.", "Morytania", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Hallowed Sepulchre", "Darkmeyer");
+
+        // --- Audit additions: Morytania (master) (3) ---
+        addTask("Theatre of Blood Combat Achievements", "Complete all of the Combat Achievements for Theatre of Blood: Entry, Normal and Hard mode.", "Morytania", TaskDifficulty.MASTER, TaskType.ACTIVITY, "", 1, "Theatre of Blood");
+        equipItem("Equip a Full Inquisitor's Set", "Equip a full set of Inquisitor's Armour.", "Morytania", TaskDifficulty.MASTER, "", "Inquisitor's Armour");
+        equipItem("Equip a Full Justiciar Set", "Equip a full set of Justiciar Armour.", "Morytania", TaskDifficulty.MASTER, "", "Justiciar Armour");
+
+
         // Build reverse lookup maps
         buildLookupMaps();
     }
