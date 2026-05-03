@@ -1170,11 +1170,11 @@ public class TaskDatabase
             "Guthix coif", "Guthix body", "Guthix chaps",
             "Saradomin coif", "Saradomin body", "Saradomin chaps",
             "Zamorak coif", "Zamorak body", "Zamorak chaps");
-        equipItem("Equip a Full God Rune Set", "Equip a full set of God Rune Armour aligned to the same god.", "General", TaskDifficulty.HARD, "Defence 40",,
+        equipItem("Equip a Full God Rune Set", "Equip a full set of God Rune Armour aligned to the same god.", "General", TaskDifficulty.HARD, "Defence 40",
             "Ancient platebody", "Ancient plateskirt", "Ancient platelegs", "Ancient full helm",
-        `   "Armadyl platebody", "Armadyl plateskirt", "Armadyl platelegs", "Armadyl full helm",
-        `   "Bandos platebody", "Bandos plateskirt", "Bandos platelegs", "Bandos full helm",
-        `   "Guthix platebody", "Guthix plateskirt", "Guthix platelegs", "Guthix full helm",
+            "Armadyl platebody", "Armadyl plateskirt", "Armadyl platelegs", "Armadyl full helm",
+            "Bandos platebody", "Bandos plateskirt", "Bandos platelegs", "Bandos full helm",
+            "Guthix platebody", "Guthix plateskirt", "Guthix platelegs", "Guthix full helm",
             "Saradomin platebody", "Saradomin plateskirt", "Saradomin platelegs", "Saradomin full helm",
             "Zamorak platebody", "Zamorak plateskirt", "Zamorak platelegs", "Zamorak full helm");
         equipItem("Equip a Full Rune Set", "Equip Rune Platebody, Full Helm and Platelegs/Plateskirt.", "General", TaskDifficulty.HARD, "Defence 40",
