@@ -32,8 +32,7 @@ public interface DemonicPactsConfig extends Config
     @ConfigSection(
         name = "Regions",
         description = "Toggle which league regions you've unlocked. Tasks in disabled regions won't highlight or show tooltips.",
-        position = 2,
-        closedByDefault = true
+        position = 2
     )
     String regionsSection = "regions";
 
