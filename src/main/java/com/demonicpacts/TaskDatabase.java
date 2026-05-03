@@ -272,7 +272,7 @@ public class TaskDatabase
         addTask("Give Oli some Stew", "Give Oli some Stew in Civitas illa Fortis.", "Varlamore", TaskDifficulty.EASY, TaskType.MISC, "", 1, "Stew");
         addTask("Inspect a green flame", "Inspect a green flame near Salvagers outlook.", "Varlamore", TaskDifficulty.EASY, TaskType.MISC, "", 1);
         defeatNpc("Milk a Buffalo", "Milk a Buffalo.", "Varlamore", TaskDifficulty.EASY, "", "Dairy Buffalo");
-        mineItem("Mine some coal from Stone cutter outpost", "Mine some coal from Stonecutter Outpost.", "Varlamore", TaskDifficulty.EASY, "Mining 30", 1, "Coal");
+        mineItem("Mine some Coal from Stonecutter Outpost", "Mine some Coal from Stonecutter Outpost.", "Varlamore", TaskDifficulty.EASY, "Mining 30", 1, "coal");
         defeatNpc("Pet Renu", "Pet Renu.", "Varlamore", TaskDifficulty.EASY, "", "Renu");
         defeatNpc("Pet Xolo in Civitas", "Pet Xolo in Civitas illa Fortis.", "Varlamore", TaskDifficulty.EASY, "", "Xolo");
         defeatNpc("Pet a Caique", "Pet a Caique near the statue of Ates in Kastori or in the north of the Tlati Rainforest.", "Varlamore", TaskDifficulty.EASY, "", "Caique");
@@ -786,35 +786,10 @@ public class TaskDatabase
         // =====================================================================
         // MEDIUM TASKS — Varlamore
         // =====================================================================
-        defeatNpc("Defeat a Moss Golem", "Defeat a Moss Golem in Varlamore.", "Varlamore", TaskDifficulty.MEDIUM, "", "Moss Golem");
-        defeatNpc("Defeat an Amoxliatl", "Defeat Amoxliatl in the Neypotzli.", "Varlamore", TaskDifficulty.MEDIUM, "Slayer 65", "Amoxliatl");
-        defeatNpc("Defeat a Hueycoatl", "Defeat The Hueycoatl.", "Varlamore", TaskDifficulty.MEDIUM, "", "The Hueycoatl", "Hueycoatl");
-        defeatNpc("Defeat a Sulphur Lizard", "Defeat a Sulphur Lizard.", "Varlamore", TaskDifficulty.MEDIUM, "Slayer 44", "Sulphur lizard");
-        defeatNpc("Defeat a Kalphite Soldier in Varlamore", "Defeat a Kalphite Soldier in Varlamore.", "Varlamore", TaskDifficulty.MEDIUM, "", "Kalphite soldier");
-        defeatNpc("Defeat a Sulphur-Crested Kebbit", "Defeat a Sulphur-crested Kebbit.", "Varlamore", TaskDifficulty.MEDIUM, "Hunter 33", "Sulphur-crested kebbit");
-        defeatNpc("Defeat a Pyrefiend in Varlamore", "Defeat a Pyrefiend in Varlamore.", "Varlamore", TaskDifficulty.MEDIUM, "Slayer 30", "Pyrefiend");
-        defeatNpc("Defeat a Desert Lizard in Varlamore", "Defeat a Desert Lizard in Varlamore.", "Varlamore", TaskDifficulty.MEDIUM, "Slayer 22", "Desert lizard");
-        catchItem("Catch a Sunlight Antelope", "Catch a Sunlight antelope.", "Varlamore", TaskDifficulty.MEDIUM, "Hunter 72", "Sunlight antelope fur");
-        catchItem("Catch a Moonlight Antelope", "Catch a Moonlight antelope.", "Varlamore", TaskDifficulty.MEDIUM, "Hunter 91", "Moonlight antelope fur");
+        catchItem("Catch 25 Sunlight Antelopes", "Catch 25 Sunlight Antelopes.", "Varlamore", TaskDifficulty.HARD, "Hunter 72", 25, "Sunlight antelope", "Sunlight antelope fur");
+        catchItem("Catch 50 Moonlight Antelopes", "Catch 50 Moonlight Antelopes.", "Varlamore", TaskDifficulty.ELITE, "Hunter 91", 50, "Moonlight antelope", "Moonlight antelope fur");
         catchItem("Catch a Pyre Fox", "Catch a Pyre Fox.", "Varlamore", TaskDifficulty.MEDIUM, "Hunter 36", "Pyre fox fur");
-        catchItem("Catch a Dashing Kebbit", "Catch a Dashing Kebbit.", "Varlamore", TaskDifficulty.MEDIUM, "Hunter 69", "Dashing kebbit fur");
-        addTask("Teleport with Quetzal Whistle", "Teleport using the Quetzal Whistle.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.MISC, "", 1, "Quetzal whistle");
-        addTask("Complete the Civitas illa Fortis Agility Course", "Complete a lap of the Civitas illa Fortis Agility Course.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.MISC, "Agility 42", 1);
-        addTask("Complete the Hunter Rumour", "Complete a Hunter Rumour.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.MISC, "", 1);
-        addTask("Buy a Hunter Cape", "Buy a Hunter cape from a Hunter Master.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.MISC, "Hunter 99", 1, "Hunter cape");
-        addTask("Smelt a Cannonball in a Volcanic Fissure", "Smelt a Cannonball in a Volcanic Fissure.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.CRAFT_ITEM, "Smithing 35", 1, "Steel bar", "Ammo mould");
-        addTask("Pickpocket a Lumberjack", "Pickpocket a Lumberjack in Varlamore.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.DEFEAT_NPC, "Thieving 55", 1, "Lumberjack");
-        addTask("Pickpocket a Cactus Tunneller", "Pickpocket a Cactus Tunneller in Varlamore.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.DEFEAT_NPC, "Thieving 77", 1, "Cactus tunneller");
-        addTask("Chop some Padri Logs", "Chop some Padri Logs in the Tlati Rainforest.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.CHOP_ITEM, "Woodcutting 35", 1, "Padri logs");
-        mineItem("Mine some Feldspar", "Mine some Feldspar.", "Varlamore", TaskDifficulty.MEDIUM, "Mining 15", 1, "Feldspar");
-        mineItem("Mine some Calcite", "Mine some Calcite.", "Varlamore", TaskDifficulty.MEDIUM, "Mining 15", 1, "Calcite");
-        addTask("Complete the Yama Dungeon Agility Shortcut", "Complete the Yama Dungeon agility shortcut.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.MISC, "Agility 70", 1);
-        addTask("Burn a Blessed Bone Shard", "Burn a Blessed bone shard.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.PRAYER, "Prayer 20", 1, "Blessed bone shard");
-        addTask("Offer a Blessed Bone Shard", "Offer a Blessed bone shard at an altar.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.PRAYER, "Prayer 20", 1, "Blessed bone shard");
-        addTask("Complete a Colosseum Wave 4", "Complete Wave 4 of Fortis Colosseum.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1);
-        addTask("Cook a Moonlight Moth", "Cook a Moonlight moth mix.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.COOK_ITEM, "Cooking 78", 1, "Moonlight moth");
-        addTask("Catch a Moonlight Moth", "Catch a Moonlight moth.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.CATCH_ITEM, "Hunter 75", 1, "Moonlight moth");
-        addTask("Catch a Sunlight Moth", "Catch a Sunlight moth.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.CATCH_ITEM, "Hunter 55", 1, "Sunlight moth");
+        addTask("Complete a Hunter Rumour", "Complete a Hunter Rumour.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.MISC, "Hunter 46", 1);
 
         // =====================================================================
         // HARD TASKS — missing additions
@@ -1116,7 +1091,6 @@ public class TaskDatabase
         addTask("Equip one unique Echo Item", "Equip one unique echo item.", "General", TaskDifficulty.HARD, TaskType.MISC, "", 1);
         addTask("Equip 2 unique Echo Items", "Equip 2 unique Echo Items.", "General", TaskDifficulty.HARD, TaskType.MISC, "", 2);
         addTask("Equip 3 unique Echo Items", "Equip 3 unique Echo Items.", "General", TaskDifficulty.HARD, TaskType.MISC, "", 3);
-        defeatNpc("Defeat 10 Superior slayer creatures (hard)", "Defeat 10 Superior slayer creatures.", "General", TaskDifficulty.HARD, "Slayer 5 + Bigger and Badder or T3 Relic", "Superior");
         defeatNpc("Defeat 20 Superior slayer creatures", "Defeat 20 Superior slayer creatures.", "General", TaskDifficulty.HARD, "Slayer 5 + Bigger and Badder or T3 Relic", "Superior");
         defeatNpc("Defeat 100 Superior slayer creatures", "Defeat 100 Superior slayer creatures.", "General", TaskDifficulty.HARD, "Slayer 5 + Bigger and Badder or T3 Relic", "Superior");
         defeatNpc("Defeat the Abyssal Sire", "Defeat the Abyssal Sire in the Abyssal Nexus.", "General", TaskDifficulty.HARD, "Slayer 85", "Abyssal Sire");
@@ -1296,7 +1270,8 @@ public class TaskDatabase
         equipItem("Equip a Dragon Hunter Lance", "Equip a Dragon hunter lance.", "General", TaskDifficulty.ELITE, "Slayer 95, Attack 78", "Dragon hunter lance");
         equipItem("Equip a Dragon Chainbody in the Kharidian Desert", "Equip a Dragon Chainbody in the Kharidian Desert.", "Desert", TaskDifficulty.ELITE, "Defence 60", "Dragon chainbody");
         equipItem("Equip a Piece of the Dagon'Hai Set", "Equip any piece of the Dagon'hai robe set.", "Wilderness", TaskDifficulty.ELITE, "Magic 70, Defence 40",
-            "Dagon'hai hat", "Dagon'hai robe top", "Dagon'hai robe bottom");
+            "Dagon'hai hat", "Dagon'hai robe top", "Dagon'hai robe bottom",
+            "Larran's small key", "Larran's big key");
         equipItem("Equip the Voidwaker", "Equip the Voidwaker.", "Wilderness", TaskDifficulty.ELITE, "Attack 75", "Voidwaker");
         equipItem("Equip Avernic Treads", "Equip Avernic treads.", "General", TaskDifficulty.ELITE, "Defence 80, Magic 80, Ranged 80, Strength 80", "Avernic treads");
 
@@ -1332,7 +1307,6 @@ public class TaskDatabase
         defeatNpc("Defeat the Abyssal Sire 50 Times", "Defeat the Abyssal Sire 50 times.", "General", TaskDifficulty.ELITE, "Slayer 85", "Abyssal Sire");
         defeatNpc("Defeat the Abyssal Sire 150 Times", "Defeat the Abyssal Sire 150 times.", "General", TaskDifficulty.ELITE, "Slayer 85", "Abyssal Sire");
         defeatNpc("Defeat the Abyssal Sire 300 Times", "Defeat the Abyssal Sire 300 times.", "General", TaskDifficulty.ELITE, "Slayer 85", "Abyssal Sire");
-        defeatNpc("Slay an Abyssal Demon on task", "Slay an Abyssal Demon whilst on an Abyssal Demon Slayer Task.", "General", TaskDifficulty.ELITE, "Slayer 85", "Abyssal demon");
         addTask("Abyssal Sire Combat Achievements", "Complete all Combat Achievements for Abyssal Sire.", "General", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1);
         addTask("Activate an Imbued Heart", "Obtain and activate an Imbued heart.", "General", TaskDifficulty.ELITE, TaskType.MISC, "Bigger and Badder unlocked", 1, "Imbued heart");
 
@@ -1355,8 +1329,6 @@ public class TaskDatabase
 
         // --- Elite: Clues/Collection ---
         addTask("75 Master Clue Scrolls", "Open 75 Reward caskets for Master clue scrolls.", "General", TaskDifficulty.ELITE, TaskType.MISC, "", 75);
-        addTask("100 Elite Clue Scrolls", "Open 100 Reward caskets for Elite clue scrolls.", "General", TaskDifficulty.ELITE, TaskType.MISC, "", 100);
-        addTask("100 Master Clue Scrolls", "Open 100 Reward caskets for Master clue scrolls.", "General", TaskDifficulty.ELITE, TaskType.MISC, "", 100);
         addTask("Fill 25 Master Clue Collection Log Slots", "Fill 25 slots in the Master Clue section.", "General", TaskDifficulty.ELITE, TaskType.MISC, "", 25);
         addTask("Gain 25 Unique Items From Elite Clues", "Gain 25 unique items from Elite Clue Scroll Reward Caskets.", "General", TaskDifficulty.ELITE, TaskType.MISC, "", 25);
         addTask("Gain 25 Unique Items From Master Clues", "Gain 25 unique items from Master Clue Scroll Reward Caskets.", "General", TaskDifficulty.ELITE, TaskType.MISC, "", 25);
@@ -1500,6 +1472,146 @@ public class TaskDatabase
         addTask("Reach Base Level 95", "Reach level 95 in every skill.", "General", TaskDifficulty.MASTER, TaskType.SKILL_LEVEL, "", 1);
         addTask("Reach Total Level 2277", "Reach the highest possible Total Level of 2277.", "General", TaskDifficulty.MASTER, TaskType.MISC, "", 1);
         addTask("Combat Achievements Elite Tier", "Obtain enough points to unlock the elite tier of Combat Achievements.", "General", TaskDifficulty.MASTER, TaskType.ACTIVITY, "", 1);
+
+        // =====================================================================
+        // AUDIT ADDITIONS — generated from wiki diff (May 2026)
+        // 123 tasks for General + Varlamore that were missing from the database.
+        // =====================================================================
+
+        // --- Audit additions: General (medium) (1) ---
+        chopItem("Chop Some Logs With a Rune Axe", "Chop any kind of logs using a rune axe.", "General", TaskDifficulty.MEDIUM, "", 1, "rune axe");
+
+        // --- Audit additions: General (elite) (1) ---
+        defeatNpc("Slay an Abyssal Demon", "Slay an Abyssal Demon whilst on an Abyssal Demon Slayer Task.", "General", TaskDifficulty.ELITE, "", "Abyssal Demon");
+
+        // --- Audit additions: Varlamore (medium) (57) ---
+        addTask("Complete Wave 1 of Fortis Colosseum", "Complete Wave 1 of Fortis Colosseum.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Fortis Colosseum");
+        defeatNpc("Defeat Hueycoatl 1 Time", "Defeat the Hueycoatl in Varlamore.", "Varlamore", TaskDifficulty.MEDIUM, "", "the Hueycoatl");
+        defeatNpc("Defeat Amoxliatl 1 Time", "Defeat the Amoxliatl in Varlamore.", "Varlamore", TaskDifficulty.MEDIUM, "", "Amoxliatl");
+        defeatNpc("Defeat 10 Frost Crabs", "Defeat 10 Frost Crabs.", "Varlamore", TaskDifficulty.MEDIUM, "", "Frost Crab");
+        defeatNpc("Defeat a Dire Wolf", "Defeat a Dire Wolf in Varlamore.", "Varlamore", TaskDifficulty.MEDIUM, "", "Dire Wolf");
+        defeatNpc("Defeat a Jaguar without taking any damage from it", "Defeat a fully grown jaguar without taking any damage from it.", "Varlamore", TaskDifficulty.MEDIUM, "", "jaguar");
+        defeatNpc("Defeat a Oryx with melee", "Defeat an Oryx in the Avium Savannah with melee.", "Varlamore", TaskDifficulty.MEDIUM, "", "Oryx");
+        defeatNpc("Defeat the Moons of Peril", "Defeat the Moons of Peril.", "Varlamore", TaskDifficulty.MEDIUM, "", "Moons of Peril");
+        defeatNpc("Defeat the Moons of Peril 10 times", "Defeat the Moons of Peril 10 times.", "Varlamore", TaskDifficulty.MEDIUM, "", "Moons of Peril");
+        defeatNpc("Defeat the Moons of Peril 25 times", "Defeat the Moons of Peril 25 times.", "Varlamore", TaskDifficulty.MEDIUM, "", "Moons of Peril");
+        equipItem("Equip an egg", "Hold an egg in your hands.", "Varlamore", TaskDifficulty.MEDIUM, "", "Humphrey Dumphrey");
+        equipItem("Equip Glacial Temotli", "Equip the Glacial temotli.", "Varlamore", TaskDifficulty.MEDIUM, "", "Glacial temotli");
+        equipItem("Equip a piece of Alchemists outfit", "Equip the Alchemist labcoat, pants, or gloves from the Mixology shop.", "Varlamore", TaskDifficulty.MEDIUM, "", "Alchemist labcoat", "Alchemist pants", "Alchemist gloves");
+        equipItem("Equip a piece of Hueycoatl armour", "Equip a piece of Hueycoatl armour.", "Varlamore", TaskDifficulty.MEDIUM, "", "Hueycoatl hide armour");
+        equipItem("Equip an orange", "Equip an orange.", "Varlamore", TaskDifficulty.MEDIUM, "", "Orange (hat)");
+        equipItem("Equip Pendant of Ates", "Equip the Pendant of ates.", "Varlamore", TaskDifficulty.MEDIUM, "", "Pendant of ates");
+        equipItem("Equip any piece of armour from the moons of peril", "Equip any piece of armour from the Blood, Frost, or Eclipse moon set.", "Varlamore", TaskDifficulty.MEDIUM, "", "Moon equipment");
+        equipItem("Equip Sulphur Blades", "Equip the Sulphur blades.", "Varlamore", TaskDifficulty.MEDIUM, "", "Sulphur blades");
+        equipItem("Equip Earthbound Tecpatl", "Equip the Earthbound tecpatl.", "Varlamore", TaskDifficulty.MEDIUM, "", "Earthbound tecpatl");
+        addTask("Activate all Statues of Ates", "Activate all statues of ates.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Pendant of ates");
+        addTask("Jump on Yama's stepping stones 666 times", "Jump on Yama's stepping stones in his League domain 666 times.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Yama's Lair");
+        addTask("Activate the Statue of Ates", "Activate the Statue of Ates in Aldarin.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Statue (Ates)", "Aldarin");
+        addTask("Bury some wyrm bones near a Wyrm skeleton", "Bury some wyrm bones or wyrmling bones near the Colossal Wyrm Remains.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "wyrm bones", "wyrmling bones", "Colossal Wyrm Remains");
+        addTask("Enter a dark cave in Varlamore", "Enter a dark cave in Varlamore, near the Hunter Guild.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Cave entrance (The Burrow)");
+        addTask("Fill a Grape Barrel for the Foreman", "Fill a Grape Barrel for the Foreman in Aldarin.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Grape barrel", "Vineyard foreman", "Aldarin");
+        addTask("Complete Death on the Isle", "Complete Death on the Isle.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Death on the Isle");
+        addTask("Complete Shadows of Custodia", "Complete the Shadows of Custodia quest.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Shadows of Custodia");
+        addTask("Complete the Heart of Darkness", "Complete The Heart of Darkness quest.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "The Heart of Darkness");
+        addTask("Complete a Ribbiting Tale", "Complete a Ribbiting Tale of a Lily Pad Labour Dispute.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "The Ribbiting Tale of a Lily Pad Labour Dispute");
+        addTask("Complete Meat and Greet", "Complete Meat and Greet.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Meat and Greet");
+        addTask("Complete At First Light", "Complete the At First Light quest.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "At First Light");
+        craftItem("Make a Greenman statue", "Make a Greenman statue.", "Varlamore", TaskDifficulty.MEDIUM, "", "Greenman statue");
+        addTask("Fully decorate a Willow totem in the Auburn Valley", "Fully decorate a Willow totem in the Auburn Valley.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Willow totem");
+        mineItem("Mine 20 Mithril Ore in the Stonecutter Outpost", "Mine 20 Mithril Ore in the Stonecutter Outpost.", "Varlamore", TaskDifficulty.MEDIUM, "", 20, "Mithril Ore");
+        mineItem("Mine 250 Blessed Bone Shards", "Mine 250 Blessed Bone Shards.", "Varlamore", TaskDifficulty.MEDIUM, "", 250, "Blessed bone shards");
+        addTask("Pay an Urchin for Information", "Pay an Urchin for Information in the Stealing Valuables minigame.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Stealing Valuables");
+        addTask("Pickpocket a knight of varlamore 20 times", "Pickpocket a Knight of Varlamore 20 times.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Knight of Varlamore");
+        addTask("Steal 100 Valuables", "Steal 100 Valuables.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 100, "Valuables");
+        addTask("Steal 15 House Keys", "Steal 15 House Keys.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 15, "House keys");
+        addTask("Steal 25 Valuables", "Steal 25 Valuables.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 25, "Valuables");
+        addTask("Steal a House Key", "Steal a House Key.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "House keys");
+        addTask("Steal from the Fortis Spice Stall", "Steal from the Fortis Spice Stall.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Spice Stall");
+        addTask("Store some bowstrings inside a bowstring spool", "Store some bowstrings inside a bowstring spool.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "bow strings", "bow string spool");
+        addTask("Teleport to Cam Torum using a Calcified Moth", "Teleport to Cam Torum using a Calcified Moth.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Cam Torum", "Calcified moth");
+        addTask("Teleport to Civitas illa Fortis", "Teleport to Civitas illa Fortis using the standard spellbook.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1);
+        addTask("Use the pottery oven in Civitas", "Use the pottery oven in Civitas to make something out of clay.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "pottery oven", "soft clay");
+        addTask("Break down 10 calcified deposits", "Break down 10 Calcified deposits.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Calcified deposit");
+        addTask("Build a Quetzal Landing Site", "Build a Quetzal Landing Site.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Landing Site");
+        catchItem("Catch a Jerboa", "Catch an Embertailed jerboa.", "Varlamore", TaskDifficulty.MEDIUM, "", 1, "Embertailed jerboa");
+        addTask("Complete 10 Hunter Rumours", "Complete 10 Hunter Rumours.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 10);
+        addTask("Complete 10 laps of the Varlamore Agility Course", "Complete 10 laps of the Colossal Wyrm Agility Course.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 10, "Colossal Wyrm Agility Course");
+        addTask("Complete 25 Hunter Rumours", "Complete 25 Hunter Rumours.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 25);
+        addTask("Create a Quetzal Whistle", "Create a Quetzal Whistle.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Quetzal Whistle");
+        addTask("Exchange an Ent seed with an Ent", "Exchange an Ent seed with an Ent.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Ent seed", "Ent (Vale Totems)");
+        addTask("Fish a House Key", "Fish a House Key.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "House keys");
+        addTask("Fully decorate a Maple totem in the Auburn Valley", "Fully decorate a Maple totem in the Auburn Valley.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Maple totem");
+        addTask("Fully decorate an Oak totem in the Auburn Valley", "Fully decorate an Oak totem in the Auburn Valley.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Oak totem");
+
+        // --- Audit additions: Varlamore (hard) (42) ---
+        addTask("Hueycoatl Combat Achievements", "Complete all of the Combat Achievements for Hueycoatl.", "Varlamore", TaskDifficulty.HARD, TaskType.ACTIVITY, "", 1, "Hueycoatl");
+        addTask("Amoxliatl Combat Achievements", "Complete all of the Combat Achievements for Amoxliatl.", "Varlamore", TaskDifficulty.HARD, TaskType.ACTIVITY, "", 1, "Amoxliatl");
+        addTask("Use the Bank Chest inside Fortis Colosseum", "Use the Bank Chest inside Fortis Colosseum.", "Varlamore", TaskDifficulty.HARD, TaskType.ACTIVITY, "", 1, "Fortis Colosseum");
+        addTask("Use the Fortis Salute emote", "Use the Fortis Salute emote.", "Varlamore", TaskDifficulty.HARD, TaskType.ACTIVITY, "", 1, "Fortis Salute");
+        defeatNpc("Defeat the Doom of Mokhiatl", "Defeat the Doom of Mokhaiotl at any delve level.", "Varlamore", TaskDifficulty.HARD, "", "Doom of Mokhaiotl");
+        defeatNpc("Defeat the Moons of Peril 50 times", "Defeat the Moons of Peril 50 times.", "Varlamore", TaskDifficulty.HARD, "", "Moons of Peril");
+        defeatNpc("Defeat Amoxliatl 50 Times", "Defeat Amoxliatl in Varlamore 50 times.", "Varlamore", TaskDifficulty.HARD, "", "Amoxliatl");
+        defeatNpc("Defeat Hueycoatl 50 Times", "Defeat Hueycoatl in Varlamore 50 times.", "Varlamore", TaskDifficulty.HARD, "", "Hueycoatl");
+        defeatNpc("Defeat Vardorvis", "Defeat Vardorvis.", "Varlamore", TaskDifficulty.HARD, "", "Vardorvis");
+        defeatNpc("Defeat Vardorvis 150 times", "Defeat Vardorvis 150 times.", "Varlamore", TaskDifficulty.HARD, "", "Vardorvis");
+        defeatNpc("Defeat Vardorvis 50 times", "Defeat Vardorvis 50 times.", "Varlamore", TaskDifficulty.HARD, "", "Vardorvis");
+        equipItem("Equip a Fletching knife", "Equip a Fletching knife.", "Varlamore", TaskDifficulty.HARD, "", "Fletching knife");
+        equipItem("Equip a Greenman mask", "Equip a Greenman mask.", "Varlamore", TaskDifficulty.HARD, "", "Greenman mask");
+        equipItem("Equip a piece of Sunfire Fanatic", "Equip a piece of Sunfire Fanatic armour.", "Varlamore", TaskDifficulty.HARD, "", "Sunfire Fanatic armour");
+        equipItem("Equip an Antler guard", "Equip an Antler guard.", "Varlamore", TaskDifficulty.HARD, "", "Antler guard");
+        equipItem("Equip Echo Boots", "Equip Echo Boots.", "Varlamore", TaskDifficulty.HARD, "", "Echo Boots");
+        equipItem("Equip full Alchemists outfit", "Equip the Alchemist labcoat, pants, and gloves from the Mixology shop.", "Varlamore", TaskDifficulty.HARD, "", "Alchemist labcoat", "Alchemist pants", "Alchemist gloves");
+        equipItem("Equip full Blood Moon armour", "Equip full Blood moon armour.", "Varlamore", TaskDifficulty.HARD, "", "Blood moon armour");
+        equipItem("Equip full Blue Moon armour", "Equip full Blue moon armour.", "Varlamore", TaskDifficulty.HARD, "", "Blue moon armour");
+        equipItem("Equip full Eclipse Moon armour", "Equip full Eclipse moon armour.", "Varlamore", TaskDifficulty.HARD, "", "Eclipse moon armour");
+        equipItem("Equip full Guild Hunter Outfit", "Equip full Guild Hunter Outfit.", "Varlamore", TaskDifficulty.HARD, "", "Guild Hunter Outfit");
+        equipItem("Equip full Hueycoatl armour", "Equip full Hueycoatl armour.", "Varlamore", TaskDifficulty.HARD, "", "Hueycoatl hide armour");
+        equipItem("Equip full Sunfire Fanatic", "Equip a full set of Sunfire Fanatic armour.", "Varlamore", TaskDifficulty.HARD, "", "Sunfire Fanatic armour");
+        addTask("Open a chest with the moon key", "Open a chest with the moon key inside the Ruins of Tapoyauik.", "Varlamore", TaskDifficulty.HARD, TaskType.ACTIVITY, "", 1, "Chest (moon key)", "moon key", "Ruins of Tapoyauik");
+        addTask("Build all Quetzal landing sites", "Build all quetzal landing sites.", "Varlamore", TaskDifficulty.HARD, TaskType.ACTIVITY, "", 1, "Landing Site");
+        addTask("Complete the Final Dawn", "Complete The Final Dawn quest.", "Varlamore", TaskDifficulty.HARD, TaskType.ACTIVITY, "", 1, "The Final Dawn");
+        addTask("Fully decorate a Yew totem in the Auburn Valley", "Fully decorate a Yew totem in the Auburn Valley.", "Varlamore", TaskDifficulty.HARD, TaskType.ACTIVITY, "", 1, "Yew totem");
+        craftItem("Make 100 Prayer Regeneration Potions", "Make 100 Prayer Regeneration Potions.", "Varlamore", TaskDifficulty.HARD, "", "Prayer regeneration potion");
+        craftItem("Make 50 Goading Potions", "Make 50 Goading Potions.", "Varlamore", TaskDifficulty.HARD, "", "Goading potion");
+        craftItem("Make a Greenman carving", "Make a Greenman carving.", "Varlamore", TaskDifficulty.HARD, "", "Greenman carving");
+        addTask("Obtain the Huntsman's Kit", "Obtain the Huntsman's Kit.", "Varlamore", TaskDifficulty.HARD, TaskType.ACTIVITY, "", 1, "Huntsman's Kit");
+        addTask("Purchase the Reagents Pouch", "Purchase the Reagents Pouch from the Mixology shop.", "Varlamore", TaskDifficulty.HARD, TaskType.ACTIVITY, "", 1, "Reagent pouch");
+        addTask("Steal a Blessed Bone Statuette", "Steal a Blessed Bone Statuette.", "Varlamore", TaskDifficulty.HARD, TaskType.ACTIVITY, "", 1, "Blessed Bone Statuette");
+        addTask("Check the health of Mahogany Tree in Marcellus's Patch", "Check the health of Mahogany Tree in Marcellus's Patch.", "Varlamore", TaskDifficulty.HARD, TaskType.ACTIVITY, "", 1, "Mahogany tree (Farming)", "Marcellus");
+        chopItem("Chop 20 Magic Logs in Varlamore", "Chop 20 Magic Logs in Varlamore.", "Varlamore", TaskDifficulty.HARD, "", 20, "Magic Logs");
+        addTask("Complete 50 Hunter Rumours", "Complete 50 Hunter Rumours.", "Varlamore", TaskDifficulty.HARD, TaskType.ACTIVITY, "", 50, "Hunters' Rumours");
+        cookItem("Cook 100 Moonlight Antelopes", "Cook 100 Moonlight Antelopes.", "Varlamore", TaskDifficulty.HARD, "", 100, "Cooked moonlight antelope");
+        craftItem("Craft 1000 Sunfire Runes", "Craft 1000 Sunfire Runes.", "Varlamore", TaskDifficulty.HARD, "", "Sunfire rune");
+        addTask("Create 100 Jugs of Blessed Sunfire Wine", "Create 100 Jugs of Blessed Sunfire Wine.", "Varlamore", TaskDifficulty.HARD, TaskType.ACTIVITY, "", 100, "Jug of blessed sunfire wine");
+        craftItem("Fletch some Atlatl darts", "Fletch some Atlatl darts.", "Varlamore", TaskDifficulty.HARD, "", "Atlatl darts");
+        catchItem("Catch a Moonlight moth bare-handed", "Catch a moonlight moth barehanded.", "Varlamore", TaskDifficulty.HARD, "", 1, "moonlight moth");
+        addTask("Fully Decorate a Magic Totem in the Auburn Valley", "Fully decorate a Magic totem in the Auburn Valley.", "Varlamore", TaskDifficulty.HARD, TaskType.ACTIVITY, "", 1, "Magic totem");
+
+        // --- Audit additions: Varlamore (elite) (18) ---
+        addTask("Perilous Moons Combat Achievements", "Complete all of the Combat Achievements for Perilous Moons.", "Varlamore", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Moons of Peril");
+        addTask("Vardorvis Combat Achievements", "Complete all of the Combat Achievements for Vardorvis.", "Varlamore", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Vardorvis");
+        addTask("Obtain 40,000 Glory", "Obtain 40,000 Glory in the Fortis Colosseum.", "Varlamore", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 40000, "Fortis Colosseum");
+        addTask("Complete 1 Deep delve", "Defeat the Doom of Mokhaiotl at delve level 8.", "Varlamore", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Doom of Mokhaiotl");
+        addTask("Complete 25 Deep delves", "Defeat the Doom of Mokhaiotl at delve level 8 or above 25 times.", "Varlamore", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 25, "Doom of Mokhaiotl");
+        addTask("Complete 75 Deep delves", "Defeat the Doom of Mokhaiotl at delve level 8 or above 75 times.", "Varlamore", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 75, "Doom of Mokhaiotl");
+        defeatNpc("Defeat Vardorvis 300 times", "Defeat Vardorvis 300 times.", "Varlamore", TaskDifficulty.ELITE, "", "Vardorvis");
+        defeatNpc("Defeat Sol Heredit 10 times", "Defeat Sol Heredit 10 times.", "Varlamore", TaskDifficulty.ELITE, "", "Sol Heredit");
+        defeatNpc("Defeat Sol Heredit 5 times", "Defeat Sol Heredit 5 times.", "Varlamore", TaskDifficulty.ELITE, "", "Sol Heredit");
+        equipItem("Equip a Tecu Salamander", "Equip a Tecu Salamander.", "Varlamore", TaskDifficulty.ELITE, "", "Tecu Salamander");
+        equipItem("Equip the Confliction gauntlets", "Equip the Confliction gauntlets.", "Varlamore", TaskDifficulty.ELITE, "", "Confliction gauntlets");
+        equipItem("Equip the Eye of Ayak", "Equip the Eye of ayak.", "Varlamore", TaskDifficulty.ELITE, "", "Eye of ayak");
+        equipItem("Equip the Ultor Ring", "Equip the Ultor Ring.", "Varlamore", TaskDifficulty.ELITE, "", "Ultor Ring");
+        equipItem("Equip Tonalztics of Ralos", "Equip Tonalztics of Ralos.", "Varlamore", TaskDifficulty.ELITE, "", "Tonalztics of Ralos");
+        addTask("Open the Varlamore Moon Chest", "Open the Varlamore Moon Chest.", "Varlamore", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Chest (moon key)");
+        addTask("Store 10k bowstrings inside a bowstring spool", "Store at least 10,000 bowstrings inside a bowstring spool.", "Varlamore", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 10000, "bowstring", "bowstring spool");
+        addTask("Purchase the Chugging Barrel", "Purchase the Chugging Barrel from the Mixology shop.", "Varlamore", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Chugging Barrel");
+        addTask("Fully decorate a Redwood totem in the Auburn Valley", "Fully decorate a Redwood totem in the Auburn Valley.", "Varlamore", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Redwood totem", "Auburn Valley");
+
+        // --- Audit additions: Varlamore (master) (4) ---
+        addTask("Colosseum Combat Achievements", "Complete all of the Combat Achievements for Fortis Colosseum.", "Varlamore", TaskDifficulty.MASTER, TaskType.ACTIVITY, "", 1, "Fortis Colosseum");
+        addTask("Doom of Mokhaiotl Combat achievements", "Complete all the Doom of Mokhaiotl combat achievements.", "Varlamore", TaskDifficulty.MASTER, TaskType.ACTIVITY, "", 1, "Doom of Mokhaiotl");
+        addTask("Obtain 58,000 Glory", "Obtain 58,000 Glory in the Fortis Colosseum.", "Varlamore", TaskDifficulty.MASTER, TaskType.ACTIVITY, "", 58000, "Fortis Colosseum");
+        equipItem("Equip Blessed Dizana's Quiver", "Equip Blessed dizana's quiver.", "Varlamore", TaskDifficulty.MASTER, "", "Blessed dizana's quiver");
 
         // Build reverse lookup maps
         buildLookupMaps();
