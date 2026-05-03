@@ -35,6 +35,11 @@ public class LeagueTaskCompletionTracker
     private static final int COLOR_COMPLETE = 0xF47113;
 
     private final Set<String> completedTaskNames = new HashSet<>();
+    // Parallel lowercased set for O(1) case-insensitive isComplete lookups.
+    // The original isComplete walked the whole set fuzzily on every check —
+    // with 1,592 tasks queried per game tick that became the dominant cost
+    // when the task panel was open.
+    private final Set<String> completedTaskNamesLower = new HashSet<>();
     private final Set<String> newlySyncedSinceLastDrain = new HashSet<>();
 
     @Inject
@@ -105,6 +110,7 @@ public class LeagueTaskCompletionTracker
                     String matched = matchKnownTask(cleaned);
                     if (matched != null && completedTaskNames.add(matched))
                     {
+                        completedTaskNamesLower.add(matched.toLowerCase());
                         newlySyncedSinceLastDrain.add(matched);
                     }
                 }
@@ -140,6 +146,12 @@ public class LeagueTaskCompletionTracker
     /**
      * Resolve widget text (which may be either a task name or description) to
      * the canonical task name from TaskDatabase. Returns null if no match.
+     *
+     * Hot path: this runs for every "completed"-coloured widget in the task
+     * panel on every game tick. We use O(1) hash-map lookups for the common
+     * exact-name and exact-description cases, and only fall back to a linear
+     * fuzzy contains scan when both exact lookups miss (which is rare in
+     * practice — Jagex's widget text matches our task names directly).
      */
     private static String matchKnownTask(String widgetText)
     {
@@ -150,27 +162,20 @@ public class LeagueTaskCompletionTracker
         }
         String targetLower = target.toLowerCase();
 
-        // Exact (case-insensitive) name match first
-        for (DemonicPactsTask task : TaskDatabase.getAllTasks())
+        String matched = TaskDatabase.findCanonicalNameByLowerName(targetLower);
+        if (matched != null)
         {
-            if (task.getName().equalsIgnoreCase(target))
-            {
-                return task.getName();
-            }
+            return matched;
+        }
+        matched = TaskDatabase.findCanonicalNameByLowerDesc(targetLower);
+        if (matched != null)
+        {
+            return matched;
         }
 
-        // Description match — some widget columns render the task description
-        for (DemonicPactsTask task : TaskDatabase.getAllTasks())
-        {
-            String desc = task.getDescription();
-            if (desc != null && desc.equalsIgnoreCase(target))
-            {
-                return task.getName();
-            }
-        }
-
-        // Fuzzy contains — lets minor wording drift (trailing period already
-        // stripped in cleanTaskName, "the"/"a" omissions, etc.) still register
+        // Fuzzy fallback for minor wording drift ("the"/"a" omissions etc.).
+        // Only iterates ALL_TASKS once when both exact lookups have already
+        // failed.
         for (DemonicPactsTask task : TaskDatabase.getAllTasks())
         {
             String nameLower = task.getName().toLowerCase();
@@ -178,9 +183,7 @@ public class LeagueTaskCompletionTracker
             {
                 continue; // too short — high risk of false positives
             }
-            if (targetLower.equals(nameLower)
-                || targetLower.contains(nameLower)
-                || nameLower.contains(targetLower))
+            if (targetLower.contains(nameLower) || nameLower.contains(targetLower))
             {
                 return task.getName();
             }
@@ -208,8 +211,11 @@ public class LeagueTaskCompletionTracker
     }
 
     /**
-     * Check if a task is completed. Tries exact match, case-insensitive match,
-     * and finally a contains check both ways so minor wording drift still syncs.
+     * Check if a task is completed. Both producer paths (widget sync and chat
+     * parsing) store the canonical TaskDatabase name, and callers pass the
+     * canonical name too, so an exact (case-insensitive) hash-set check is
+     * sufficient. This is on the hot path — called once per task per game
+     * tick from DemonicPactsPlugin#onGameTick.
      */
     public boolean isComplete(String taskName)
     {
@@ -226,20 +232,7 @@ public class LeagueTaskCompletionTracker
         {
             return true;
         }
-        String targetLower = target.toLowerCase();
-        for (String completed : completedTaskNames)
-        {
-            String completedLower = completed.toLowerCase();
-            if (completedLower.equals(targetLower))
-            {
-                return true;
-            }
-            if (completedLower.contains(targetLower) || targetLower.contains(completedLower))
-            {
-                return true;
-            }
-        }
-        return false;
+        return completedTaskNamesLower.contains(target.toLowerCase());
     }
 
     public Set<String> getCompleted()
@@ -254,7 +247,10 @@ public class LeagueTaskCompletionTracker
             String cleaned = cleanTaskName(taskName);
             if (!cleaned.isEmpty())
             {
-                completedTaskNames.add(cleaned);
+                if (completedTaskNames.add(cleaned))
+                {
+                    completedTaskNamesLower.add(cleaned.toLowerCase());
+                }
             }
         }
     }
@@ -262,6 +258,7 @@ public class LeagueTaskCompletionTracker
     public void clear()
     {
         completedTaskNames.clear();
+        completedTaskNamesLower.clear();
         newlySyncedSinceLastDrain.clear();
     }
 

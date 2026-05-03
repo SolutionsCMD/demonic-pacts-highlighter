@@ -12,6 +12,13 @@ public class TaskDatabase
     private static final Map<String, List<DemonicPactsTask>> ITEM_TASKS = new HashMap<>();
     private static final Map<String, List<DemonicPactsTask>> OBJECT_TASKS = new HashMap<>();
 
+    // Lowercased lookup tables for the league-task widget scanner. The widget
+    // tree under group 657 can contain hundreds of nodes per panel state and
+    // the scanner runs every game tick while the panel is open, so we want
+    // O(1) lookups instead of iterating ALL_TASKS three times per match.
+    private static final Map<String, String> CANONICAL_NAME_BY_LOWER_NAME = new HashMap<>();
+    private static final Map<String, String> CANONICAL_NAME_BY_LOWER_DESC = new HashMap<>();
+
     /**
      * Tools that appear as ingredients for many different tasks but aren't the
      * actual subject of any of them. Highlighting them creates visual noise
@@ -2209,6 +2216,17 @@ public class TaskDatabase
     {
         for (DemonicPactsTask task : ALL_TASKS)
         {
+            // Populate widget-scanner lookup tables for every task (independent of
+            // whether the task has match keywords).
+            if (task.getName() != null)
+            {
+                CANONICAL_NAME_BY_LOWER_NAME.put(task.getName().toLowerCase(), task.getName());
+            }
+            if (task.getDescription() != null)
+            {
+                CANONICAL_NAME_BY_LOWER_DESC.put(task.getDescription().toLowerCase(), task.getName());
+            }
+
             if (task.getMatchKeywords() == null) continue;
 
             Map<String, List<DemonicPactsTask>> targetMap;
@@ -2346,5 +2364,23 @@ public class TaskDatabase
         return ALL_TASKS.stream()
             .filter(t -> t.getArea().equalsIgnoreCase(area))
             .collect(Collectors.toList());
+    }
+
+    /**
+     * O(1) lookup of canonical task name by lowercased name (used by the
+     * league-task widget scanner). Returns null if no exact match.
+     */
+    public static String findCanonicalNameByLowerName(String lowerName)
+    {
+        return lowerName == null ? null : CANONICAL_NAME_BY_LOWER_NAME.get(lowerName);
+    }
+
+    /**
+     * O(1) lookup of canonical task name by lowercased description (some
+     * widget columns render the task description rather than the name).
+     */
+    public static String findCanonicalNameByLowerDesc(String lowerDesc)
+    {
+        return lowerDesc == null ? null : CANONICAL_NAME_BY_LOWER_DESC.get(lowerDesc);
     }
 }
