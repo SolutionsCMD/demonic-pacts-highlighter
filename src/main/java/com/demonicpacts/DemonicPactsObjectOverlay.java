@@ -189,7 +189,7 @@ public class DemonicPactsObjectOverlay extends Overlay
         for (int i = 0; i < limit; i++)
         {
             Candidate c = candidates.get(i);
-            DemonicPactsTask highestTask = getHighestDifficultyTask(c.tasks);
+            DemonicPactsTask highestTask = pickDisplayTask(c.tasks);
 
             // Publish that this object is being drawn so the tooltip knows.
             // Use scene coords converted to world coords so the tooltip's menu-entry
@@ -318,17 +318,32 @@ public class DemonicPactsObjectOverlay extends Overlay
         return null;
     }
 
-    private DemonicPactsTask getHighestDifficultyTask(List<DemonicPactsTask> tasks)
+    /**
+     * Pick the lowest-difficulty incomplete task as the colour/label driver.
+     * See DemonicPactsNpcOverlay#pickDisplayTask for the rationale.
+     */
+    private DemonicPactsTask pickDisplayTask(List<DemonicPactsTask> tasks)
     {
-        DemonicPactsTask highest = tasks.get(0);
+        CompletedTaskManager mgr = plugin.getCompletedTaskManager();
+        DemonicPactsTask lowestIncomplete = null;
+        DemonicPactsTask lowestAny = tasks.get(0);
         for (DemonicPactsTask task : tasks)
         {
-            if (task.getDifficulty().ordinal() > highest.getDifficulty().ordinal())
+            if (task.getDifficulty().ordinal() < lowestAny.getDifficulty().ordinal())
             {
-                highest = task;
+                lowestAny = task;
+            }
+            if (mgr.isCompleted(task))
+            {
+                continue;
+            }
+            if (lowestIncomplete == null
+                || task.getDifficulty().ordinal() < lowestIncomplete.getDifficulty().ordinal())
+            {
+                lowestIncomplete = task;
             }
         }
-        return highest;
+        return lowestIncomplete != null ? lowestIncomplete : lowestAny;
     }
 
     /**

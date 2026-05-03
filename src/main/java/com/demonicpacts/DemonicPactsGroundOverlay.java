@@ -172,7 +172,7 @@ public class DemonicPactsGroundOverlay extends Overlay
 
         for (GroundCandidate c : candidates)
         {
-            DemonicPactsTask highestTask = getHighestDifficultyTask(c.tasks);
+            DemonicPactsTask highestTask = pickDisplayTask(c.tasks);
             Color color = config.useDifficultyColors()
                 ? highestTask.getDifficulty().getColor()
                 : config.defaultHighlightColor();
@@ -218,16 +218,31 @@ public class DemonicPactsGroundOverlay extends Overlay
         return null;
     }
 
-    private DemonicPactsTask getHighestDifficultyTask(List<DemonicPactsTask> tasks)
+    /**
+     * Pick the lowest-difficulty incomplete task as the colour driver.
+     * See DemonicPactsNpcOverlay#pickDisplayTask for the rationale.
+     */
+    private DemonicPactsTask pickDisplayTask(List<DemonicPactsTask> tasks)
     {
-        DemonicPactsTask highest = tasks.get(0);
+        CompletedTaskManager mgr = plugin.getCompletedTaskManager();
+        DemonicPactsTask lowestIncomplete = null;
+        DemonicPactsTask lowestAny = tasks.get(0);
         for (DemonicPactsTask task : tasks)
         {
-            if (task.getDifficulty().ordinal() > highest.getDifficulty().ordinal())
+            if (task.getDifficulty().ordinal() < lowestAny.getDifficulty().ordinal())
             {
-                highest = task;
+                lowestAny = task;
+            }
+            if (mgr.isCompleted(task))
+            {
+                continue;
+            }
+            if (lowestIncomplete == null
+                || task.getDifficulty().ordinal() < lowestIncomplete.getDifficulty().ordinal())
+            {
+                lowestIncomplete = task;
             }
         }
-        return highest;
+        return lowestIncomplete != null ? lowestIncomplete : lowestAny;
     }
 }

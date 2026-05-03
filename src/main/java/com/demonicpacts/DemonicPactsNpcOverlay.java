@@ -170,8 +170,12 @@ public class DemonicPactsNpcOverlay extends Overlay
             NPC npc = c.npc;
             List<DemonicPactsTask> tasks = c.tasks;
 
-            // Use the highest-difficulty task's color
-            DemonicPactsTask highestTask = getHighestDifficultyTask(tasks);
+            // Use the lowest-difficulty incomplete task — that's the "easiest
+            // remaining thing to do" for this entity, which is what the player
+            // would attempt first. Falls back to the lowest task overall if
+            // everything has been completed (only relevant when hideCompleted
+            // is off).
+            DemonicPactsTask highestTask = pickDisplayTask(tasks);
             Color color = config.useDifficultyColors()
                 ? highestTask.getDifficulty().getColor()
                 : config.defaultHighlightColor();
@@ -207,16 +211,33 @@ public class DemonicPactsNpcOverlay extends Overlay
         return null;
     }
 
-    private DemonicPactsTask getHighestDifficultyTask(List<DemonicPactsTask> tasks)
+    /**
+     * Pick the task whose difficulty drives the highlight colour and label.
+     * Prefers the lowest-difficulty task that's still incomplete (the "easiest
+     * thing left to do"), falling back to the lowest difficulty overall when
+     * every task on this entity has already been finished.
+     */
+    private DemonicPactsTask pickDisplayTask(List<DemonicPactsTask> tasks)
     {
-        DemonicPactsTask highest = tasks.get(0);
+        CompletedTaskManager mgr = plugin.getCompletedTaskManager();
+        DemonicPactsTask lowestIncomplete = null;
+        DemonicPactsTask lowestAny = tasks.get(0);
         for (DemonicPactsTask task : tasks)
         {
-            if (task.getDifficulty().ordinal() > highest.getDifficulty().ordinal())
+            if (task.getDifficulty().ordinal() < lowestAny.getDifficulty().ordinal())
             {
-                highest = task;
+                lowestAny = task;
+            }
+            if (mgr.isCompleted(task))
+            {
+                continue;
+            }
+            if (lowestIncomplete == null
+                || task.getDifficulty().ordinal() < lowestIncomplete.getDifficulty().ordinal())
+            {
+                lowestIncomplete = task;
             }
         }
-        return highest;
+        return lowestIncomplete != null ? lowestIncomplete : lowestAny;
     }
 }
