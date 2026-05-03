@@ -344,11 +344,11 @@ public class DemonicPactsPlugin extends Plugin
             || (type == MenuAction.CC_OP_LOW_PRIORITY
                 && "examine".equals(optionLower));
         boolean isWidgetAction = (type == MenuAction.CC_OP || type == MenuAction.CC_OP_LOW_PRIORITY)
-            && ("cast".equals(optionLower)
-                || "activate".equals(optionLower)
-                || "reactivate".equals(optionLower)
-                || "deactivate".equals(optionLower)
-                || "toggle".equals(optionLower));
+            && (optionLower.startsWith("cast")
+                || optionLower.startsWith("activate")
+                || optionLower.startsWith("reactivate")
+                || optionLower.startsWith("deactivate")
+                || optionLower.startsWith("toggle"));
         if (!isExamine && !isWidgetAction)
         {
             return;
@@ -361,8 +361,13 @@ public class DemonicPactsPlugin extends Plugin
         if (npc != null && npc.getName() != null)
         {
             matches.addAll(TaskDatabase.findNpcTasks(npc.getName()));
-            // Fishing spots are NPCs but tasks are mapped via object keywords
-            matches.addAll(TaskDatabase.findObjectTasks(npc.getName()));
+            // Fishing spots are NPCs but tasks are mapped via object keywords —
+            // gated to fishing-spot-like names since findObjectTasks now falls
+            // back to ITEM_TASKS (which would over-match generic NPC names).
+            if (npc.getName().toLowerCase().contains("fishing spot"))
+            {
+                matches.addAll(TaskDatabase.findObjectTasks(npc.getName()));
+            }
         }
 
         // Inventory / bank / equipment: resolve by item ID when available

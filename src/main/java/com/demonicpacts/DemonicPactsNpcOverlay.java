@@ -90,7 +90,16 @@ public class DemonicPactsNpcOverlay extends Overlay
                 // NPCs named like "Fishing spot", "Rod Fishing spot", "Small Net Fishing spot"
                 // are technically NPCs but behave like interactable objects. Try the
                 // object lookup so fishing spots still get highlighted for Catch tasks.
-                tasks = TaskDatabase.findObjectTasks(npc.getName());
+                // Gated to fishing-spot-like names: findObjectTasks now falls back to
+                // ITEM_TASKS, so an unrestricted call here would match arbitrary NPCs
+                // whose names happen to equal an item keyword (which has been
+                // observed to highlight nearby players who are pet/familiar-adjacent
+                // or whose visible interactable name matches a task keyword).
+                String lowerName = npc.getName().toLowerCase();
+                if (lowerName.contains("fishing spot"))
+                {
+                    tasks = TaskDatabase.findObjectTasks(npc.getName());
+                }
                 if (tasks.isEmpty())
                 {
                     continue;

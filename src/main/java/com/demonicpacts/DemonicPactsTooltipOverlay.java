@@ -400,11 +400,13 @@ public class DemonicPactsTooltipOverlay extends Overlay
         }
         String optionLower = entry.getOption() == null ? ""
             : entry.getOption().replaceAll("<[^>]*>", "").trim().toLowerCase();
-        return "cast".equals(optionLower)
-            || "activate".equals(optionLower)
-            || "reactivate".equals(optionLower)
-            || "deactivate".equals(optionLower)
-            || "toggle".equals(optionLower);
+        // startsWith because some spells use "Cast (offensive)" / "Cast
+        // (autocast)" and prayers can have "Activate (toggle)" variants.
+        return optionLower.startsWith("cast")
+            || optionLower.startsWith("activate")
+            || optionLower.startsWith("reactivate")
+            || optionLower.startsWith("deactivate")
+            || optionLower.startsWith("toggle");
     }
 
     private String buildTooltipText(List<DemonicPactsTask> tasks, String entityName)
