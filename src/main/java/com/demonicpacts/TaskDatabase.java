@@ -109,6 +109,17 @@ public class TaskDatabase
         OBJECT_TO_TASK_KEYWORDS.put("bush patch", new String[]{"redberries", "cadavaberries", "dwellberries", "jangerberries", "whiteberries", "poison ivy berries"});
         OBJECT_TO_TASK_KEYWORDS.put("spirit tree patch", new String[]{"spirit seed"});
         OBJECT_TO_TASK_KEYWORDS.put("crystal tree patch", new String[]{"crystal shard"});
+
+        // Field-crop scenery (Catherby fields, the Varlamore Sweetcorn field,
+        // any wandering Onion / Cabbage / Potato plants near towns). The
+        // in-world object name matches the item the player picks, so we map
+        // each scenery object to its item keyword.
+        OBJECT_TO_TASK_KEYWORDS.put("onion", new String[]{"onion"});
+        OBJECT_TO_TASK_KEYWORDS.put("cabbage", new String[]{"cabbage"});
+        OBJECT_TO_TASK_KEYWORDS.put("potato", new String[]{"potato"});
+        OBJECT_TO_TASK_KEYWORDS.put("wheat", new String[]{"wheat"});
+        OBJECT_TO_TASK_KEYWORDS.put("sweetcorn", new String[]{"sweetcorn"});
+        OBJECT_TO_TASK_KEYWORDS.put("flax", new String[]{"flax"});
     }
 
     static
