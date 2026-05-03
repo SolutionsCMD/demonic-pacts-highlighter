@@ -2339,22 +2339,56 @@ public class TaskDatabase
     }
 
     /**
-     * Find tasks matching a world object name (rocks, trees, patches).
-     * Case-insensitive.
+     * Find tasks matching a world object name (rocks, trees, patches, stalls,
+     * statues, chests, etc.). Case-insensitive.
+     *
+     * Lookup order:
+     *   1. OBJECT_TASKS — explicitly bridged via OBJECT_TO_TASK_KEYWORDS
+     *      (e.g. "iron rocks" -> tasks that keyword "iron ore").
+     *   2. ITEM_TASKS — many tasks keyword the in-world object directly
+     *      ("Gem Stall", "Silver Stall", "Statue (Ates)", "Chest (moon key)").
+     *      Without this fallback those tasks got tooltips on hover but no
+     *      highlight, since the tooltip path checks ITEM_TASKS too while the
+     *      object overlay only checked OBJECT_TASKS.
+     *   3. NPC_TASKS — same idea for objects that share a name with an NPC
+     *      task keyword (rare, but covers things like fishing-spot variants).
+     *
+     * The ITEM_BLOCKLIST is honoured so genuinely noisy ingredient items
+     * (chisel, knife, ammo mould, vial of water) still don't produce
+     * highlights when they happen to match a scenery name.
      */
     public static List<DemonicPactsTask> findObjectTasks(String objectName)
     {
         if (objectName == null) return Collections.emptyList();
-        List<DemonicPactsTask> tasks = OBJECT_TASKS.get(objectName.toLowerCase());
-        return tasks != null ? tasks : Collections.emptyList();
+        String key = objectName.toLowerCase();
+        List<DemonicPactsTask> tasks = OBJECT_TASKS.get(key);
+        if (tasks != null && !tasks.isEmpty()) return tasks;
+
+        if (!ITEM_BLOCKLIST.contains(key))
+        {
+            tasks = ITEM_TASKS.get(key);
+            if (tasks != null && !tasks.isEmpty()) return tasks;
+        }
+
+        tasks = NPC_TASKS.get(key);
+        if (tasks != null && !tasks.isEmpty()) return tasks;
+
+        return Collections.emptyList();
     }
 
     /**
-     * Check if any task matches this world object name.
+     * Check if any task matches this world object name. Mirrors the same
+     * three-map lookup order as findObjectTasks so the menu-injection code
+     * doesn't disagree with the highlight code about which objects are
+     * task-relevant.
      */
     public static boolean isTaskObject(String objectName)
     {
-        return objectName != null && OBJECT_TASKS.containsKey(objectName.toLowerCase());
+        if (objectName == null) return false;
+        String key = objectName.toLowerCase();
+        if (OBJECT_TASKS.containsKey(key)) return true;
+        if (!ITEM_BLOCKLIST.contains(key) && ITEM_TASKS.containsKey(key)) return true;
+        return NPC_TASKS.containsKey(key);
     }
 
     /**
