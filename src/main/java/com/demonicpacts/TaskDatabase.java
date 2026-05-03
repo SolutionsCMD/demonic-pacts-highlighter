@@ -2323,7 +2323,17 @@ public class TaskDatabase
                     }
                 }
                 if (rest.isEmpty()) break;
-                ITEM_TASKS.computeIfAbsent(restLower, k -> new ArrayList<>()).add(task);
+                List<DemonicPactsTask> bucket = ITEM_TASKS.computeIfAbsent(restLower, k -> new ArrayList<>());
+                // Avoid double-listing tasks that already keyword the derived
+                // name (e.g. "Use the Piety Prayer" with explicit keyword
+                // "Piety" — the standard buildLookupMaps loop has already
+                // inserted the task under "piety", so the derive step would
+                // duplicate it and the tooltip would render the same line
+                // twice).
+                if (!bucket.contains(task))
+                {
+                    bucket.add(task);
+                }
                 break;
             }
         }

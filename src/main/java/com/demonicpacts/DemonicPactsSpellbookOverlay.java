@@ -92,19 +92,24 @@ public class DemonicPactsSpellbookOverlay extends Overlay
     {
         Set<String> out = new HashSet<>();
         CompletedTaskManager mgr = plugin.getCompletedTaskManager();
+        HiddenTaskManager hidden = plugin.getHiddenTaskManager();
         for (DemonicPactsTask task : TaskDatabase.getAllTasks())
         {
-            if (task.getType() != TaskType.SPELL)
+            String name = task.getName();
+            // Accept any task named "Cast X" regardless of TaskType so newer
+            // tasks I added with TaskType.ACTIVITY (Claws of Guthix, Saradomin
+            // Strike, etc.) still light up.
+            boolean nameMatch = name != null && name.toLowerCase(Locale.ROOT).startsWith("cast ");
+            if (!nameMatch && task.getType() != TaskType.SPELL)
             {
                 continue;
             }
-            if (mgr.isCompleted(task))
-            {
-                continue;
-            }
-            // Tasks like "Cast Home Teleport" often have no explicit keywords
-            // (they're activity-only), so derive a fallback keyword from the
-            // task name by stripping a leading "Cast ".
+            if (mgr.isCompleted(task)) continue;
+            if (hidden.isHidden(task)) continue;
+            // Respect the per-region toggles so disabling a region also turns
+            // off the spell circles for tasks scoped to it.
+            if (!plugin.isTaskRegionEnabled(task)) continue;
+
             if (task.getMatchKeywords() != null)
             {
                 for (String kw : task.getMatchKeywords())
@@ -115,8 +120,7 @@ public class DemonicPactsSpellbookOverlay extends Overlay
                     }
                 }
             }
-            String name = task.getName();
-            if (name != null && name.toLowerCase(Locale.ROOT).startsWith("cast "))
+            if (nameMatch)
             {
                 out.add(name.substring(5).toLowerCase(Locale.ROOT));
             }

@@ -87,10 +87,16 @@ public class DemonicPactsPrayerOverlay extends Overlay
     {
         Set<String> out = new HashSet<>();
         CompletedTaskManager mgr = plugin.getCompletedTaskManager();
+        HiddenTaskManager hidden = plugin.getHiddenTaskManager();
         String[] prefixes = {"activate ", "use the ", "reactivate "};
         for (DemonicPactsTask task : TaskDatabase.getAllTasks())
         {
             if (mgr.isCompleted(task)) continue;
+            if (hidden.isHidden(task)) continue;
+            // Respect the per-region toggles so disabling a region also
+            // hides the prayer circles for prayers scoped to it.
+            if (!plugin.isTaskRegionEnabled(task)) continue;
+
             String n = task.getName();
             if (n == null) continue;
             String lower = n.toLowerCase(Locale.ROOT);
