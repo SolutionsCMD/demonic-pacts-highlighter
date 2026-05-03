@@ -91,6 +91,18 @@ public interface DemonicPactsConfig extends Config
     }
 
     @ConfigItem(
+        keyName = "hidePlayerDroppedItems",
+        name = "Hide Player-Dropped Drops",
+        description = "Skip highlighting ground items dropped by other players. You can't progress league tasks off other players' drops, so these are usually clutter.",
+        section = highlightSection,
+        position = 3
+    )
+    default boolean hidePlayerDroppedItems()
+    {
+        return true;
+    }
+
+    @ConfigItem(
         keyName = "highlightObjects",
         name = "Highlight World Objects",
         description = "Master toggle for world-object highlights. Individual categories can be toggled below.",
@@ -150,6 +162,30 @@ public interface DemonicPactsConfig extends Config
         position = 13
     )
     default boolean highlightPatches()
+    {
+        return true;
+    }
+
+    @ConfigItem(
+        keyName = "highlightSpellbook",
+        name = "Highlight Spellbook Spells",
+        description = "Draw a circle around spells in the magic spellbook that match outstanding 'Cast X' tasks",
+        section = highlightSection,
+        position = 14
+    )
+    default boolean highlightSpellbook()
+    {
+        return true;
+    }
+
+    @ConfigItem(
+        keyName = "xpTrimEnabled",
+        name = "Highlight XP Milestones in Stats Tab",
+        description = "Outline a skill's stat-tab orb when its XP crosses 99 / 25M / 35M / 50M / 100M / 200M, for the corresponding XP-milestone tasks",
+        section = highlightSection,
+        position = 15
+    )
+    default boolean xpTrimEnabled()
     {
         return true;
     }

@@ -62,6 +62,12 @@ public class DemonicPactsPlugin extends Plugin
     private DemonicPactsObjectOverlay objectOverlay;
 
     @Inject
+    private DemonicPactsXpTrimOverlay xpTrimOverlay;
+
+    @Inject
+    private DemonicPactsSpellbookOverlay spellbookOverlay;
+
+    @Inject
     private ItemManager itemManager;
 
     @Inject
@@ -103,6 +109,8 @@ public class DemonicPactsPlugin extends Plugin
         overlayManager.add(groundOverlay);
         overlayManager.add(tooltipOverlay);
         overlayManager.add(objectOverlay);
+        overlayManager.add(xpTrimOverlay);
+        overlayManager.add(spellbookOverlay);
 
         // Register the widget-based tracker to receive WidgetLoaded events
         eventBus.register(taskTracker);
@@ -124,6 +132,8 @@ public class DemonicPactsPlugin extends Plugin
         overlayManager.remove(groundOverlay);
         overlayManager.remove(tooltipOverlay);
         overlayManager.remove(objectOverlay);
+        overlayManager.remove(xpTrimOverlay);
+        overlayManager.remove(spellbookOverlay);
         eventBus.unregister(taskTracker);
         taskTracker.clear();
         completedTaskManager.onLogout();

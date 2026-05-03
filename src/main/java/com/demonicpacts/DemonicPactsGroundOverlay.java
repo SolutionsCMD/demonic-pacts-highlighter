@@ -102,6 +102,17 @@ public class DemonicPactsGroundOverlay extends Overlay
                         continue;
                     }
 
+                    // Skip items dropped by other players when configured. The
+                    // player can't legitimately progress a task off another
+                    // player's drop and these are usually clutter (death piles,
+                    // junk drops in the wilderness), so highlighting them adds
+                    // visual noise.
+                    if (config.hidePlayerDroppedItems()
+                        && item.getOwnership() == TileItem.OWNERSHIP_OTHER)
+                    {
+                        continue;
+                    }
+
                     String itemName = itemManager.getItemComposition(item.getId()).getName();
                     if (!drawnOnTile.add(itemName.toLowerCase()))
                     {
