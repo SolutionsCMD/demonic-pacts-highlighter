@@ -97,11 +97,16 @@ public class TaskDatabase
         OBJECT_TO_TASK_KEYWORDS.put("allotment", new String[]{"allotment"});
         OBJECT_TO_TASK_KEYWORDS.put("allotment patch", new String[]{"allotment"});
         OBJECT_TO_TASK_KEYWORDS.put("flower patch", new String[]{"flower patch"});
+        // Herb patches highlight ONLY for harvest-style tasks (e.g. "Harvest
+        // a Ranarr Weed"), not for clean-grimy tasks. Cleaning happens with
+        // the herb already in inventory, so highlighting the patch for those
+        // is misleading. Mapping to seed item names instead of grimy herb
+        // names keeps clean tasks out of the match.
         OBJECT_TO_TASK_KEYWORDS.put("herb patch", new String[]{
-            "grimy guam leaf", "grimy tarromin", "grimy harralander", "grimy ranarr weed",
-            "grimy toadflax", "grimy irit leaf", "grimy avantoe", "grimy kwuarm",
-            "grimy snapdragon", "grimy cadantine", "grimy lantadyme", "grimy dwarf weed",
-            "grimy torstol"});
+            "guam seed", "marrentill seed", "tarromin seed", "harralander seed",
+            "ranarr seed", "toadflax seed", "irit seed", "avantoe seed",
+            "kwuarm seed", "snapdragon seed", "cadantine seed", "lantadyme seed",
+            "dwarf weed seed", "torstol seed"});
         OBJECT_TO_TASK_KEYWORDS.put("fruit tree patch", new String[]{
             "papaya tree", "palm tree", "calquat tree"});
         OBJECT_TO_TASK_KEYWORDS.put("tree patch", new String[]{"oak logs", "willow logs", "maple logs", "yew logs", "magic logs"});

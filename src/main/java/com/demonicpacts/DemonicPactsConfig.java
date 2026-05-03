@@ -151,7 +151,7 @@ public interface DemonicPactsConfig extends Config
     )
     default boolean highlightPatches()
     {
-        return false;
+        return true;
     }
 
     // =========================================================================
