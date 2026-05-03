@@ -1616,6 +1616,29 @@ public class TaskDatabase
         addTask("Obtain 58,000 Glory", "Obtain 58,000 Glory in the Fortis Colosseum.", "Varlamore", TaskDifficulty.MASTER, TaskType.ACTIVITY, "", 58000, "Fortis Colosseum");
         equipItem("Equip Blessed Dizana's Quiver", "Equip Blessed dizana's quiver.", "Varlamore", TaskDifficulty.MASTER, "", "Blessed dizana's quiver");
 
+        // --- Audit additions: Karamja (elite) (13) ---
+        addTask("Complete the Elite Karamja Diary", "Complete all of the Elite tasks in the Karamja Achievement Diary.", "Karamja", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Karamja Achievement Diary");
+        addTask("Complete the Fight Caves 10 Times", "Complete the TzHaar Fight Cave in Mor Ul Rek 10 times.", "Karamja", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "TzHaar Fight Cave", "Mor Ul Rek");
+        addTask("Complete the Fight Caves 5 Times", "Complete the TzHaar Fight Cave in Mor Ul Rek 5 times.", "Karamja", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "TzHaar Fight Cave", "Mor Ul Rek");
+        addTask("Sacrifice a Fire Cape to Access the Inferno", "Sacrifice a Fire Cape to access the Inferno in Mor Ul Rek.", "Karamja", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Fire Cape", "Inferno", "Mor Ul Rek");
+        addTask("Complete the Inferno 10 Times", "Complete the Inferno in Mor Ul Rek 10 times.", "Karamja", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Inferno", "Mor Ul Rek");
+        addTask("Complete the Inferno 5 Times", "Complete the Inferno in Mor Ul Rek 5 times.", "Karamja", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Inferno", "Mor Ul Rek");
+        addTask("Complete Tzhaar-Ket-Rak's fifth challenge", "Complete Tzhaar-Ket-Rak's fifth challenge.", "Karamja", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Tzhaar-Ket-Rak", "TzHaar-Ket-Rak's Challenges");
+        addTask("Complete Tzhaar-Ket-Rak's fourth challenge", "Complete Tzhaar-Ket-Rak's fourth challenge.", "Karamja", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Tzhaar-Ket-Rak", "TzHaar-Ket-Rak's Challenges");
+        addTask("Complete Tzhaar-Ket-Rak's sixth challenge", "Complete Tzhaar-Ket-Rak's sixth challenge.", "Karamja", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Tzhaar-Ket-Rak", "TzHaar-Ket-Rak's Challenges");
+        addTask("Pay Saniboch for Permanent Access", "Pay Saniboch for Permanent Access into his dungeon.", "Karamja", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Saniboch", "Brimhaven Dungeon");
+        addTask("Purchase an Onyx in Mor Ul Rek", "Purchase an Onyx from an Ore and Gem Store in Mor Ul Rek.", "Karamja", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Uncut onyx", "TzHaar-Hur-Lek's Ore and Gem Store", "Mor Ul Rek");
+        addTask("Pickpocket a Diamond From a TzHaar", "Pickpocket an uncut diamond from a TzHaar-Hur.", "Karamja", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "uncut diamond", "TzHaar-Hur");
+        addTask("Grow a spirit tree on Karamja", "Check the health of a Spirit tree you've grown on Karamja.", "Karamja", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Spirit Tree (Farming)");
+
+        // --- Audit additions: Karamja (master) (6) ---
+        addTask("The Inferno Combat Achievements", "Complete all of the Combat Achievements for The Inferno.", "Karamja", TaskDifficulty.MASTER, TaskType.ACTIVITY, "", 1, "Inferno");
+        addTask("TzHaar-Ket-Rak's Combat Achievements", "Complete all of the Combat Achievements for TzHaar-Ket-Rak's Challenges.", "Karamja", TaskDifficulty.MASTER, TaskType.ACTIVITY, "", 1, "TzHaar-Ket-Rak's Challenges");
+        addTask("The Fight Caves Combat Achievements", "Complete all of the Combat Achievements for The Fight Caves.", "Karamja", TaskDifficulty.MASTER, TaskType.ACTIVITY, "", 1, "Fight Caves");
+        defeatNpc("Defeat 6,6,6 Unbound Jal-tok Jad", "Defeat 18 Unbound JalTok-Jad's in the infinite Jad challenge.", "Karamja", TaskDifficulty.MASTER, "", "Unbound JalTok-Jad");
+        equipItem("Equip a Pirate Hook", "Equip a Pirate Hook from Brimhaven Agility Arena.", "Karamja", TaskDifficulty.MASTER, "", "Pirate's hook");
+        addTask("Complete the Inferno 15 Times", "Complete the Inferno in Mor Ul Rek 15 times.", "Karamja", TaskDifficulty.MASTER, TaskType.ACTIVITY, "", 1, "Inferno", "Mor Ul Rek");
+
         // Build reverse lookup maps
         buildLookupMaps();
     }
