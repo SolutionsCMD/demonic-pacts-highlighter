@@ -150,6 +150,21 @@ public class DemonicPactsTooltipOverlay extends Overlay
             return null;
         }
 
+        // Widget-action fast path (spells, prayers, anywhere a "Cast / Activate
+        // / Toggle" option appears on a widget). The regular item / NPC /
+        // object visibility gates were designed for world entities and don't
+        // apply here, so we look up and return directly when the option text
+        // matches a known widget-action verb. Gated by the spellbook toggle so
+        // the user can turn this off.
+        if (isWidgetActionEntry(entry) && config.highlightSpellbook())
+        {
+            List<DemonicPactsTask> tasks = TaskDatabase.findItemTasks(cleanTarget);
+            if (!tasks.isEmpty())
+            {
+                return buildTooltipText(tasks, cleanTarget);
+            }
+        }
+
         // Try item ID first (for inventory/bank items)
         if (type == MenuAction.CC_OP || type == MenuAction.CC_OP_LOW_PRIORITY)
         {
@@ -368,6 +383,28 @@ public class DemonicPactsTooltipOverlay extends Overlay
             || type == MenuAction.PLAYER_SIXTH_OPTION
             || type == MenuAction.PLAYER_SEVENTH_OPTION
             || type == MenuAction.PLAYER_EIGHTH_OPTION;
+    }
+
+    /**
+     * Recognise spell / prayer widget-interaction menu entries. The option is
+     * the verb shown to the player ("Cast" / "Activate" / etc.) and the type
+     * is a generic component-click action. We treat any of these as
+     * candidates for the widget-action tooltip path.
+     */
+    private boolean isWidgetActionEntry(MenuEntry entry)
+    {
+        MenuAction type = entry.getType();
+        if (type != MenuAction.CC_OP && type != MenuAction.CC_OP_LOW_PRIORITY)
+        {
+            return false;
+        }
+        String optionLower = entry.getOption() == null ? ""
+            : entry.getOption().replaceAll("<[^>]*>", "").trim().toLowerCase();
+        return "cast".equals(optionLower)
+            || "activate".equals(optionLower)
+            || "reactivate".equals(optionLower)
+            || "deactivate".equals(optionLower)
+            || "toggle".equals(optionLower);
     }
 
     private String buildTooltipText(List<DemonicPactsTask> tasks, String entityName)
