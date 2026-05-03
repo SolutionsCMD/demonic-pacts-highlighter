@@ -42,6 +42,11 @@ public class LeagueTaskCompletionTracker
     private final Set<String> completedTaskNamesLower = new HashSet<>();
     private final Set<String> newlySyncedSinceLastDrain = new HashSet<>();
 
+    // Cheap fingerprint of the panel state from last sync. We skip the
+    // (expensive) widget tree walk on ticks where the fingerprint hasn't
+    // changed, which is the vast majority of ticks while the panel is open.
+    private int lastPanelFingerprint = 0;
+
     @Inject
     private Client client;
 
@@ -55,15 +60,20 @@ public class LeagueTaskCompletionTracker
         {
             return;
         }
-        // Give the client a tick to populate the dynamic children
+        // Force a sync on the next client thread tick — initial open of the
+        // panel is always interesting, regardless of fingerprint state.
+        lastPanelFingerprint = 0;
         clientThread.invokeLater(this::syncFromTaskLog);
     }
 
     /**
-     * Re-sync on every game tick while the task log is open. The widget's
-     * dynamic children change when the player switches area tabs, scrolls, or
-     * changes filters — each of those surfaces different tasks, and we want
-     * to capture completion state from every view the player passes through.
+     * Re-sync only when the panel has actually changed since the last walk.
+     * The widget's dynamic children change when the player switches area
+     * tabs, scrolls, or changes filters; we use the count of dynamic
+     * children (combined with the root child count) as a cheap fingerprint
+     * so we skip the expensive depth-first walk on ticks where nothing has
+     * changed. Earlier this method ran the full walk every game tick while
+     * the panel was open and that was the dominant cost.
      */
     @Subscribe
     public void onGameTick(net.runelite.api.events.GameTick event)
@@ -73,7 +83,31 @@ public class LeagueTaskCompletionTracker
         {
             return;
         }
+        int fingerprint = computePanelFingerprint(root);
+        if (fingerprint == lastPanelFingerprint)
+        {
+            return;
+        }
         syncFromTaskLog();
+    }
+
+    /**
+     * Cheap, top-level-only fingerprint of the task panel state. Counts
+     * static + dynamic child arrays at the root rather than walking the
+     * full subtree, so it's O(1) per tick. When the player scrolls,
+     * switches tabs, or filters, dynamic-children counts shift and we
+     * trigger a re-sync.
+     */
+    private static int computePanelFingerprint(Widget root)
+    {
+        int h = 17;
+        Widget[] s = root.getStaticChildren();
+        Widget[] d = root.getDynamicChildren();
+        Widget[] n = root.getNestedChildren();
+        h = h * 31 + (s == null ? 0 : s.length);
+        h = h * 31 + (d == null ? 0 : d.length);
+        h = h * 31 + (n == null ? 0 : n.length);
+        return h;
     }
 
     /**
@@ -126,6 +160,10 @@ public class LeagueTaskCompletionTracker
         {
             log.debug("Task log sync: +{} newly completed (total {})", added, completedTaskNames.size());
         }
+
+        // Remember the fingerprint of the panel we just walked so we can skip
+        // identical state on subsequent ticks.
+        lastPanelFingerprint = computePanelFingerprint(root);
     }
 
     private static void pushChildren(Deque<Widget> stack, Widget[] children)
@@ -260,6 +298,7 @@ public class LeagueTaskCompletionTracker
         completedTaskNames.clear();
         completedTaskNamesLower.clear();
         newlySyncedSinceLastDrain.clear();
+        lastPanelFingerprint = 0;
     }
 
     public int getCompletedCount()

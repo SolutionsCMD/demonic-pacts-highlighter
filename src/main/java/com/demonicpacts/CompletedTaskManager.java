@@ -88,6 +88,35 @@ public class CompletedTaskManager
         }
     }
 
+    /**
+     * Batch-add many task completions and only persist once. The widget
+     * sync flow can newly discover dozens of completions in a single tick
+     * (e.g. the first time the player opens the league task panel after
+     * installing the plugin); calling save() per task there serialises
+     * and writes the whole config blob N times in a row, which causes
+     * a visible client stall.
+     */
+    public void markCompletedBatch(Set<String> taskNames)
+    {
+        if (taskNames == null || taskNames.isEmpty())
+        {
+            return;
+        }
+        boolean changed = false;
+        for (String name : taskNames)
+        {
+            if (name != null && completedTasks.add(name))
+            {
+                changed = true;
+            }
+        }
+        if (changed)
+        {
+            save();
+            log.debug("Batch-marked {} tasks completed (total {})", taskNames.size(), completedTasks.size());
+        }
+    }
+
     public void markIncomplete(String taskName)
     {
         if (completedTasks.remove(taskName))

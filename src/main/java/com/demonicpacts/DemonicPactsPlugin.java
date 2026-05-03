@@ -213,29 +213,24 @@ public class DemonicPactsPlugin extends Plugin
             return;
         }
 
-        // Sync any completions found by the widget tracker into our persistence layer.
-        // Uses the tracker's fuzzy matcher so minor wording drift (trailing periods,
-        // case, or name-vs-status-column quirks) still registers.
-        for (DemonicPactsTask task : TaskDatabase.getAllTasks())
-        {
-            if (!completedTaskManager.isCompleted(task) && taskTracker.isComplete(task.getName()))
-            {
-                completedTaskManager.markCompleted(task.getName());
-            }
-        }
-
-        // Report how many tasks the widget sync discovered since the last tick.
-        // The tracker's drain clears its buffer atomically so we won't double-report.
+        // Drain any tasks the widget tracker discovered since the last tick.
+        // The tracker stores canonical TaskDatabase names already, so we can
+        // mark them all completed in a single batch (one config-write) instead
+        // of iterating ALL_TASKS and saving per task — that O(N) loop was
+        // visible as client lag while the league task panel was open.
         Set<String> newlySynced = taskTracker.drainNewlySynced();
-        if (!newlySynced.isEmpty())
+        if (newlySynced.isEmpty())
         {
-            int count = newlySynced.size();
-            String msg = new ChatMessageBuilder()
-                .append(Color.MAGENTA, "[Demonic Pacts] ")
-                .append(Color.WHITE, "Synced " + count + " completed task" + (count == 1 ? "" : "s") + " from your task log.")
-                .build();
-            client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", msg, null);
+            return;
         }
+        completedTaskManager.markCompletedBatch(newlySynced);
+
+        int count = newlySynced.size();
+        String msg = new ChatMessageBuilder()
+            .append(Color.MAGENTA, "[Demonic Pacts] ")
+            .append(Color.WHITE, "Synced " + count + " completed task" + (count == 1 ? "" : "s") + " from your task log.")
+            .build();
+        client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", msg, null);
     }
 
     /**
