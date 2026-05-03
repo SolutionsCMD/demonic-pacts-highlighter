@@ -91,6 +91,9 @@ public class DemonicPactsPlugin extends Plugin
     // Tracks whether we've shown the autocomplete hint this session
     private boolean shownLoginHint = false;
 
+    // Tracks whether we've shown the loaded-task-count banner this session
+    private boolean shownVersionBanner = false;
+
     @Override
     protected void startUp() throws Exception
     {
@@ -142,6 +145,7 @@ public class DemonicPactsPlugin extends Plugin
         {
             completedTaskManager.loadForCurrentProfile();
             hiddenTaskManager.loadForCurrentProfile();
+            clientThread.invokeLater(this::showVersionBannerIfNeeded);
             clientThread.invokeLater(this::showLoginHintIfNeeded);
         }
         else if (event.getGameState() == GameState.LOGIN_SCREEN)
@@ -150,7 +154,29 @@ public class DemonicPactsPlugin extends Plugin
             completedTaskManager.onLogout();
             hiddenTaskManager.onLogout();
             shownLoginHint = false;
+            shownVersionBanner = false;
         }
+    }
+
+    /**
+     * Shows a chat message once per login confirming which build is running.
+     * The task count changes whenever the database is updated, so it works
+     * as a quick "did my new build actually load?" signal in dev sessions.
+     */
+    private void showVersionBannerIfNeeded()
+    {
+        if (shownVersionBanner || client.getGameState() != GameState.LOGGED_IN)
+        {
+            return;
+        }
+        shownVersionBanner = true;
+
+        String message = new ChatMessageBuilder()
+            .append(Color.MAGENTA, "[Demonic Pacts] ")
+            .append(Color.WHITE, "Loaded " + TaskDatabase.getAllTasks().size() + " tasks.")
+            .build();
+
+        client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", message, null);
     }
 
     /**
