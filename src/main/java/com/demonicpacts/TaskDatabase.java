@@ -1639,6 +1639,190 @@ public class TaskDatabase
         equipItem("Equip a Pirate Hook", "Equip a Pirate Hook from Brimhaven Agility Arena.", "Karamja", TaskDifficulty.MASTER, "", "Pirate's hook");
         addTask("Complete the Inferno 15 Times", "Complete the Inferno in Mor Ul Rek 15 times.", "Karamja", TaskDifficulty.MASTER, TaskType.ACTIVITY, "", 1, "Inferno", "Mor Ul Rek");
 
+        // --- Audit additions: Tirannwn (easy) (6) ---
+        defeatNpc("Defeat a Moss Giant in Tirannwn", "Defeat a Moss Giant in Tirannwn.", "Tirannwn", TaskDifficulty.EASY, "", "Moss Giant");
+        addTask("Talk to Ilfeen in Tirannwn", "Talk to Ilfeen in Tirannwn.", "Tirannwn", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Ilfeen");
+        addTask("Use the Bank in Lletya", "Use the Bank in Lletya.", "Tirannwn", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Bank booth");
+        addTask("Charter a Ship From Prifddinas to Port Tyras", "Take a Charter Ship from Prifddinas to Port Tyras.", "Tirannwn", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Charter Ship", "Port Tyras");
+        cookItem("Cook a Rabbit in Tirannwn", "Cook a Rabbit anywhere within Tirannwn.", "Tirannwn", TaskDifficulty.EASY, "", 1, "Rabbit");
+        addTask("Cross a Trap in Isafdar", "Successfully cross any kind of trap in Isafdar.", "Tirannwn", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Isafdar");
+
+        // --- Audit additions: Tirannwn (medium) (13) ---
+        defeatNpc("Defeat a Bloodveld in Tirannwn", "Defeat a Bloodveld in Tirannwn.", "Tirannwn", TaskDifficulty.MEDIUM, "", "Bloodveld");
+        defeatNpc("Defeat a Kurask in Tirannwn", "Defeat a Kurask in Tirannwn.", "Tirannwn", TaskDifficulty.MEDIUM, "", "Kurask");
+        defeatNpc("Defeat an Elf in Tirannwn", "Defeat an Elf in Tirannwn.", "Tirannwn", TaskDifficulty.MEDIUM, "", "Elf");
+        addTask("Pick up 10 Whiteberries in Tirannwn", "Pick up 10 Whiteberries in Tirannwn.", "Tirannwn", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "White berries");
+        addTask("Ring all of the Prifddinas bells", "Ring all of the Prifddinas bells.", "Tirannwn", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Bell (Prifddinas)");
+        addTask("Use an Elven Teleport Crystal", "Use a teleport crystal or eternal teleport crystal.", "Tirannwn", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "teleport crystal", "eternal teleport crystal");
+        mineItem("Mine 25 gold rocks in Tirannwn", "Mine 25 gold rocks in Tirannwn.", "Tirannwn", TaskDifficulty.MEDIUM, "", 25, "gold rocks");
+        addTask("Move Your House to Prifddinas", "Move your Player Owned House to Prifddinas.", "Tirannwn", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Player Owned House");
+        addTask("Successfully hop over the Tripwire in Tirannwn", "Successfully hop over the Tripwire in Tirannwn.", "Tirannwn", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Tripwire");
+        addTask("Thieve a tiara from a Silver Stall in Tirannwn", "Thieve a tiara from a Silver Stall in Tirannwn.", "Tirannwn", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "tiara", "Silver Stall");
+        catchItem("Catch a Crystal Impling", "Catch a Crystal Impling in Prifddinas.", "Tirannwn", TaskDifficulty.MEDIUM, "", 1, "Crystal Impling");
+        addTask("Check a grown Papaya Tree in Lletya", "Check the health of a Papaya Tree you've grown in Lletya.", "Tirannwn", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Papaya Tree");
+        chopItem("Chop 100 Maples in Tirannwn", "Chop 100 Maples in Tirannwn.", "Tirannwn", TaskDifficulty.MEDIUM, "", 100, "Maple tree");
+
+        // --- Audit additions: Tirannwn (hard) (24) ---
+        addTask("Zalcano Combat Achievements", "Complete all of the Combat Achievements for Zalcano.", "Tirannwn", TaskDifficulty.HARD, TaskType.ACTIVITY, "", 1, "Zalcano");
+        addTask("Load a blowpipe with Rune Darts", "Load a Toxic Blowpipe with Rune Darts.", "Tirannwn", TaskDifficulty.HARD, TaskType.ACTIVITY, "", 1, "Toxic Blowpipe", "Rune Darts");
+        defeatNpc("Defeat 50 Elves in Tirannwn", "Defeat 50 Elves in Tirannwn.", "Tirannwn", TaskDifficulty.HARD, "", "Elf");
+        defeatNpc("Defeat the memory of Seren", "Defeat the Fragment of Seren by replaying her fight using the Memoriam Device.", "Tirannwn", TaskDifficulty.HARD, "", "Fragment of Seren", "Memoriam Device");
+        defeatNpc("Defeat a Dark Beast in Tirannwn", "Defeat a Dark Beast in Tirannwn.", "Tirannwn", TaskDifficulty.HARD, "", "Dark Beast");
+        defeatNpc("Defeat a Nechryael in Tirannwn", "Defeat a Nechryael in Tirannwn.", "Tirannwn", TaskDifficulty.HARD, "", "Nechryael");
+        defeatNpc("Defeat Zalcano 50 Times", "Defeat Zalcano in Prifddinas 50 times.", "Tirannwn", TaskDifficulty.HARD, "", "Zalcano");
+        defeatNpc("Defeat Zulrah", "Defeat Zulrah at the Poison Waste.", "Tirannwn", TaskDifficulty.HARD, "", "Zulrah");
+        defeatNpc("Defeat Zulrah 50 Times", "Defeat Zulrah at the Poison Waste 50 times.", "Tirannwn", TaskDifficulty.HARD, "", "Zulrah");
+        equipItem("Equip a Crystal Bow", "Equip a Crystal Bow.", "Tirannwn", TaskDifficulty.HARD, "", "Crystal Bow");
+        equipItem("Equip a Crystal Shield", "Equip a Crystal Shield.", "Tirannwn", TaskDifficulty.HARD, "", "Crystal Shield");
+        equipItem("Equip any piece of Crystal Armour", "Equip either the Crystal Helmet, Body or Legs.", "Tirannwn", TaskDifficulty.HARD, "", "Crystal Helmet", "Crystal body", "Crystal legs");
+        equipItem("Equip a one-hand Leaf-bladed weapon in Tirannwn", "Equip a leaf-bladed sword, leaf-bladed battleaxe, or leaf-bladed spear in Tirannwn.", "Tirannwn", TaskDifficulty.HARD, "", "leaf-bladed sword", "leaf-bladed battleaxe", "leaf-bladed spear");
+        addTask("Open the Enhanced Crystal Chest", "Open the Enhanced Crystal Chest in Prifddinas.", "Tirannwn", TaskDifficulty.HARD, TaskType.ACTIVITY, "", 1, "Enhanced Crystal Chest");
+        addTask("Find Every Memoriam Crystal", "Find every Memoriam Crystal in Prifddinas and add them to the Memoriam Device.", "Tirannwn", TaskDifficulty.HARD, TaskType.ACTIVITY, "", 1, "Memoriam Crystal", "Memoriam Device");
+        addTask("Receive a Crystal Acorn from Pennant", "Trade in a crystal weapon seed, crystal armour seed, or crystal tool seed to Pennant for a crystal acorn.", "Tirannwn", TaskDifficulty.HARD, TaskType.ACTIVITY, "", 1, "crystal weapon seed", "crystal armour seed", "crystal tool seed", "Pennant", "crystal acorn");
+        mineItem("Mine 200 Soft Clay in Tirannwn", "Mine 200 Soft Clay in Tirannwn.", "Tirannwn", TaskDifficulty.HARD, "", 200, "Soft Clay");
+        addTask("Pickpocket an Elf 50 Times", "Pickpocket an Elf 50 times.", "Tirannwn", TaskDifficulty.HARD, TaskType.ACTIVITY, "", 1, "Elf");
+        addTask("Receive a Dragonstone Amulet from an Impling", "Receive a Dragonstone Amulet from a Crystal Impling.", "Tirannwn", TaskDifficulty.HARD, TaskType.ACTIVITY, "", 1, "Dragonstone Amulet", "Crystal Impling");
+        addTask("Create 25 Divine Super Strength Potions", "Create 25 Divine Super Strength Potions.", "Tirannwn", TaskDifficulty.HARD, TaskType.ACTIVITY, "", 25, "Divine super strength potion");
+        addTask("Dissect 50 Sacred Eels", "Dissect 50 Sacred Eels.", "Tirannwn", TaskDifficulty.HARD, TaskType.ACTIVITY, "", 1, "Sacred Eel");
+        addTask("Harvest Some Snape Grass in Prifddinas", "Harvest some Snape grass from the Prifddinas allotment patch.", "Tirannwn", TaskDifficulty.HARD, TaskType.ACTIVITY, "", 1, "Snape grass");
+        craftItem("Make 100 Mahogany Planks in Prifddinas", "Make 100 mahogany planks in Prifddinas.", "Tirannwn", TaskDifficulty.HARD, "", "mahogany plank");
+        addTask("Thieve a Diamond from a Gem Stall in Tirannwn", "Thieve a Diamond from a Gem Stall in Tirannwn.", "Tirannwn", TaskDifficulty.HARD, TaskType.ACTIVITY, "", 1, "Diamond", "Gem Stall");
+
+        // --- Audit additions: Tirannwn (elite) (26) ---
+        addTask("Zulrah Combat Achievements", "Complete all of the Combat Achievements for Zulrah.", "Tirannwn", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Zulrah");
+        addTask("Gauntlet Combat Achievements", "Complete all of the Combat Achievements for the Gauntlet & Corrupted Gauntlet.", "Tirannwn", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Gauntlet", "Corrupted Gauntlet");
+        addTask("Load a blowpipe with Dragon Darts", "Load a Toxic Blowpipe with Dragon Darts.", "Tirannwn", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Toxic Blowpipe", "Dragon Dart");
+        addTask("Obtain a Crystal Tool Seed", "Obtain a crystal tool seed as a drop from Zalcano.", "Tirannwn", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "crystal tool seed", "Zalcano");
+        craftItem("Craft a Toxic Trident", "Craft a Toxic Trident.", "Tirannwn", TaskDifficulty.ELITE, "", "Toxic Trident");
+        addTask("Dismantle a Zulrah scale unique", "Dismantle a Zulrah scale unique for 20,000 scales.", "Tirannwn", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Zulrah scale");
+        addTask("Complete the Corrupted Gauntlet in 4:30", "Complete the Corrupted Gauntlet in less than 4:30.", "Tirannwn", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Corrupted Gauntlet", "Corrupted Hunllef (Echo)");
+        defeatNpc("Defeat Zalcano 100 Times", "Defeat Zalcano in Prifddinas 100 times.", "Tirannwn", TaskDifficulty.ELITE, "", "Zalcano");
+        defeatNpc("Defeat Zulrah 150 Times", "Defeat Zulrah at the Poison Waste 150 times.", "Tirannwn", TaskDifficulty.ELITE, "", "Zulrah");
+        defeatNpc("Defeat Zulrah 300 Times", "Defeat Zulrah at the Poison Waste 300 times.", "Tirannwn", TaskDifficulty.ELITE, "", "Zulrah");
+        equipItem("Equip a Crystal Grail", "Equip a Crystal Grail.", "Tirannwn", TaskDifficulty.ELITE, "", "Crystal Grail");
+        equipItem("Equip a Full Crystal Armour Set", "Equip a full set of Crystal armour.", "Tirannwn", TaskDifficulty.ELITE, "", "Crystal armour");
+        equipItem("Equip a Piece of the Dragonstone Armour Set", "Equip any piece of the Dragonstone armour set.", "Tirannwn", TaskDifficulty.ELITE, "", "Dragonstone armour set");
+        equipItem("Equip a Serpentine Helm", "Equip a Serpentine Helm.", "Tirannwn", TaskDifficulty.ELITE, "", "Serpentine Helm");
+        equipItem("Equip an Enhanced Crystal Weapon", "Equip a Blade of Saeldor or Bow of faerdhinen.", "Tirannwn", TaskDifficulty.ELITE, "", "Blade of Saeldor", "Bow of faerdhinen");
+        equipItem("Equip an Elven Signet", "Equip an Elven Signet.", "Tirannwn", TaskDifficulty.ELITE, "", "Elven Signet");
+        addTask("Complete the Corrupted Gauntlet 50 Times", "Complete the Corrupted Gauntlet in Prifddinas 50 times.", "Tirannwn", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Corrupted Gauntlet");
+        addTask("Complete the Corrupted Gauntlet 100 Times", "Complete the Corrupted Gauntlet in Prifddinas 100 times.", "Tirannwn", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Corrupted Gauntlet");
+        addTask("Obtain a Zalcano Shard", "Obtain a Zalcano shard as a drop from Zalcano in Prifddinas.", "Tirannwn", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Zalcano shard", "Zalcano");
+        catchItem("Catch 300 Red Chinchompas in Tirannwn", "Catch 300 Red Chinchompas in Tirannwn.", "Tirannwn", TaskDifficulty.ELITE, "", 300, "Red chinchompa");
+        addTask("Check the health of 5 Crystal Trees", "Check the health of 5 Crystal Trees.", "Tirannwn", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Crystal Tree");
+        addTask("Create 100 Divine Ranging Potions", "Create 100 Divine Ranging Potions.", "Tirannwn", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 100, "Divine Ranging Potion");
+        addTask("Create 100 Divine Super Combat Potions", "Create 100 Divine Super Combat Potions.", "Tirannwn", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 100, "Divine Super Combat Potion");
+        addTask("Dissect 250 Sacred Eels", "Dissect 250 Sacred Eels.", "Tirannwn", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Sacred Eel");
+        mineItem("Mine 100 Runite Ore in Tirannwn", "Mine 100 runite ore in Tirannwn.", "Tirannwn", TaskDifficulty.ELITE, "", 100, "runite ore");
+        addTask("Create 50 Anti-venom+ Potions", "Make 50 anti-venom+ potions.", "Tirannwn", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 50, "anti-venom+");
+
+        // --- Audit additions: Tirannwn (master) (1) ---
+        equipItem("Equip a Crystal Crown", "Equip a Crystal Crown.", "Tirannwn", TaskDifficulty.MASTER, "", "Crystal Crown");
+
+        // --- Audit additions: Wilderness (easy) (11) ---
+        defeatNpc("Defeat a Fire Giant in the Wilderness", "Defeat a Fire Giant in the Wilderness.", "Wilderness", TaskDifficulty.EASY, "", "Fire Giant");
+        defeatNpc("Defeat a Mammoth", "Defeat a mammoth in the Wilderness.", "Wilderness", TaskDifficulty.EASY, "", "mammoth");
+        defeatNpc("Defeat a Zombie Pirate", "Defeat a zombie pirate.", "Wilderness", TaskDifficulty.EASY, "", "zombie pirate");
+        equipItem("Equip any Team cape", "Equip any team cape in the Wilderness.", "Wilderness", TaskDifficulty.EASY, "", "team cape");
+        addTask("Open a Looting Bag", "Open a Looting Bag.", "Wilderness", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Looting Bag");
+        addTask("Use the Bank at the Mage Arena", "Use the Bank at the Mage Arena.", "Wilderness", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Mage Arena bank");
+        addTask("Visit Ferox Enclave", "Visit Ferox Enclave.", "Wilderness", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Ferox Enclave");
+        addTask("Enter the Wilderness God Wars Dungeon", "Enter the Wilderness God Wars Dungeon.", "Wilderness", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Wilderness God Wars Dungeon");
+        addTask("Enter the Wilderness Resource Area", "Enter the Wilderness Resource Area.", "Wilderness", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Wilderness Resource Area");
+        addTask("Order a Drink at The Old Nite", "Order a drink at The Old Nite.", "Wilderness", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "The Old Nite");
+        addTask("Sacrifice Some Bones at the Chaos Temple", "Sacrifice some Bones at the Western Chaos Temple altar.", "Wilderness", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Chaos Temple (hut)");
+
+        // --- Audit additions: Wilderness (medium) (24) ---
+        addTask("Complete the Easy Wilderness Diary", "Complete all of the Easy tasks in the Wilderness Achievement Diary.", "Wilderness", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Wilderness Achievement Diary");
+        addTask("Complete the Medium Wilderness Diary", "Complete all of the Medium tasks in the Wilderness Achievement Diary.", "Wilderness", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Wilderness Achievement Diary");
+        addTask("Obtain an Ecumenical Key", "Obtain an Ecumenical Key as a drop in the Wilderness God Wars Dungeon.", "Wilderness", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Ecumenical Key");
+        addTask("Open 1 Muddy Chest", "Open 1 Muddy Chest.", "Wilderness", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Muddy Chest");
+        addTask("Open 1 Zombie Pirate Locker", "Open 1 Zombie Pirate Locker.", "Wilderness", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Zombie Pirate's Locker");
+        addTask("Open 15 Larran's Chests", "Open 15 of either Larran's Small Chest or Larran's Big Chest.", "Wilderness", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Larran's Small Chest", "Larran's Big Chest");
+        addTask("Open One of Larran's Chests", "Open either Larran's Small Chest or Larran's Big Chest.", "Wilderness", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Larran's Small Chest", "Larran's Big Chest");
+        addTask("Cast Claws of Guthix", "Cast the Claws of Guthix spell outside of the Mage Arena.", "Wilderness", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Claws of Guthix");
+        addTask("Cast Flames of Zamorak", "Cast the Flames of Zamorak spell outside of the Mage Arena.", "Wilderness", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Flames of Zamorak");
+        addTask("Cast Saradomin Strike", "Cast the Saradomin Strike spell outside of the Mage Arena.", "Wilderness", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Saradomin Strike");
+        defeatNpc("Defeat a Green Dragon in the Wilderness", "Defeat a Green Dragon in the Wilderness.", "Wilderness", TaskDifficulty.MEDIUM, "", "Green dragon");
+        defeatNpc("Defeat a Lava Dragon in the Wilderness", "Defeat a Lava Dragon in the Wilderness.", "Wilderness", TaskDifficulty.MEDIUM, "", "Lava Dragon");
+        defeatNpc("Defeat the Chaos Fanatic", "Defeat the Chaos Fanatic in the Wilderness.", "Wilderness", TaskDifficulty.MEDIUM, "", "Chaos Fanatic");
+        defeatNpc("Defeat the Crazy Archaeologist", "Defeat the Crazy Archaeologist in the Wilderness.", "Wilderness", TaskDifficulty.MEDIUM, "", "Crazy Archaeologist");
+        defeatNpc("Defeat a Revenant Dragon", "Defeat a Revenant dragon inside the Revenant Caves.", "Wilderness", TaskDifficulty.MEDIUM, "", "Revenant dragon");
+        equipItem("Equip a Bracelet of Ethereum", "Equip a Bracelet of Ethereum.", "Wilderness", TaskDifficulty.MEDIUM, "", "Bracelet of Ethereum");
+        equipItem("Equip a Fedora", "Equip a Fedora.", "Wilderness", TaskDifficulty.MEDIUM, "", "Fedora");
+        equipItem("Equip a God Cape", "Equip either a Saradomin Cape, a Guthix Cape or a Zamorak Cape.", "Wilderness", TaskDifficulty.MEDIUM, "", "Saradomin Cape", "Guthix Cape", "Zamorak Cape");
+        addTask("Destroy the one ring to rule them all", "Destroy the one ring to rule them all.", "Wilderness", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1);
+        addTask("Enter the Deep Wilderness Dungeon", "Enter the Deep Wilderness Dungeon.", "Wilderness", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Deep Wilderness Dungeon");
+        addTask("Use the Abyss", "Use the Abyss to access a Runecrafting Altar.", "Wilderness", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Abyss", "Runic altar");
+        addTask("Bury Some Lava Dragon Bones", "Bury some Lava dragon bones.", "Wilderness", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Lava dragon bones");
+        catchItem("Catch a Black Salamander", "Catch a Black Salamander in the Wilderness.", "Wilderness", TaskDifficulty.MEDIUM, "", 1, "Black salamander");
+        addTask("Complete the Wilderness Agility Course", "Complete a lap of the Wilderness Agility Course.", "Wilderness", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Wilderness Agility Course");
+
+        // --- Audit additions: Wilderness (hard) (34) ---
+        addTask("Complete the Hard Wilderness Diary", "Complete all of the Hard tasks in the Wilderness Achievement Diary.", "Wilderness", TaskDifficulty.HARD, TaskType.ACTIVITY, "", 1, "Wilderness Achievement Diary");
+        addTask("Open 10 Muddy Chests", "Open 10 Muddy Chests.", "Wilderness", TaskDifficulty.HARD, TaskType.ACTIVITY, "", 1, "Muddy Chest");
+        addTask("Open 15 Zombie Pirate Lockers", "Open 15 Zombie Pirate Lockers.", "Wilderness", TaskDifficulty.HARD, TaskType.ACTIVITY, "", 1, "Zombie Pirate's Locker");
+        addTask("Open 50 Larran's Chests", "Open 50 of either Larran's Small Chest or Larran's Big Chest.", "Wilderness", TaskDifficulty.HARD, TaskType.ACTIVITY, "", 1, "Larran's Small Chest", "Larran's Big Chest");
+        addTask("Open 50 Zombie Pirate Lockers", "Open 50 Zombie Pirate Lockers.", "Wilderness", TaskDifficulty.HARD, TaskType.ACTIVITY, "", 1, "Zombie Pirate's Locker");
+        addTask("Use a teleport anchoring scroll", "Use a teleport anchoring scroll.", "Wilderness", TaskDifficulty.HARD, TaskType.ACTIVITY, "", 1, "teleport anchoring scroll");
+        addTask("Fully charge a Bracelet of Ethereum", "Fully charge a Bracelet of ethereum.", "Wilderness", TaskDifficulty.HARD, TaskType.ACTIVITY, "", 1, "Bracelet of ethereum");
+        defeatNpc("Defeat Callisto 300 times", "Defeat Callisto or Artio 300 times.", "Wilderness", TaskDifficulty.HARD, "", "Callisto", "Artio");
+        defeatNpc("Defeat Venenatis 300 times", "Defeat Venenatis or Spindel 300 times.", "Wilderness", TaskDifficulty.HARD, "", "Venenatis", "Spindel");
+        defeatNpc("Defeat Vet'ion 300 times", "Defeat Vet'ion or Calvar'ion 300 times.", "Wilderness", TaskDifficulty.HARD, "", "Vet'ion", "Calvar'ion");
+        defeatNpc("Defeat Callisto", "Defeat Callisto in the Wilderness.", "Wilderness", TaskDifficulty.HARD, "", "Callisto");
+        defeatNpc("Defeat Callisto 150 times", "Defeat Callisto or Artio 150 times.", "Wilderness", TaskDifficulty.HARD, "", "Callisto", "Artio");
+        defeatNpc("Defeat Callisto 50 times", "Defeat Callisto or Artio 50 times.", "Wilderness", TaskDifficulty.HARD, "", "Callisto", "Artio");
+        defeatNpc("Defeat Scorpia", "Defeat Scorpia in the Wilderness.", "Wilderness", TaskDifficulty.HARD, "", "Scorpia");
+        defeatNpc("Defeat the Chaos Elemental", "Defeat the Chaos Elemental in the Wilderness.", "Wilderness", TaskDifficulty.HARD, "", "Chaos Elemental");
+        defeatNpc("Defeat the Corporeal Beast 50 Times", "Defeat the Corporeal Beast in the Wilderness 50 times.", "Wilderness", TaskDifficulty.HARD, "", "Corporeal Beast");
+        defeatNpc("Defeat the King Black Dragon", "Defeat the King Black Dragon in the Wilderness.", "Wilderness", TaskDifficulty.HARD, "", "King Black Dragon");
+        defeatNpc("Defeat Venenatis", "Defeat Venenatis in the Wilderness.", "Wilderness", TaskDifficulty.HARD, "", "Venenatis");
+        defeatNpc("Defeat Venenatis 150 times", "Defeat Venenatis or Spindel 150 times.", "Wilderness", TaskDifficulty.HARD, "", "Venenatis", "Spindel");
+        defeatNpc("Defeat Venenatis 50 times", "Defeat Venenatis or Spindel 50 times.", "Wilderness", TaskDifficulty.HARD, "", "Venenatis", "Spindel");
+        defeatNpc("Defeat Vet'ion", "Defeat Vet'ion in the Wilderness.", "Wilderness", TaskDifficulty.HARD, "", "Vet'ion");
+        defeatNpc("Defeat Vet'ion 150 times", "Defeat Vet'ion or Calvar'ion 150 times.", "Wilderness", TaskDifficulty.HARD, "", "Vet'ion", "Calvar'ion");
+        defeatNpc("Defeat Vet'ion 50 times", "Defeat Vet'ion or Calvar'ion 50 times.", "Wilderness", TaskDifficulty.HARD, "", "Vet'ion", "Calvar'ion");
+        defeatNpc("Defeat a Runite golem", "Defeat a runite golem inside the Wilderness Resource Area.", "Wilderness", TaskDifficulty.HARD, "", "runite golem");
+        equipItem("Equip an Odium Ward", "Equip an Odium ward.", "Wilderness", TaskDifficulty.HARD, "", "Odium ward");
+        equipItem("Equip 100 Black Chinchompas", "Equip a stack of at least 100 Black Chinchompas.", "Wilderness", TaskDifficulty.HARD, "", "Black chinchompa");
+        equipItem("Equip 250 Black Chinchompas", "Equip a stack of at least 250 Black Chinchompas.", "Wilderness", TaskDifficulty.HARD, "", "Black chinchompa");
+        equipItem("Equip an Enchanted Slayer Staff", "Equip an Enchanted Slayer Staff.", "Wilderness", TaskDifficulty.HARD, "", "Slayer's staff (e)");
+        equipItem("Equip a Pair of Dragon Boots in the Wilderness", "Equip a pair of dragon boots while inside the Wilderness.", "Wilderness", TaskDifficulty.HARD, "", "dragon boots");
+        addTask("Redeem 50 Wilderness Agility Tickets", "Redeem 50 Wilderness Agility Tickets in one go.", "Wilderness", TaskDifficulty.HARD, TaskType.ACTIVITY, "", 1, "Wilderness agility ticket");
+        addTask("Sacrifice Some Dragon Bones at the Chaos Temple", "Sacrifice some Dragon Bones at the Western Chaos Temple altar.", "Wilderness", TaskDifficulty.HARD, TaskType.ACTIVITY, "", 1, "Dragon Bones", "Chaos Temple (hut)");
+        catchItem("Catch 100 Dark Crabs", "Catch 100 dark crabs in the Wilderness.", "Wilderness", TaskDifficulty.HARD, "", 100, "dark crab");
+        addTask("Cross the Chaos Temple Stone Shortcut", "Cross the Chaos Temple Stone Shortcut.", "Wilderness", TaskDifficulty.HARD, TaskType.ACTIVITY, "", 1, "Stepping stone (Wilderness Chaos Temple)");
+        catchItem("Catch a Black Chinchompa", "Catch a Black Chinchompa in the Wilderness.", "Wilderness", TaskDifficulty.HARD, "", 1, "Black chinchompa");
+
+        // --- Audit additions: Wilderness (elite) (22) ---
+        addTask("Complete the Elite Wilderness Diary", "Complete all of the Elite tasks in the Wilderness Achievement Diary.", "Wilderness", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Wilderness Achievement Diary");
+        defeatNpc("Defeat the Corporeal Beast 150 Times", "Defeat the Corporeal Beast in the Wilderness 150 times.", "Wilderness", TaskDifficulty.ELITE, "", "Corporeal Beast");
+        defeatNpc("Defeat the Corporeal Beast 250 Times", "Defeat the Corporeal Beast in the Wilderness 250 times.", "Wilderness", TaskDifficulty.ELITE, "", "Corporeal Beast");
+        equipItem("Equip 500 Black Chinchompas", "Equip a stack of at least 500 Black Chinchompas.", "Wilderness", TaskDifficulty.ELITE, "", "Black chinchompa");
+        equipItem("Equip a Blessed Spirit Shield", "Equip a Blessed Spirit Shield.", "Wilderness", TaskDifficulty.ELITE, "", "Blessed Spirit Shield");
+        equipItem("Equip a Full Dagon'Hai Set", "Equip a full set of Dagon'hai robes.", "Wilderness", TaskDifficulty.ELITE, "", "Dagon'hai robes");
+        equipItem("Equip a Ring of the Gods", "Equip a Ring of the Gods.", "Wilderness", TaskDifficulty.ELITE, "", "Ring of the Gods");
+        equipItem("Equip a Thammaron's Sceptre", "Equip a Thammaron's Sceptre.", "Wilderness", TaskDifficulty.ELITE, "", "Thammaron's Sceptre");
+        equipItem("Equip a Treasonous Ring", "Equip a Treasonous Ring.", "Wilderness", TaskDifficulty.ELITE, "", "Treasonous Ring");
+        equipItem("Equip a Tyrannical Ring", "Equip a Tyrannical Ring.", "Wilderness", TaskDifficulty.ELITE, "", "Tyrannical Ring");
+        equipItem("Equip Craw's Bow", "Equip Craw's bow.", "Wilderness", TaskDifficulty.ELITE, "", "Craw's bow");
+        equipItem("Equip full Elder chaos robe", "Equip the Elder Chaos Hood, Robe, and top.", "Wilderness", TaskDifficulty.ELITE, "", "Elder Chaos Hood", "Elder chaos robe", "Elder chaos top");
+        equipItem("Equip the Accursed Sceptre", "Equip the Accursed Sceptre.", "Wilderness", TaskDifficulty.ELITE, "", "Accursed Sceptre");
+        equipItem("Equip the Ursine Chainmace", "Equip the Ursine Chainmace.", "Wilderness", TaskDifficulty.ELITE, "", "Ursine Chainmace");
+        equipItem("Equip the Webweaver", "Equip the Webweaver.", "Wilderness", TaskDifficulty.ELITE, "", "Webweaver");
+        equipItem("Equip Viggora's Chainmace", "Equip Viggora's Chainmace.", "Wilderness", TaskDifficulty.ELITE, "", "Viggora's Chainmace");
+        addTask("Loot a dragonstone from the Rogues Castle", "Loot a dragonstone from the chest in Rogue's Castle.", "Wilderness", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "dragonstone", "Rogue's Castle");
+        craftItem("Make an Extended Antifire Potion", "Make an Extended Antifire Potion.", "Wilderness", TaskDifficulty.ELITE, "", "Extended Antifire Potion");
+        mineItem("Mine Some Runite Ore in the Wilderness", "Mine some runite ore in the Wilderness.", "Wilderness", TaskDifficulty.ELITE, "", 1, "runite ore");
+        cookItem("Cook a Dark Crab", "Cook a Dark Crab.", "Wilderness", TaskDifficulty.ELITE, "", 1, "Dark Crab");
+        addTask("Cross a Pillar shortcut in the Revenant Caves", "Cross a pillar shortcut in the Revenant Caves.", "Wilderness", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Pillar (Revenant Caves)", "Revenant Caves");
+        mineItem("Mine some Runite ore with a Dragon Pickaxe", "Mine some runite ore with a dragon pickaxe within the Wilderness.", "Wilderness", TaskDifficulty.ELITE, "", 1, "runite ore", "dragon pickaxe");
+
+        // --- Audit additions: Wilderness (master) (3) ---
+        addTask("Obtain Every Revenant Weapon", "Obtain Craws Bow, Viggora's Chainmace and Thammaron's Sceptre as drops from Revenants.", "Wilderness", TaskDifficulty.MASTER, TaskType.ACTIVITY, "", 1, "Craws Bow", "Viggora's Chainmace", "Thammaron's Sceptre", "Revenants");
+        equipItem("Equip a Spectral or Arcane Spirit Shield", "Equip either a Spectral Spirit Shield or an Arcane Spirit Shield.", "Wilderness", TaskDifficulty.MASTER, "", "Spectral Spirit Shield", "Arcane Spirit Shield");
+        equipItem("Equip an Elysian Spirit Shield", "Equip an Elysian Spirit Shield.", "Wilderness", TaskDifficulty.MASTER, "", "Elysian Spirit Shield");
+
         // Build reverse lookup maps
         buildLookupMaps();
     }
