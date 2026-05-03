@@ -68,6 +68,9 @@ public class DemonicPactsPlugin extends Plugin
     private DemonicPactsSpellbookOverlay spellbookOverlay;
 
     @Inject
+    private DemonicPactsPrayerOverlay prayerOverlay;
+
+    @Inject
     private ItemManager itemManager;
 
     @Inject
@@ -111,6 +114,7 @@ public class DemonicPactsPlugin extends Plugin
         overlayManager.add(objectOverlay);
         overlayManager.add(xpTrimOverlay);
         overlayManager.add(spellbookOverlay);
+        overlayManager.add(prayerOverlay);
 
         // Register the widget-based tracker to receive WidgetLoaded events
         eventBus.register(taskTracker);
@@ -134,6 +138,7 @@ public class DemonicPactsPlugin extends Plugin
         overlayManager.remove(objectOverlay);
         overlayManager.remove(xpTrimOverlay);
         overlayManager.remove(spellbookOverlay);
+        overlayManager.remove(prayerOverlay);
         eventBus.unregister(taskTracker);
         taskTracker.clear();
         completedTaskManager.onLogout();
@@ -328,14 +333,23 @@ public class DemonicPactsPlugin extends Plugin
         // Inject on Examine entries for NPCs, world objects, and ground items.
         // For inventory/bank/equipment, the Examine action type is different
         // (CC_OP_LOW_PRIORITY with "Examine" as the option text) so we match
-        // by option text as well.
+        // by option text as well. Also inject on widget-action entries
+        // ("Cast", "Activate", etc.) so spells and prayers get the same
+        // hide-task option as the rest of the highlight surfaces.
+        String optionLower = Text.removeTags(entry.getOption()).toLowerCase();
         boolean isExamine = type == MenuAction.EXAMINE_NPC
             || type == MenuAction.EXAMINE_OBJECT
             || type == MenuAction.EXAMINE_ITEM_GROUND
             || type == MenuAction.EXAMINE_ITEM
             || (type == MenuAction.CC_OP_LOW_PRIORITY
-                && "Examine".equalsIgnoreCase(Text.removeTags(entry.getOption())));
-        if (!isExamine)
+                && "examine".equals(optionLower));
+        boolean isWidgetAction = (type == MenuAction.CC_OP || type == MenuAction.CC_OP_LOW_PRIORITY)
+            && ("cast".equals(optionLower)
+                || "activate".equals(optionLower)
+                || "reactivate".equals(optionLower)
+                || "deactivate".equals(optionLower)
+                || "toggle".equals(optionLower));
+        if (!isExamine && !isWidgetAction)
         {
             return;
         }

@@ -2295,6 +2295,38 @@ public class TaskDatabase
                 }
             }
         }
+
+        // For spell / prayer / generic widget tasks named "Cast X" / "Activate
+        // X" / "Use the X (prayer|spell)", derive the in-game widget name (X)
+        // and add the task under that name in ITEM_TASKS. Lets the existing
+        // tooltip + hide-task code handle hovers over spell and prayer widgets
+        // without having to teach those code paths about TaskType.SPELL /
+        // TaskType.PRAYER specifically.
+        String[] verbPrefixes = {"cast ", "activate ", "use the ", "reactivate "};
+        String[] suffixesToStrip = {" spell", " prayer"};
+        for (DemonicPactsTask task : ALL_TASKS)
+        {
+            String name = task.getName();
+            if (name == null) continue;
+            String lower = name.toLowerCase();
+            for (String prefix : verbPrefixes)
+            {
+                if (!lower.startsWith(prefix)) continue;
+                String rest = name.substring(prefix.length()).trim();
+                String restLower = rest.toLowerCase();
+                for (String suffix : suffixesToStrip)
+                {
+                    if (restLower.endsWith(suffix))
+                    {
+                        rest = rest.substring(0, rest.length() - suffix.length()).trim();
+                        restLower = rest.toLowerCase();
+                    }
+                }
+                if (rest.isEmpty()) break;
+                ITEM_TASKS.computeIfAbsent(restLower, k -> new ArrayList<>()).add(task);
+                break;
+            }
+        }
     }
 
     // =========================================================================
