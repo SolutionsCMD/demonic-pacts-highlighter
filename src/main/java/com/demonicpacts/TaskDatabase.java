@@ -793,9 +793,9 @@ public class TaskDatabase
         // =====================================================================
         // MEDIUM TASKS — Varlamore
         // =====================================================================
-        catchItem("Catch 25 Sunlight Antelopes", "Catch 25 Sunlight Antelopes.", "Varlamore", TaskDifficulty.HARD, "Hunter 72", 25, "Sunlight antelope", "Sunlight antelope fur");
-        catchItem("Catch 50 Moonlight Antelopes", "Catch 50 Moonlight Antelopes.", "Varlamore", TaskDifficulty.ELITE, "Hunter 91", 50, "Moonlight antelope", "Moonlight antelope fur");
-        catchItem("Catch a Pyre Fox", "Catch a Pyre Fox.", "Varlamore", TaskDifficulty.MEDIUM, "Hunter 36", "Pyre fox fur");
+        catchItem("Catch 25 Sunlight Antelopes", "Catch 25 Sunlight Antelopes.", "Varlamore", TaskDifficulty.HARD, "Hunter 72", 25, "Sunlight antelope");
+        catchItem("Catch 50 Moonlight Antelopes", "Catch 50 Moonlight Antelopes.", "Varlamore", TaskDifficulty.ELITE, "Hunter 91", 50, "Moonlight antelope");
+        catchItem("Catch a Pyre Fox", "Catch a Pyre Fox.", "Varlamore", TaskDifficulty.MEDIUM, "Hunter 36", "Pyre fox");
         addTask("Complete a Hunter Rumour", "Complete a Hunter Rumour.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.MISC, "Hunter 46", 1);
 
         // =====================================================================
@@ -1516,10 +1516,10 @@ public class TaskDatabase
         equipItem("Equip Earthbound Tecpatl", "Equip the Earthbound tecpatl.", "Varlamore", TaskDifficulty.MEDIUM, "", "Earthbound tecpatl");
         addTask("Activate all Statues of Ates", "Activate all statues of ates.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Pendant of ates");
         addTask("Jump on Yama's stepping stones 666 times", "Jump on Yama's stepping stones in his League domain 666 times.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Yama's Lair");
-        addTask("Activate the Statue of Ates", "Activate the Statue of Ates in Aldarin.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Statue (Ates)", "Aldarin");
+        addTask("Activate the Statue of Ates", "Activate the Statue of Ates in Aldarin.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Statue (Ates)");
         addTask("Bury some wyrm bones near a Wyrm skeleton", "Bury some wyrm bones or wyrmling bones near the Colossal Wyrm Remains.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "wyrm bones", "wyrmling bones", "Colossal Wyrm Remains");
         addTask("Enter a dark cave in Varlamore", "Enter a dark cave in Varlamore, near the Hunter Guild.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Cave entrance (The Burrow)");
-        addTask("Fill a Grape Barrel for the Foreman", "Fill a Grape Barrel for the Foreman in Aldarin.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Grape barrel", "Vineyard foreman", "Aldarin");
+        addTask("Fill a Grape Barrel for the Foreman", "Fill a Grape Barrel for the Foreman in Aldarin.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Grape barrel", "Vineyard foreman");
         addTask("Complete Death on the Isle", "Complete Death on the Isle.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Death on the Isle");
         addTask("Complete Shadows of Custodia", "Complete the Shadows of Custodia quest.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Shadows of Custodia");
         addTask("Complete the Heart of Darkness", "Complete The Heart of Darkness quest.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "The Heart of Darkness");
@@ -1538,7 +1538,7 @@ public class TaskDatabase
         addTask("Steal a House Key", "Steal a House Key.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "House keys");
         addTask("Steal from the Fortis Spice Stall", "Steal from the Fortis Spice Stall.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Spice Stall");
         addTask("Store some bowstrings inside a bowstring spool", "Store some bowstrings inside a bowstring spool.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "bow strings", "bow string spool");
-        addTask("Teleport to Cam Torum using a Calcified Moth", "Teleport to Cam Torum using a Calcified Moth.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Cam Torum", "Calcified moth");
+        addTask("Teleport to Cam Torum using a Calcified Moth", "Teleport to Cam Torum using a Calcified Moth.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Calcified moth");
         addTask("Teleport to Civitas illa Fortis", "Teleport to Civitas illa Fortis using the standard spellbook.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1);
         addTask("Use the pottery oven in Civitas", "Use the pottery oven in Civitas to make something out of clay.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "pottery oven", "soft clay");
         addTask("Break down 10 calcified deposits", "Break down 10 Calcified deposits.", "Varlamore", TaskDifficulty.MEDIUM, TaskType.ACTIVITY, "", 1, "Calcified deposit");
@@ -1577,7 +1577,7 @@ public class TaskDatabase
         equipItem("Equip full Guild Hunter Outfit", "Equip full Guild Hunter Outfit.", "Varlamore", TaskDifficulty.HARD, "", "Guild Hunter Outfit");
         equipItem("Equip full Hueycoatl armour", "Equip full Hueycoatl armour.", "Varlamore", TaskDifficulty.HARD, "", "Hueycoatl hide armour");
         equipItem("Equip full Sunfire Fanatic", "Equip a full set of Sunfire Fanatic armour.", "Varlamore", TaskDifficulty.HARD, "", "Sunfire Fanatic armour");
-        addTask("Open a chest with the moon key", "Open a chest with the moon key inside the Ruins of Tapoyauik.", "Varlamore", TaskDifficulty.HARD, TaskType.ACTIVITY, "", 1, "Chest (moon key)", "moon key", "Ruins of Tapoyauik");
+        addTask("Open a chest with the moon key", "Open a chest with the moon key inside the Ruins of Tapoyauik.", "Varlamore", TaskDifficulty.HARD, TaskType.ACTIVITY, "", 1, "Chest (moon key)", "moon key");
         addTask("Build all Quetzal landing sites", "Build all quetzal landing sites.", "Varlamore", TaskDifficulty.HARD, TaskType.ACTIVITY, "", 1, "Landing Site");
         addTask("Complete the Final Dawn", "Complete The Final Dawn quest.", "Varlamore", TaskDifficulty.HARD, TaskType.ACTIVITY, "", 1, "The Final Dawn");
         addTask("Fully decorate a Yew totem in the Auburn Valley", "Fully decorate a Yew totem in the Auburn Valley.", "Varlamore", TaskDifficulty.HARD, TaskType.ACTIVITY, "", 1, "Yew totem");
@@ -1615,7 +1615,7 @@ public class TaskDatabase
         addTask("Open the Varlamore Moon Chest", "Open the Varlamore Moon Chest.", "Varlamore", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Chest (moon key)");
         addTask("Store 10k bowstrings inside a bowstring spool", "Store at least 10,000 bowstrings inside a bowstring spool.", "Varlamore", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 10000, "bowstring", "bowstring spool");
         addTask("Purchase the Chugging Barrel", "Purchase the Chugging Barrel from the Mixology shop.", "Varlamore", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Chugging Barrel");
-        addTask("Fully decorate a Redwood totem in the Auburn Valley", "Fully decorate a Redwood totem in the Auburn Valley.", "Varlamore", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Redwood totem", "Auburn Valley");
+        addTask("Fully decorate a Redwood totem in the Auburn Valley", "Fully decorate a Redwood totem in the Auburn Valley.", "Varlamore", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Redwood totem");
 
         // --- Audit additions: Varlamore (master) (4) ---
         addTask("Colosseum Combat Achievements", "Complete all of the Combat Achievements for Fortis Colosseum.", "Varlamore", TaskDifficulty.MASTER, TaskType.ACTIVITY, "", 1, "Fortis Colosseum");
@@ -1625,16 +1625,16 @@ public class TaskDatabase
 
         // --- Audit additions: Karamja (elite) (13) ---
         addTask("Complete the Elite Karamja Diary", "Complete all of the Elite tasks in the Karamja Achievement Diary.", "Karamja", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Karamja Achievement Diary");
-        addTask("Complete the Fight Caves 10 Times", "Complete the TzHaar Fight Cave in Mor Ul Rek 10 times.", "Karamja", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "TzHaar Fight Cave", "Mor Ul Rek");
-        addTask("Complete the Fight Caves 5 Times", "Complete the TzHaar Fight Cave in Mor Ul Rek 5 times.", "Karamja", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "TzHaar Fight Cave", "Mor Ul Rek");
-        addTask("Sacrifice a Fire Cape to Access the Inferno", "Sacrifice a Fire Cape to access the Inferno in Mor Ul Rek.", "Karamja", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Fire Cape", "Inferno", "Mor Ul Rek");
-        addTask("Complete the Inferno 10 Times", "Complete the Inferno in Mor Ul Rek 10 times.", "Karamja", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Inferno", "Mor Ul Rek");
-        addTask("Complete the Inferno 5 Times", "Complete the Inferno in Mor Ul Rek 5 times.", "Karamja", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Inferno", "Mor Ul Rek");
-        addTask("Complete Tzhaar-Ket-Rak's fifth challenge", "Complete Tzhaar-Ket-Rak's fifth challenge.", "Karamja", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Tzhaar-Ket-Rak", "TzHaar-Ket-Rak's Challenges");
-        addTask("Complete Tzhaar-Ket-Rak's fourth challenge", "Complete Tzhaar-Ket-Rak's fourth challenge.", "Karamja", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Tzhaar-Ket-Rak", "TzHaar-Ket-Rak's Challenges");
-        addTask("Complete Tzhaar-Ket-Rak's sixth challenge", "Complete Tzhaar-Ket-Rak's sixth challenge.", "Karamja", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Tzhaar-Ket-Rak", "TzHaar-Ket-Rak's Challenges");
-        addTask("Pay Saniboch for Permanent Access", "Pay Saniboch for Permanent Access into his dungeon.", "Karamja", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Saniboch", "Brimhaven Dungeon");
-        addTask("Purchase an Onyx in Mor Ul Rek", "Purchase an Onyx from an Ore and Gem Store in Mor Ul Rek.", "Karamja", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Uncut onyx", "TzHaar-Hur-Lek's Ore and Gem Store", "Mor Ul Rek");
+        addTask("Complete the Fight Caves 10 Times", "Complete the TzHaar Fight Cave in Mor Ul Rek 10 times.", "Karamja", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "TzHaar Fight Cave");
+        addTask("Complete the Fight Caves 5 Times", "Complete the TzHaar Fight Cave in Mor Ul Rek 5 times.", "Karamja", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "TzHaar Fight Cave");
+        addTask("Sacrifice a Fire Cape to Access the Inferno", "Sacrifice a Fire Cape to access the Inferno in Mor Ul Rek.", "Karamja", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Fire Cape", "Inferno");
+        addTask("Complete the Inferno 10 Times", "Complete the Inferno in Mor Ul Rek 10 times.", "Karamja", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Inferno");
+        addTask("Complete the Inferno 5 Times", "Complete the Inferno in Mor Ul Rek 5 times.", "Karamja", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Inferno");
+        addTask("Complete Tzhaar-Ket-Rak's fifth challenge", "Complete Tzhaar-Ket-Rak's fifth challenge.", "Karamja", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Tzhaar-Ket-Rak");
+        addTask("Complete Tzhaar-Ket-Rak's fourth challenge", "Complete Tzhaar-Ket-Rak's fourth challenge.", "Karamja", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Tzhaar-Ket-Rak");
+        addTask("Complete Tzhaar-Ket-Rak's sixth challenge", "Complete Tzhaar-Ket-Rak's sixth challenge.", "Karamja", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Tzhaar-Ket-Rak");
+        addTask("Pay Saniboch for Permanent Access", "Pay Saniboch for Permanent Access into his dungeon.", "Karamja", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Saniboch");
+        addTask("Purchase an Onyx in Mor Ul Rek", "Purchase an Onyx from an Ore and Gem Store in Mor Ul Rek.", "Karamja", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Uncut onyx", "TzHaar-Hur-Lek's Ore and Gem Store");
         addTask("Pickpocket a Diamond From a TzHaar", "Pickpocket an uncut diamond from a TzHaar-Hur.", "Karamja", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "uncut diamond", "TzHaar-Hur");
         addTask("Grow a spirit tree on Karamja", "Check the health of a Spirit tree you've grown on Karamja.", "Karamja", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "Spirit Tree (Farming)");
 
@@ -1644,13 +1644,13 @@ public class TaskDatabase
         addTask("The Fight Caves Combat Achievements", "Complete all of the Combat Achievements for The Fight Caves.", "Karamja", TaskDifficulty.MASTER, TaskType.ACTIVITY, "", 1, "Fight Caves");
         defeatNpc("Defeat 6,6,6 Unbound Jal-tok Jad", "Defeat 18 Unbound JalTok-Jad's in the infinite Jad challenge.", "Karamja", TaskDifficulty.MASTER, "", "Unbound JalTok-Jad");
         equipItem("Equip a Pirate Hook", "Equip a Pirate Hook from Brimhaven Agility Arena.", "Karamja", TaskDifficulty.MASTER, "", "Pirate's hook");
-        addTask("Complete the Inferno 15 Times", "Complete the Inferno in Mor Ul Rek 15 times.", "Karamja", TaskDifficulty.MASTER, TaskType.ACTIVITY, "", 1, "Inferno", "Mor Ul Rek");
+        addTask("Complete the Inferno 15 Times", "Complete the Inferno in Mor Ul Rek 15 times.", "Karamja", TaskDifficulty.MASTER, TaskType.ACTIVITY, "", 1, "Inferno");
 
         // --- Audit additions: Tirannwn (easy) (6) ---
         defeatNpc("Defeat a Moss Giant in Tirannwn", "Defeat a Moss Giant in Tirannwn.", "Tirannwn", TaskDifficulty.EASY, "", "Moss Giant");
         addTask("Talk to Ilfeen in Tirannwn", "Talk to Ilfeen in Tirannwn.", "Tirannwn", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Ilfeen");
         addTask("Use the Bank in Lletya", "Use the Bank in Lletya.", "Tirannwn", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Bank booth");
-        addTask("Charter a Ship From Prifddinas to Port Tyras", "Take a Charter Ship from Prifddinas to Port Tyras.", "Tirannwn", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Charter Ship", "Port Tyras");
+        addTask("Charter a Ship From Prifddinas to Port Tyras", "Take a Charter Ship from Prifddinas to Port Tyras.", "Tirannwn", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Charter Ship");
         cookItem("Cook a Rabbit in Tirannwn", "Cook a Rabbit anywhere within Tirannwn.", "Tirannwn", TaskDifficulty.EASY, "", 1, "Rabbit");
         addTask("Cross a Trap in Isafdar", "Successfully cross any kind of trap in Isafdar.", "Tirannwn", TaskDifficulty.EASY, TaskType.ACTIVITY, "", 1, "Isafdar");
 
@@ -1818,7 +1818,7 @@ public class TaskDatabase
         equipItem("Equip the Ursine Chainmace", "Equip the Ursine Chainmace.", "Wilderness", TaskDifficulty.ELITE, "", "Ursine Chainmace");
         equipItem("Equip the Webweaver", "Equip the Webweaver.", "Wilderness", TaskDifficulty.ELITE, "", "Webweaver");
         equipItem("Equip Viggora's Chainmace", "Equip Viggora's Chainmace.", "Wilderness", TaskDifficulty.ELITE, "", "Viggora's Chainmace");
-        addTask("Loot a dragonstone from the Rogues Castle", "Loot a dragonstone from the chest in Rogue's Castle.", "Wilderness", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "dragonstone", "Rogue's Castle");
+        addTask("Loot a dragonstone from the Rogues Castle", "Loot a dragonstone from the chest in Rogue's Castle.", "Wilderness", TaskDifficulty.ELITE, TaskType.ACTIVITY, "", 1, "dragonstone");
         craftItem("Make an Extended Antifire Potion", "Make an Extended Antifire Potion.", "Wilderness", TaskDifficulty.ELITE, "", "Extended Antifire Potion");
         mineItem("Mine Some Runite Ore in the Wilderness", "Mine some runite ore in the Wilderness.", "Wilderness", TaskDifficulty.ELITE, "", 1, "runite ore");
         cookItem("Cook a Dark Crab", "Cook a Dark Crab.", "Wilderness", TaskDifficulty.ELITE, "", 1, "Dark Crab");
