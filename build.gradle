@@ -38,3 +38,15 @@ java {
     sourceCompatibility = JavaVersion.VERSION_11
     targetCompatibility = JavaVersion.VERSION_11
 }
+
+// Local dev launcher. Run with `gradle runPlugin`, or in IntelliJ open the
+// Gradle tool window -> demonic-pacts-highlighter -> Tasks -> application
+// -> runPlugin. RuneLite's ExternalPluginManager requires assertions to be
+// enabled, so -ea is baked in here.
+tasks.register('runPlugin', JavaExec) {
+    group = 'application'
+    description = 'Launches RuneLite locally with the plugin loaded'
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.demonicpacts.DemonicPactsPluginTest'
+    enableAssertions = true
+}
