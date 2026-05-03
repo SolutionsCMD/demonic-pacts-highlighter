@@ -1481,6 +1481,9 @@ public class TaskDatabase
         // --- Audit additions: General (medium) (1) ---
         chopItem("Chop Some Logs With a Rune Axe", "Chop any kind of logs using a rune axe.", "General", TaskDifficulty.MEDIUM, "", 1, "rune axe");
 
+        // --- Audit additions: General (hard) (1) ---
+        defeatNpc("Defeat 10 Superior slayer creatures", "Defeat 10 Superior slayer creatures.", "General", TaskDifficulty.HARD, "Slayer 5 + Bigger and Badder or T3 Relic", "Superior");
+
         // --- Audit additions: General (elite) (1) ---
         defeatNpc("Slay an Abyssal Demon", "Slay an Abyssal Demon whilst on an Abyssal Demon Slayer Task.", "General", TaskDifficulty.ELITE, "", "Abyssal Demon");
 
