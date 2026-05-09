@@ -10,7 +10,12 @@ repositories {
     mavenCentral()
 }
 
-def runeLiteVersion = '1.12.24'
+// 'latest.release' so gradle always pulls the newest published RuneLite
+// client. Pinning to a specific version (e.g. 1.12.24) was working at the
+// time of writing but eventually the OSRS server bumped past what the pinned
+// client knew how to connect to, producing error_game_js5connect_outofdate
+// when launching from IntelliJ.
+def runeLiteVersion = 'latest.release'
 
 dependencies {
     compileOnly group: 'net.runelite', name: 'client', version: runeLiteVersion
