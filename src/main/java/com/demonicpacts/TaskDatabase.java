@@ -821,7 +821,7 @@ public class TaskDatabase
         addTask("Activate Deadeye", "Activate the Deadeye prayer.", "General", TaskDifficulty.HARD, TaskType.PRAYER, "Prayer 62", 1, "Deadeye prayer scroll");
         addTask("Activate Mystic Vigour", "Activate the Mystic Vigour prayer.", "General", TaskDifficulty.HARD, TaskType.PRAYER, "Prayer 63", 1, "Mystic vigour prayer scroll");
         addTask("Use the Chivalry Prayer", "Use the Chivalry Prayer.", "General", TaskDifficulty.HARD, TaskType.PRAYER, "Prayer 60, Defence 65", 1);
-        addTask("Sacrifice a Dagannoth bone on a Gilded altar", "Sacrifice a Dagannoth bone on a Gilded altar in a POH with both burners lit.", "General", TaskDifficulty.HARD, TaskType.PRAYER, "Construction 75", 1, "Dagannoth bones");
+        addTask("Sacrifice a Dagannoth bone on a Gilded altar", "Sacrifice a Dagannoth bone on a Gilded altar in a POH with both burners lit.", "Fremennik", TaskDifficulty.HARD, TaskType.PRAYER, "Construction 75", 1, "Dagannoth bones");
         addTask("Build a Gilded Altar", "Build a Gilded Altar in a Chapel in your POH.", "General", TaskDifficulty.HARD, TaskType.MISC, "Construction 75", 1);
 
         // Runecraft
