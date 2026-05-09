@@ -59,7 +59,7 @@ public class DemonicPactsSpellbookOverlay extends Overlay
     @Override
     public Dimension render(Graphics2D graphics)
     {
-        if (!config.highlightSpellbook())
+        if (!plugin.isLeaguesWorld() || !config.highlightSpellbook())
         {
             return null;
         }

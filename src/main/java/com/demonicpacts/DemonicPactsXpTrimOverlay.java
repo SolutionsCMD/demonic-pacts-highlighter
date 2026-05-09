@@ -56,15 +56,17 @@ public class DemonicPactsXpTrimOverlay extends Overlay
 
     private final Client client;
     private final DemonicPactsConfig config;
+    private final DemonicPactsPlugin plugin;
 
     // Maps lowercased Skill.getName() to the enum value. Built once.
     private final Map<String, Skill> skillByName;
 
     @Inject
-    DemonicPactsXpTrimOverlay(Client client, DemonicPactsConfig config)
+    DemonicPactsXpTrimOverlay(Client client, DemonicPactsConfig config, DemonicPactsPlugin plugin)
     {
         this.client = client;
         this.config = config;
+        this.plugin = plugin;
         setPosition(OverlayPosition.DYNAMIC);
         setLayer(OverlayLayer.ABOVE_WIDGETS);
 
@@ -81,7 +83,7 @@ public class DemonicPactsXpTrimOverlay extends Overlay
     @Override
     public Dimension render(Graphics2D graphics)
     {
-        if (!config.xpTrimEnabled())
+        if (!plugin.isLeaguesWorld() || !config.xpTrimEnabled())
         {
             return null;
         }

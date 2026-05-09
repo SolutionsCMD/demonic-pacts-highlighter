@@ -59,7 +59,7 @@ public class DemonicPactsObjectOverlay extends Overlay
         RenderedHighlights rh = plugin.getRenderedHighlights();
         rh.clearObjects();
 
-        if (!config.highlightObjects())
+        if (!plugin.isLeaguesWorld() || !config.highlightObjects())
         {
             return null;
         }

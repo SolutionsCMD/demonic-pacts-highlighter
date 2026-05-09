@@ -46,7 +46,7 @@ public class DemonicPactsTooltipOverlay extends Overlay
     @Override
     public Dimension render(Graphics2D graphics)
     {
-        if (!config.showTooltips())
+        if (!plugin.isLeaguesWorld() || !config.showTooltips())
         {
             return null;
         }

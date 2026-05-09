@@ -9,6 +9,7 @@ import net.runelite.api.GameState;
 import net.runelite.api.MenuAction;
 import net.runelite.api.MenuEntry;
 import net.runelite.api.NPC;
+import net.runelite.api.WorldType;
 import net.runelite.api.events.ChatMessage;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.MenuEntryAdded;
@@ -180,7 +181,7 @@ public class DemonicPactsPlugin extends Plugin
      */
     private void showVersionBannerIfNeeded()
     {
-        if (shownVersionBanner || client.getGameState() != GameState.LOGGED_IN)
+        if (shownVersionBanner || client.getGameState() != GameState.LOGGED_IN || !isLeaguesWorld())
         {
             return;
         }
@@ -200,7 +201,7 @@ public class DemonicPactsPlugin extends Plugin
      */
     private void showLoginHintIfNeeded()
     {
-        if (shownLoginHint || !config.showLoginHint() || client.getGameState() != GameState.LOGGED_IN)
+        if (shownLoginHint || !config.showLoginHint() || client.getGameState() != GameState.LOGGED_IN || !isLeaguesWorld())
         {
             return;
         }
@@ -223,7 +224,7 @@ public class DemonicPactsPlugin extends Plugin
     @Subscribe
     public void onGameTick(net.runelite.api.events.GameTick event)
     {
-        if (!config.autoDetectCompletion() || client.getGameState() != GameState.LOGGED_IN)
+        if (!config.autoDetectCompletion() || client.getGameState() != GameState.LOGGED_IN || !isLeaguesWorld())
         {
             return;
         }
@@ -255,7 +256,7 @@ public class DemonicPactsPlugin extends Plugin
     @Subscribe
     public void onChatMessage(ChatMessage event)
     {
-        if (!config.autoDetectCompletion())
+        if (!config.autoDetectCompletion() || !isLeaguesWorld())
         {
             return;
         }
@@ -321,7 +322,7 @@ public class DemonicPactsPlugin extends Plugin
     @Subscribe
     public void onMenuEntryAdded(MenuEntryAdded event)
     {
-        if (!config.enableHideTaskMenu())
+        if (!config.enableHideTaskMenu() || !isLeaguesWorld())
         {
             return;
         }
@@ -479,6 +480,23 @@ public class DemonicPactsPlugin extends Plugin
                 .build();
             client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", msg, null);
         }
+    }
+
+    // =========================================================================
+    // World gating
+    // =========================================================================
+
+    /**
+     * Returns true if the player is currently on a Leagues / seasonal world.
+     * The plugin's whole purpose is highlighting Demonic Pacts league tasks,
+     * so on regular worlds it stays out of the way: no highlights, no
+     * tooltips, no menu injections, no chat banners. Players logging into
+     * the main game shouldn't see plugin behaviour.
+     */
+    public boolean isLeaguesWorld()
+    {
+        Set<WorldType> wt = client.getWorldType();
+        return wt != null && wt.contains(WorldType.SEASONAL);
     }
 
     // =========================================================================

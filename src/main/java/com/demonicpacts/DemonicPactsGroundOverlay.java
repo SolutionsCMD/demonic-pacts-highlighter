@@ -64,7 +64,7 @@ public class DemonicPactsGroundOverlay extends Overlay
         RenderedHighlights rh = plugin.getRenderedHighlights();
         rh.clearGround();
 
-        if (!config.highlightGroundItems())
+        if (!plugin.isLeaguesWorld() || !config.highlightGroundItems())
         {
             return null;
         }
